@@ -1,7 +1,7 @@
-#docker_image=sunway513/hiptensorflow:tf13-rocm172-public-v1
-docker_image=sunway513/hiptensorflow:tf18-rocm181-rc2-v1
+#docker_image=sunway513/hiptensorflow:tf18-rocm181-rc2-v1
+docker_image=rocm/tensorflow:rocm1.8.2-tf1.8-python3-dev
 #
-container_name=tf18_rocm181_debug_build
+container_name=tf18_rocm182_debug_build
 
 docker run \
        -it \
