@@ -3,7 +3,7 @@
 #     bazel test --test_env=HIP_VISIBLE_DEVICES=0 --test_sharding_strategy=disabled --cache_test_results=no --config=opt --config=rocm $testname
 # done
 
-bazel test -s \
+bazel test  \
       --test_env=HIP_VISIBLE_DEVICES=0 \
       --test_sharding_strategy=disabled \
       --cache_test_results=no \

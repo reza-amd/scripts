@@ -6,17 +6,47 @@ pip3 install protobuf --upgrade
 git config --locall user.email "deven.desai.amd@gmail.com"
 git config --local user.name "Deven Desai"
 
-rm -rf /root/hcc/
-cd /root && git clone --recursive https://github.com/RadeonOpenCompute/hcc.git
-cd /root/hcc && git checkout -b issue812-fix d530be7
-cd /root/hcc && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make package -j$(nproc) && dpkg -i *.deb
 
-rm -rf /root/HIP
-cd /root/ && git clone -b roc-1.8.x-pr457-altfix https://github.com/deven-amd/HIP.git 
-cd /root/HIP && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
+HOME=/root
+
+
+rm -rf $HOME/hcc/
+cd $HOME && git clone --recursive https://github.com/RadeonOpenCompute/hcc.git
+cd $HOME/hcc && git checkout -b issue812-fix d530be7
+cd $HOME/hcc && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make package -j$(nproc) && dpkg -i *.deb
+
+
+rm -rf $HOME/HIP
+cd $HOME && git clone -b roc-1.8.x-pr457-altfix https://github.com/deven-amd/HIP.git 
+cd $HOME/HIP && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
+
+
+apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
+
+cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
+cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
+
+cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
+cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
+
+cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
+
+#cd $HOME && git clone -b 1.4.x https://github.com/AMDComputeLibraries/MLOpen.git miopen
+#cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
+cd $HOME && git clone -b pr1061-fix https://github.com/deven-amd/MIOpen.git miopen
+
+cd $HOME/miopen && mkdir build && cd build && \
+    CXX=/opt/rocm/bin/hcc cmake \
+       -DMIOPEN_BACKEND=HIP \
+       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+       -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
+       -DHALF_INCLUDE_DIR=$HOME/half/include \
+       -DCMAKE_BUILD_TYPE=Release \
+       ..  && \
+    make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
 version=0.15.0
-cd /root/
+cd $HOME/
 wget https://github.com/bazelbuild/bazel/releases/download/$version/bazel-$version-installer-linux-x86_64.sh
 chmod a+x bazel-$version-installer-linux-x86_64.sh
 ./bazel-$version-installer-linux-x86_64.sh
