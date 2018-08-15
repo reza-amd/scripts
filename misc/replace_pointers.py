@@ -40,7 +40,7 @@ def main() :
 
             # only keep the following syscalls
             keep_pattern = "open"
-            if not re.match(keep_pattern, line) :
+            if not re.search(keep_pattern, line) :
                     continue
 
             skip_pattern = "-1 ENOENT"
