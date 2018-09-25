@@ -5,7 +5,7 @@
 testname=$1
 
 # do
-bazel test  \
+bazel test \
       --test_env=HIP_VISIBLE_DEVICES=0 \
       --test_sharding_strategy=disabled \
       --cache_test_results=no \
@@ -20,3 +20,4 @@ bazel test  \
       # --test_env=MIOPEN_ENABLE_LOGGING=1 \
       # --test_env=MIOPEN_ENABLE_LOGGING_CMD=1 \
       # --test_env=HIP_TRACE_API=2 \
+      # --config=monolithic \

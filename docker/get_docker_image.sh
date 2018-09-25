@@ -1,10 +1,10 @@
-#docker_image=sunway513/hiptensorflow:tf18-rocm181-rc2-v1
+#docker_image=rocm/rocm-terminal:1.9.0
 #docker_image=rocm/tensorflow:rocm1.8.2-tf1.8-python3-dev
-#docker_image=devenamd/tensorflow:tf18_rocm182_base_180727
-docker_image=rocm/rocm-terminal:1.8.2
-#docker_image=sunway513/hiptensorflow:rocm1.8.2-rc5-tf1.8-v1
+#docker_image=devenamd/eigen:eigen-upstream-rocm-v3
+#docker_image=rocmqa/tf18-9083-gfx900:ub18.04
+docker_image=rocm/tensorflow:rocm1.9.0-tf1.10-python3-dev
 
-container_name=deven_rocm182_base
+container_name=rocm190_tf_fusion
 
 docker run \
        -it \

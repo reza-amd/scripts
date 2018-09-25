@@ -1,4 +1,4 @@
-#! /home/deven/anaconda3/bin/python
+#! /usr/bin/python
 
 import sys
 import re

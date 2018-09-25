@@ -2,8 +2,10 @@
 
 # pip3 install setuptools --upgrade
 # pip3 install protobuf --upgrade
+# pip3 install keras_applications==1.0.4 --no-deps
+# pip3 install keras_preprocessing==1.0.2 --no-deps
 
-# git config --locall user.email "deven.desai.amd@gmail.com"
+# git config --local user.email "deven.desai.amd@gmail.com"
 # git config --local user.name "Deven Desai"
 
 
@@ -17,37 +19,39 @@ HOME=/root
 
 
 # rm -rf $HOME/HIP
-# cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
-# #cd $HOME && git clone -b roc-1.8.x-pr457-altfix https://github.com/deven-amd/HIP.git 
-# cd $HOME/HIP && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
+# #cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
+# cd $HOME && git clone -b roc-1.8.x-pr457-altfix https://github.com/deven-amd/HIP.git 
+# cd $HOME/HIP && rm -rf build && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
+# cd $HOME/HIP/build && make package -j$(nproc) && dpkg -i *.deb
 
 
-# apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
+apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
 
-# rm -rf $HOME/rocm-cmake
-# cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
-# cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
+rm -rf $HOME/rocm-cmake
+cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
+cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
 
-# rm -rf $HOME/MIOpenGEMM
-# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
-# cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
+rm -rf $HOME/MIOpenGEMM
+cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
+cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
 
-# rm -rf $HOME/half
-# cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
+rm -rf $HOME/half
+cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
 
 # rm -rf $HOME/miopen
-# #cd $HOME && git clone -b 1.4.x https://github.com/AMDComputeLibraries/MLOpen.git miopen
-# #cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
+# #manual# cd $HOME && git clone -b fusion-dev-core https://github.com/AMDComputeLibraries/MLOpen.git miopen
+# cd $HOME && git clone -b 1.4.x https://github.com/AMDComputeLibraries/MLOpen.git miopen
+# cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
 # cd $HOME && git clone -b pr1061-fix https://github.com/deven-amd/MIOpen.git miopen
-cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
-    CXX=/opt/rocm/bin/hcc cmake \
-       -DMIOPEN_BACKEND=HIP \
-       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
-       -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
-       -DHALF_INCLUDE_DIR=$HOME/half/include \
-       -DCMAKE_BUILD_TYPE=Release \
-       ..  && \
-    make package -j$(nproc) && dpkg -i ./MIOpen*.deb
+# cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
+#     CXX=/opt/rocm/bin/hcc cmake \
+#        -DMIOPEN_BACKEND=HIP \
+#        -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+#        -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
+#        -DHALF_INCLUDE_DIR=$HOME/half/include \
+#        -DCMAKE_BUILD_TYPE=Release \
+#        ..  && \
+#     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
 
 # version=0.15.0
