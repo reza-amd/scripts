@@ -1,2 +1,2 @@
-git remote add upstream https://github.com/tensorflow/tensorflow.git
-git fetch upstream
+git remote add google_upstream https://github.com/tensorflow/tensorflow.git
+git fetch google_upstream

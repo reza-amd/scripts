@@ -1,9 +1,10 @@
-# apt-get update && apt-get install -y emacs24-nox python3-numpy python3-dev python3-pip python3-wheel
+#apt-get update && apt-get install -y emacs24-nox python3-numpy python3-dev python3-pip python3-wheel
 
-# pip3 install setuptools --upgrade
-# pip3 install protobuf --upgrade
-# pip3 install keras_applications==1.0.4 --no-deps
-# pip3 install keras_preprocessing==1.0.2 --no-deps
+# pip3 install --upgrade setuptools==39.1.0
+# pip3 install --upgrade protobuf==3.6.0
+# pip3 install keras_applications==1.0.5 --no-deps
+# pip3 install keras_preprocessing==1.0.3 --no-deps
+# pip3 install --upgrade h5py==2.8.0
 
 # git config --local user.email "deven.desai.amd@gmail.com"
 # git config --local user.name "Deven Desai"
@@ -25,24 +26,26 @@ HOME=/root
 # cd $HOME/HIP/build && make package -j$(nproc) && dpkg -i *.deb
 
 
-apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
+# apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
 
-rm -rf $HOME/rocm-cmake
-cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
-cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
+# rm -rf $HOME/rocm-cmake
+# cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
+# cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
 
-rm -rf $HOME/MIOpenGEMM
-cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
-cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
+# rm -rf $HOME/MIOpenGEMM
+# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
+# cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
 
-rm -rf $HOME/half
-cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
+# rm -rf $HOME/half
+# cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
 
 # rm -rf $HOME/miopen
 # #manual# cd $HOME && git clone -b fusion-dev-core https://github.com/AMDComputeLibraries/MLOpen.git miopen
+# #manual# cd $HOME && git clone -b tensorCopyFusionFix https://github.com/AMDComputeLibraries/MLOpen.git miopen
 # cd $HOME && git clone -b 1.4.x https://github.com/AMDComputeLibraries/MLOpen.git miopen
 # cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
 # cd $HOME && git clone -b pr1061-fix https://github.com/deven-amd/MIOpen.git miopen
+# cd $HOME/miopen && cd build && \
 # cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
 #     CXX=/opt/rocm/bin/hcc cmake \
 #        -DMIOPEN_BACKEND=HIP \
@@ -53,6 +56,8 @@ cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/pro
 #        ..  && \
 #     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
+mkdir -p $HOME/pkgs/MIOpen
+cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/5mf2u41tfgjq0qr/MIOpen-HIP-1.5.0-f29af54-Linux.deb && dpkg -i *.deb
 
 # version=0.15.0
 # cd $HOME/
