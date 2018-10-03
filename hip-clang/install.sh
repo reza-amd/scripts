@@ -45,12 +45,12 @@ export LLVM_BUILD=$HOME/llvm/build
 
 # Build and install HIP-HCC-RT:
 
-# cd $HOME && git clone -b master https://github.com/ROCm-Developer-Tools/HIP
-# cd $HOME/HIP && rm -rf build && mkdir -p build && cd build && \
-#     cmake \
-# 	-DHIP_COMPILER=clang \
-# 	.. && \
-#     $SUDO_CMD make -j$(nproc) install
+cd $HOME && git clone -b hip-clang https://github.com/ROCm-Developer-Tools/HIP
+cd $HOME/HIP && rm -rf build && mkdir -p build && cd build && \
+    cmake \
+	-DHIP_COMPILER=clang \
+	.. && \
+    $SUDO_CMD make -j$(nproc) install
 
 
 # Clone the HIP-Examples repo for the smoke test
