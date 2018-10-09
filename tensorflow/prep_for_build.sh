@@ -12,12 +12,18 @@
 
 HOME=/root
 
+# #################################################################################
+
+# apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
+
+# #################################################################################
 
 # rm -rf $HOME/hcc/
 # cd $HOME && git clone --recursive https://github.com/RadeonOpenCompute/hcc.git
 # cd $HOME/hcc && git checkout -b issue812-fix d530be7
 # cd $HOME/hcc && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make package -j$(nproc) && dpkg -i *.deb
 
+# #################################################################################
 
 # rm -rf $HOME/HIP
 # #cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
@@ -25,19 +31,24 @@ HOME=/root
 # cd $HOME/HIP && rm -rf build && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
 # cd $HOME/HIP/build && make package -j$(nproc) && dpkg -i *.deb
 
-
-# apt-get update && apt-get install -y wget unzip libssl-dev libboost-dev libboost-system-dev libboost-filesystem-dev
+# #################################################################################
 
 # rm -rf $HOME/rocm-cmake
 # cd $HOME && git clone https://github.com/RadeonOpenCompute/rocm-cmake.git 
 # cd $HOME/rocm-cmake && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./rocm-cmake*.deb
 
+# #################################################################################
+
 # rm -rf $HOME/MIOpenGEMM
 # cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/MIOpenGEMM.git
 # cd $HOME/MIOpenGEMM &&  mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i ./miopengemm*.deb
 
+# #################################################################################
+
 # rm -rf $HOME/half
 # cd $HOME &&  mkdir half && cd half && wget https://downloads.sourceforge.net/project/half/half/1.12.0/half-1.12.0.zip && unzip *.zip
+
+# #################################################################################
 
 # rm -rf $HOME/miopen
 # #manual# cd $HOME && git clone -b fusion-dev-core https://github.com/AMDComputeLibraries/MLOpen.git miopen
@@ -58,6 +69,14 @@ HOME=/root
 
 mkdir -p $HOME/pkgs/MIOpen
 cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/5mf2u41tfgjq0qr/MIOpen-HIP-1.5.0-f29af54-Linux.deb && dpkg -i *.deb
+
+# #################################################################################
+
+# rm -rf $HOME/rccl
+# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/rccl.git
+# cd $HOME/rccl && mkdir build && cd build && CXX=/opt/rocm/bin/hcc cmake .. && make package -j$(nproc) && dpkg -i *.deb
+
+# #################################################################################
 
 # version=0.15.0
 # cd $HOME/
