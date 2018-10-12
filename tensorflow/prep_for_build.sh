@@ -1,10 +1,31 @@
 #apt-get update && apt-get install -y emacs24-nox python3-numpy python3-dev python3-pip python3-wheel
 
-# pip3 install --upgrade setuptools==39.1.0
+# pip3 install wheel==0.31.1
+# pip3 install virtualenv
+# pip3 install --upgrade six==1.10.0
+# pip3 install --upgrade absl-py
+# pip3 install --upgrade werkzeug==0.11.10
+# pip3 install --upgrade bleach==2.0.0
+# pip3 install --upgrade markdown==2.6.8
 # pip3 install --upgrade protobuf==3.6.0
-# pip3 install keras_applications==1.0.5 --no-deps
-# pip3 install keras_preprocessing==1.0.3 --no-deps
+# pip3 install --upgrade numpy==1.14.5
+# pip3 install scipy==1.1.0
+# pip3 install scikit-learn==0.18.1
+# pip3 install pandas==0.19.2
+# pip3 install psutil
+# pip3 install py-cpuinfo
+# pip3 install pylint==1.6.4
+# pip3 install pep8
+# pip3 install portpicker
+# pip3 install grpcio
+# pip3 install --upgrade astor
+# pip3 install --upgrade gast
+# pip3 install --upgrade termcolor
+# pip3 install --upgrade setuptools==39.1.0
+# pip3 install keras_applications==1.0.6 --no-deps
+# pip3 install keras_preprocessing==1.0.5 --no-deps
 # pip3 install --upgrade h5py==2.8.0
+# pip3 install tensorflow_estimator --no-deps
 
 # git config --local user.email "deven.desai.amd@gmail.com"
 # git config --local user.name "Deven Desai"
@@ -51,11 +72,9 @@ HOME=/root
 # #################################################################################
 
 # rm -rf $HOME/miopen
-# #manual# cd $HOME && git clone -b fusion-dev-core https://github.com/AMDComputeLibraries/MLOpen.git miopen
-# #manual# cd $HOME && git clone -b tensorCopyFusionFix https://github.com/AMDComputeLibraries/MLOpen.git miopen
-# cd $HOME && git clone -b 1.4.x https://github.com/AMDComputeLibraries/MLOpen.git miopen
+# #manual# cd $HOME && git clone -b develop https://github.com/AMDComputeLibraries/MLOpen.git miopen
 # cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
-# cd $HOME && git clone -b pr1061-fix https://github.com/deven-amd/MIOpen.git miopen
+#
 # cd $HOME/miopen && cd build && \
 # cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
 #     CXX=/opt/rocm/bin/hcc cmake \
@@ -67,8 +86,10 @@ HOME=/root
 #        ..  && \
 #     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
-mkdir -p $HOME/pkgs/MIOpen
-cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/5mf2u41tfgjq0qr/MIOpen-HIP-1.5.0-f29af54-Linux.deb && dpkg -i *.deb
+# #################################################################################
+
+# mkdir -p $HOME/pkgs/MIOpen
+# cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/5mf2u41tfgjq0qr/MIOpen-HIP-1.5.0-f29af54-Linux.deb && dpkg -i *.deb
 
 # #################################################################################
 
