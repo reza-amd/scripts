@@ -71,20 +71,26 @@ HOME=/root
 
 # #################################################################################
 
+# rm -rf $HOME/rocBLAS
+# cd $HOME && git clone -b v14.3.0 https://github.com/ROCmSoftwarePlatform/rocBLAS.git
+# cd $HOME/rocBLAS && ./install.sh -i
+    
+# #################################################################################
+
 # rm -rf $HOME/miopen
 # #manual# cd $HOME && git clone -b develop https://github.com/AMDComputeLibraries/MLOpen.git miopen
 # cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
 #
 # cd $HOME/miopen && cd build && \
-# cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
-#     CXX=/opt/rocm/bin/hcc cmake \
-#        -DMIOPEN_BACKEND=HIP \
-#        -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
-#        -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
-#        -DHALF_INCLUDE_DIR=$HOME/half/include \
-#        -DCMAKE_BUILD_TYPE=Release \
-#        ..  && \
-#     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
+cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
+    CXX=/opt/rocm/bin/hcc cmake \
+       -DMIOPEN_BACKEND=HIP \
+       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+       -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
+       -DHALF_INCLUDE_DIR=$HOME/half/include \
+       -DCMAKE_BUILD_TYPE=Release \
+       ..  && \
+    make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
 # #################################################################################
 

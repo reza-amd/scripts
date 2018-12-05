@@ -21,3 +21,4 @@ bazel test \
       # --test_env=MIOPEN_ENABLE_LOGGING_CMD=1 \
       # --test_env=HIP_TRACE_API=2 \
       # --config=monolithic \
+      # --test_env=TF_ROCM_ENABLE_FUSION=1 \
