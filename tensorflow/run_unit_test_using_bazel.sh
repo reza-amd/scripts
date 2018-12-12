@@ -1,10 +1,13 @@
 
-# cat $1 | while read testname
-# for i in {1..10}
-
 testname=$1
 
-# do
+cat $1 | while read testname
+# for i in {1..10}
+
+do
+
+# echo $testname
+
 bazel test \
       --test_env=HIP_VISIBLE_DEVICES=0 \
       --test_sharding_strategy=disabled \
@@ -12,7 +15,8 @@ bazel test \
       --config=opt \
       --config=rocm \
       $testname
-# done
+
+done
 
       # --test_env=TF_CPP_MIN_VLOG_LEVEL=1 \
       # --test_env=TF_CPP_MIN_LOG_LEVEL=1 \
@@ -22,3 +26,5 @@ bazel test \
       # --test_env=HIP_TRACE_API=2 \
       # --config=monolithic \
       # --test_env=TF_ROCM_ENABLE_FUSION=1 \
+
+# bazel query buildfiles(deps($testname))

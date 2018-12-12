@@ -82,20 +82,25 @@ HOME=/root
 # cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
 #
 # cd $HOME/miopen && cd build && \
-cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
-    CXX=/opt/rocm/bin/hcc cmake \
-       -DMIOPEN_BACKEND=HIP \
-       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
-       -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
-       -DHALF_INCLUDE_DIR=$HOME/half/include \
-       -DCMAKE_BUILD_TYPE=Release \
-       ..  && \
-    make package -j$(nproc) && dpkg -i ./MIOpen*.deb
+# cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
+#     CXX=/opt/rocm/bin/hcc cmake \
+#        -DMIOPEN_BACKEND=HIP \
+#        -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+#        -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
+#        -DHALF_INCLUDE_DIR=$HOME/half/include \
+#        -DCMAKE_BUILD_TYPE=Release \
+#        ..  && \
+#     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
 # #################################################################################
 
+# rm -rf $HOME/pkgs/rocblas
+# mkdir -p $HOME/pkgs/rocblas
+# cd $HOME/pkgs/rocblas && wget https://github.com/ROCmSoftwarePlatform/rocBLAS/releases/download/v14.3.0/rocblas-0.14.3.158-Linux.deb && dpkg -i *.deb
+
+# rm -rf $HOME/pkgs/MIOpen
 # mkdir -p $HOME/pkgs/MIOpen
-# cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/5mf2u41tfgjq0qr/MIOpen-HIP-1.5.0-f29af54-Linux.deb && dpkg -i *.deb
+# cd $HOME/pkgs/MIOpen && wget https://www.dropbox.com/s/ppk5cqeylfsgnya/MIOpen-HIP-1.6.0-fa431f0-Linux.deb && dpkg -i *.deb
 
 # #################################################################################
 

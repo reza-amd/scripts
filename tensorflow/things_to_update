@@ -1,1 +1,0 @@
-tf_cuda_cc_test becomes tf_gpu_cc_test
