@@ -1,3 +1,3 @@
 git checkout upstream
-git merge upstream/master
+git merge google_upstream/master
 git push origin upstream

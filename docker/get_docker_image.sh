@@ -4,9 +4,11 @@
 #docker_image=rocmqa/tf18-9083-gfx900:ub18.04
 #docker_image=rocm/tensorflow:rocm1.9.0-tf1.10-python3-dev
 #docker_image=sunway513/hiptensorflow:rocm1.9.1-tf1.10-resnet50-fp16-v9
-docker_image=sunway513/hiptensorflow:rocm1.9.1-tf1.12-dev-v2
+#docker_image=sunway513/hiptensorflow:rocm1.9.1-tf1.12-dev-v2
+#docker_image=sunway513/hiptensorflow:rocm1.9.2-tf1.10-xla
+docker_image=sunway513/hiptensorflow:rocm2.0-tf1.13-rc0-dev-v2
 
-container_name=validate_bna_fusion
+container_name=rocm200_tf113_misc
 
 docker run \
        -it \
