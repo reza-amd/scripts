@@ -6,9 +6,14 @@
 #docker_image=sunway513/hiptensorflow:rocm1.9.1-tf1.10-resnet50-fp16-v9
 #docker_image=sunway513/hiptensorflow:rocm1.9.1-tf1.12-dev-v2
 #docker_image=sunway513/hiptensorflow:rocm1.9.2-tf1.10-xla
-docker_image=sunway513/hiptensorflow:rocm2.0-tf1.13-rc0-dev-v2
+#docker_image=sunway513/hiptensorflow:rocm2.0-tf1.13-rc0-dev-v2
+#docker_image=sunway513/hiptensorflow:rocm2.1-tf1.12-python3-dev-2
+#docker_image=rocm/tensorflow:rocm2.1-tf1.12-python3
+#docker_image=whchung/hiptensorflow:rocm2.1-tf1.12-python3-dynamic-load-dev
 
-container_name=rocm200_tf113_misc
+docker_image=rocm/tensorflow:rocm2.1-tf1.12-python3-dev
+
+container_name=deven_rocm210_tf_XLA_unit_tests
 
 docker run \
        -it \

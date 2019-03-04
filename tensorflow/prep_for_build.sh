@@ -47,8 +47,9 @@ HOME=/root
 # #################################################################################
 
 # rm -rf $HOME/HIP
-# #cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
-# cd $HOME && git clone -b roc-1.8.x-pr457-altfix https://github.com/deven-amd/HIP.git 
+#cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
+# cd $HOME && git clone -b roc-1.9.x-module-hash-fix https://github.com/ROCm-Developer-Tools/HIP.git 
+# cd $HOME && git clone https://github.com/ROCm-Developer-Tools/HIP.git 
 # cd $HOME/HIP && rm -rf build && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
 # cd $HOME/HIP/build && make package -j$(nproc) && dpkg -i *.deb
 
@@ -77,20 +78,23 @@ HOME=/root
     
 # #################################################################################
 
-# rm -rf $HOME/miopen
+rm -rf $HOME/miopen
 # #manual# cd $HOME && git clone -b develop https://github.com/AMDComputeLibraries/MLOpen.git miopen
-# cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
+cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
+
+cd $HOME/miopen && cmake -P install_deps.cmake
 #
 # cd $HOME/miopen && cd build && \
-# cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
-#     CXX=/opt/rocm/bin/hcc cmake \
-#        -DMIOPEN_BACKEND=HIP \
-#        -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
+    CXX=/opt/rocm/bin/hcc cmake \
+       -DMIOPEN_BACKEND=HIP \
+       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+       -DCMAKE_BUILD_TYPE=Release \
+       ..  && \
+    make package -j$(nproc) && dpkg -i ./MIOpen*.deb
+
 #        -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
 #        -DHALF_INCLUDE_DIR=$HOME/half/include \
-#        -DCMAKE_BUILD_TYPE=Release \
-#        ..  && \
-#     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
 # #################################################################################
 
