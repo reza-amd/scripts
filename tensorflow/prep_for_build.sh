@@ -1,4 +1,4 @@
-#apt-get update && apt-get install -y emacs24-nox python3-numpy python3-dev python3-pip python3-wheel
+# apt-get update && apt-get install -y  python3-numpy python3-dev python3-pip python3-wheel
 
 # pip3 install wheel==0.31.1
 # pip3 install virtualenv
@@ -27,8 +27,8 @@
 # pip3 install --upgrade h5py==2.8.0
 # pip3 install tensorflow_estimator --no-deps
 
-# git config --local user.email "deven.desai.amd@gmail.com"
-# git config --local user.name "Deven Desai"
+# git config --global user.email "deven.desai.amd@gmail.com"
+# git config --global user.name "Deven Desai"
 
 
 HOME=/root
@@ -46,9 +46,10 @@ HOME=/root
 
 # #################################################################################
 
-# rm -rf $HOME/HIP
 #cd $HOME && git clone -b roc-1.8.x-pr457 https://github.com/parallelo/HIP.git 
 # cd $HOME && git clone -b roc-1.9.x-module-hash-fix https://github.com/ROCm-Developer-Tools/HIP.git 
+
+# rm -rf $HOME/HIP
 # cd $HOME && git clone https://github.com/ROCm-Developer-Tools/HIP.git 
 # cd $HOME/HIP && rm -rf build && mkdir build && cd build && cmake .. && make package -j$(nproc) && dpkg -i *.deb
 # cd $HOME/HIP/build && make package -j$(nproc) && dpkg -i *.deb
@@ -72,17 +73,26 @@ HOME=/root
 
 # #################################################################################
 
+# rm -rf $HOME/rocRAND
+# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/rocRAND.git
+# cd $HOME/rocRAND && rm -rf build && mkdir build
+# cd $HOME/rocRAND && cd build && CXX=/opt/rocm/bin/hcc cmake -DBUILD_BENCHMARK=ON .. && make package -j$(nproc) && dpkg -i *.deb
+
+# rm -rf $HOME/rocFFT
+# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/rocFFT.git
+# cd $HOME/rocFFT && ./install.sh -i
+
 # rm -rf $HOME/rocBLAS
-# cd $HOME && git clone -b v14.3.0 https://github.com/ROCmSoftwarePlatform/rocBLAS.git
+# cd $HOME && git clone https://github.com/ROCmSoftwarePlatform/rocBLAS.git
 # cd $HOME/rocBLAS && ./install.sh -i
     
 # #################################################################################
 
-rm -rf $HOME/miopen
-# #manual# cd $HOME && git clone -b develop https://github.com/AMDComputeLibraries/MLOpen.git miopen
-cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
+# rm -rf $HOME/miopen
+# # #manual# cd $HOME && git clone -b develop https://github.com/AMDComputeLibraries/MLOpen.git miopen
+# cd $HOME && git clone -b master https://github.com/ROCmSoftwarePlatform/MIOpen.git miopen
 
-cd $HOME/miopen && cmake -P install_deps.cmake
+# cd $HOME/miopen && cmake -P install_deps.cmake
 #
 # cd $HOME/miopen && cd build && \
 cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
@@ -93,8 +103,10 @@ cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
        ..  && \
     make package -j$(nproc) && dpkg -i ./MIOpen*.deb
 
+
 #        -DCMAKE_CXX_FLAGS="-isystem /usr/include/x86_64-linux-gnu/" \
 #        -DHALF_INCLUDE_DIR=$HOME/half/include \
+#        -DMIOPEN_USE_ROCBLAS=false \
 
 # #################################################################################
 

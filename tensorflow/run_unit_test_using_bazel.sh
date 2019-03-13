@@ -2,6 +2,7 @@ options=""
 
 options="$options --config=opt"
 options="$options --config=rocm"
+# options="$options --config=cuda"
 # options="$options --config=monolithic"
 
 options="$options --test_sharding_strategy=disabled"
@@ -11,8 +12,9 @@ options="$options --cache_test_results=no"
 
 options="$options --test_env=HIP_VISIBLE_DEVICES=0"
 
-options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
+# options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING_CMD=1"
+# options="$options --test_env=AMD_OCL_BUILD_OPTIONS_APPEND=\"-save-temps-all\""
 
 # options="$options --test_env=KMDUMPISA=1"
 # options="$options --test_env=KMDUMPLLVM=1"
@@ -25,21 +27,24 @@ options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
+# options="$options --test_env=LD_DEBUG=all"
+
 # options="$options --test_env="
 # options="$options "
 # echo $options
 
-# cat $1 | while read testname
-# for i in {1..10}
-# do
-
 testname=$1
 # echo $testname
 
-bazel test $options $testname
-
-# done
-
+if [ $1 == "-f" ]; then
+    cat $2 | while read testname
+    do
+	bazel test $options $testname
+    done
+else
+    testname=$1
+    bazel test $options $testname
+fi
 
 # bazel query buildfiles(deps($testname))
 
