@@ -8,7 +8,7 @@ options="$options --config=rocm"
 options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
-# options="$options --flaky_test_attempts=5"
+options="$options --flaky_test_attempts=1"
 
 options="$options --test_env=HIP_VISIBLE_DEVICES=0"
 
@@ -39,7 +39,10 @@ testname=$1
 if [ $1 == "-f" ]; then
     cat $2 | while read testname
     do
-	bazel test $options $testname
+	if [[ $testname != \#* ]]; then
+	    echo $testname
+	    bazel test $options $testname
+	fi
     done
 else
     testname=$1
