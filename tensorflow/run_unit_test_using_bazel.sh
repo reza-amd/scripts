@@ -9,12 +9,21 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
+# options="$options --test_output=all"
 
-options="$options --test_env=HIP_VISIBLE_DEVICES=0"
+# options="$options --test_env=HIP_VISIBLE_DEVICES=0"
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING_CMD=1"
+# options="$options --test_env=MIOPEN_DEBUG_CONV_FFT=0"
+# options="$options --test_env=MIOPEN_DEBUG_CONV_FIRECT=0"
+# options="$options --test_env=MIOPEN_DEBUG_CONV_GEMM=0"
+# options="$options --test_env=MIOPEN_GEMM_ENFORCE_BACKEND=2"
 # options="$options --test_env=AMD_OCL_BUILD_OPTIONS_APPEND=\"-save-temps-all\""
+
+# options="$options --test_env=ROCBLAS_LAYER=1"
+# options="$options --test_env=ROCBLAS_LAYER=2"
+# options="$options --test_env=ROCBLAS_LAYER=3"
 
 # options="$options --test_env=KMDUMPISA=1"
 # options="$options --test_env=KMDUMPLLVM=1"
