@@ -34,8 +34,9 @@ no_rocm_no_cuda_tests="attr(tags, \"no_rocm[^_]|no_cuda[^_]\", $ci_tests)"
 
 echo "--- XLA ---"
 
-echo "all tests :" `bazel query $all_tests | wc -l`
-echo "excluded tests :" `bazel query $excluded_tests | wc -l`
+# echo "all tests :" `bazel query $all_tests | wc -l`
+# echo "excluded tests :" `bazel query $excluded_tests | wc -l`
+
 echo "ci tests :" `bazel query $ci_tests | wc -l`
 
 echo "no_gpu tests :" `bazel query $no_gpu_tests | wc -l`

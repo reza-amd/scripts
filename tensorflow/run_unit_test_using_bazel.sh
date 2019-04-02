@@ -9,6 +9,7 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
+options="$options --test_tag_filters=-no_rocm"
 # options="$options --test_output=all"
 
 # options="$options --test_env=HIP_VISIBLE_DEVICES=0"
@@ -42,20 +43,48 @@ options="$options --flaky_test_attempts=1"
 # options="$options "
 # echo $options
 
-testname=$1
-# echo $testname
 
-if [ $1 == "-f" ]; then
-    cat $2 | while read testname
+testname=""
+testlist=""
+
+while (( $# )); do
+
+    if [ $1 == "-xla" ]; then
+	options="$options --config=xla"
+    elif [ $1 == "-v2" ]; then
+	options="$options --config=v2"
+    elif [ $1 == "-f" ]; then
+	testlist=$2
+	shift
+    else
+	testname=$1
+    fi
+
+    shift
+done
+
+if [[ ! -z $testlist ]]; then
+
+    # echo "process list $testlist"
+
+    cat $testlist | while read testname
     do
 	if [[ $testname != \#* ]]; then
 	    echo $testname
 	    bazel test $options $testname
 	fi
     done
-else
-    testname=$1
+
+elif [[ ! -z $testname ]]; then
+
+    # echo "process test $testname"
+
     bazel test $options $testname
+
+else
+
+    echo "no testcase specified"
+
 fi
 
 # bazel query buildfiles(deps($testname))
