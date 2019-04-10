@@ -34,25 +34,26 @@ no_rocm_no_cuda_tests="attr(tags, \"no_rocm[^_]|no_cuda[^_]\", $ci_tests)"
 
 echo "--- XLA ---"
 
-# echo "all tests :" `bazel query $all_tests | wc -l`
-# echo "excluded tests :" `bazel query $excluded_tests | wc -l`
+# echo "all tests :" `bazel cquery $all_tests | wc -l`
+# echo "excluded tests :" `bazel cquery $excluded_tests | wc -l`
 
-echo "ci tests :" `bazel query $ci_tests | wc -l`
+# echo "ci tests :" `bazel cquery $ci_tests | wc -l`
+# echo "--------"
+# echo "no_gpu tests :" `bazel cquery $no_gpu_tests | wc -l`
+# echo "no_rocm tests :" `bazel cquery $no_rocm_tests | wc -l`
+# echo "no_cuda tests :" `bazel cquery $no_cuda_tests | wc -l`
+# echo "--------"
+# echo "rocm_ci tests :" `bazel cquery $rocm_ci_tests | wc -l`
+# echo "cuda_ci tests :" `bazel cquery $cuda_ci_tests | wc -l`
+# echo "--------"
 
-echo "no_gpu tests :" `bazel query $no_gpu_tests | wc -l`
-echo "no_rocm tests :" `bazel query $no_rocm_tests | wc -l`
-echo "no_cuda tests :" `bazel query $no_cuda_tests | wc -l`
+# echo "no_gpu_no_rocm tests :" `bazel cquery $no_gpu_no_rocm_tests | wc -l`
+# echo "no_gpu_no_cuda tests :" `bazel cquery $no_gpu_no_cuda_tests | wc -l`
+# echo "no_rocm_no_cuda tests :" `bazel cquery $no_rocm_no_cuda_tests | wc -l`
+# echo "--------"
 
-echo "rocm_ci tests :" `bazel query $rocm_ci_tests | wc -l`
-echo "cuda_ci tests :" `bazel query $cuda_ci_tests | wc -l`
-
-# echo "no_gpu_no_rocm tests :" `bazel query $no_gpu_no_rocm_tests | wc -l`
-# echo "no_gpu_no_cuda tests :" `bazel query $no_gpu_no_cuda_tests | wc -l`
-
-echo "no_rocm_no_cuda tests :" `bazel query $no_rocm_no_cuda_tests | wc -l`
-
-bazel query $no_rocm_no_cuda_tests
-
-# bazel query $no_rocm_tests
+bazel cquery $no_rocm_no_cuda_tests
+# bazel cquery $no_rocm_tests
+# echo "--------"
 
 

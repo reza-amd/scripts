@@ -1,3 +1,18 @@
+####################
+set -e
+# set -x
+
+N_JOBS=$(grep -c ^processor /proc/cpuinfo)
+N_GPUS=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
+
+echo ""
+echo "Bazel will use ${N_JOBS} concurrent build job(s) and ${N_GPUS} concurrent test job(s)."
+echo ""
+
+export TF_NEED_ROCM=1
+export TF_GPU_COUNT=${N_GPUS}
+#####################
+
 options=""
 
 options="$options --config=opt"
@@ -5,14 +20,12 @@ options="$options --config=rocm"
 # options="$options --config=cuda"
 # options="$options --config=monolithic"
 
+
 options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
-options="$options --flaky_test_attempts=1"
-options="$options --test_tag_filters=-no_rocm"
-# options="$options --test_output=all"
-
-# options="$options --test_env=HIP_VISIBLE_DEVICES=0"
+options="$options --flaky_test_attempts=3"
+options="$options --test_output=all"
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING_CMD=1"
@@ -44,7 +57,8 @@ options="$options --test_tag_filters=-no_rocm"
 # echo $options
 
 
-testname=""
+all_tests=""
+
 testlist=""
 
 while (( $# )); do
@@ -53,38 +67,36 @@ while (( $# )); do
 	options="$options --config=xla"
     elif [ $1 == "-v2" ]; then
 	options="$options --config=v2"
+    elif [ $1 == "-dbg" ]; then
+	options="$options --compilation_mode=dbg"
     elif [ $1 == "-f" ]; then
+	options="$options --jobs=$N_JOBS"
+	# options="$options --local_test_jobs=1"
+	options="$options --local_test_jobs=$TF_GPU_COUNT"
+	options="$options --run_under=//tensorflow/tools/ci_build/gpu_build:parallel_gpu_execute"
 	testlist=$2
 	shift
     else
-	testname=$1
+	options="$options --test_env=HIP_VISIBLE_DEVICES=0"
+	all_tests=$1
     fi
 
     shift
 done
 
 if [[ ! -z $testlist ]]; then
-
-    # echo "process list $testlist"
-
-    cat $testlist | while read testname
+    while read testname
     do
 	if [[ $testname != \#* ]]; then
-	    echo $testname
-	    bazel test $options $testname
+	    all_tests="$all_tests $testname"
 	fi
-    done
+    done < <(cat $testlist)
+fi
 
-elif [[ ! -z $testname ]]; then
-
-    # echo "process test $testname"
-
-    bazel test $options $testname
-
+if [[ ! -z $all_tests ]]; then
+    bazel test $options $all_tests
 else
-
     echo "no testcase specified"
-
 fi
 
 # bazel query buildfiles(deps($testname))
