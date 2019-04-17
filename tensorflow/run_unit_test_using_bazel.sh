@@ -17,6 +17,7 @@ options=""
 
 options="$options --config=opt"
 options="$options --config=rocm"
+options="$options --action_env=HIP_PLATFORM=hcc"
 # options="$options --config=cuda"
 # options="$options --config=monolithic"
 
@@ -24,8 +25,8 @@ options="$options --config=rocm"
 options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
-options="$options --flaky_test_attempts=3"
-options="$options --test_output=all"
+options="$options --flaky_test_attempts=1"
+# options="$options --test_output=all"
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING_CMD=1"

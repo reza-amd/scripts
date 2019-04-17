@@ -11,9 +11,13 @@
 #docker_image=rocm/tensorflow:rocm2.1-tf1.12-python3
 #docker_image=whchung/hiptensorflow:rocm2.1-tf1.12-python3-dynamic-load-dev
 
-docker_image=rocm/tensorflow:rocm2.1-tf1.12-python3-dev
+#docker_image=rocm/tensorflow:rocm2.1-tf1.12-python3-dev
 
-container_name=deven_rocm210_tf_XLA_unit_tests
+# docker_image=devenamd/tensorflow:rocm23_190417
+
+docker_image=sunway513/rocm-dev:rocm2.3-tf-dev-debug-8902cc
+
+container_name=deven_rocm23_peng_xla_benchmark
 
 docker run \
        -it \

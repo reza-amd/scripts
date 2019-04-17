@@ -1,5 +1,5 @@
 env_vars=""
-env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
+# env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING=1"
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
@@ -9,6 +9,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 
+# env_vars="$env_vars ROCBLAS_LAYER=3"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
 # env_vars="$env_vars HCC_DB=0x48a"
@@ -20,7 +21,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 
 options=""
-options="$options --model=resnet50"
+options="$options --model=alexnet"
 options="$options --xla=true"
 # options="$options --forward_only=true"
 # options="$options --num_intra_threads=1"
