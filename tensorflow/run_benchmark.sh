@@ -1,5 +1,5 @@
 env_vars=""
-# env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
+env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING=1"
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
@@ -9,13 +9,16 @@ env_vars=""
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 
+env_vars="$env_vars HIP_HIDDEN_FREE_MEM=250"
+# env_vars="$env_vars HIP_TRACE_API=2"
+# env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
+
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
+
 # env_vars="$env_vars HCC_DB=0x48a"
 # env_vars="$env_vars HCC_DB=0x68a"
-# env_vars="$env_vars HIP_TRACE_API=2"
-# env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
 
 # env_vars="$env_vars "
 
@@ -23,6 +26,7 @@ env_vars=""
 options=""
 options="$options --model=alexnet"
 options="$options --xla=true"
+# options="$options --allow_growth=true"
 # options="$options --forward_only=true"
 # options="$options --num_intra_threads=1"
 # options="$options --num_inter_threads=1"
@@ -35,4 +39,4 @@ options="$options --xla=true"
 
 export $env_vars
 cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
-# cd /root/benchmarks && ltrace -x hip* -L python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
+# cd /root/benchmarks && ltrace -b -n 1 -x hip* -L python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
