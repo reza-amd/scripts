@@ -1,0 +1,19 @@
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+
+MAINTAINER Deven Desai <deven.desai@amd.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV HOME /root/
+
+# install packages needed for this image
+RUN apt-get update && apt-get install -y cmake git mercurial emacs24-nox
+
+# clone the official eigen repo from bitcuket
+RUN cd $HOME && hg clone https://bitbucket.org/eigen/eigen eigen
+
+# clone the git mirror of the official eigen repo
+#RUN cd $HOME && git clone https://github.com/eigenteam/eigen-git-mirror eigen
+
+# copy the scripts to run the tests
+COPY run_tests_nightly.cuda.sh $HOME/
+COPY run_tests_gpu.cuda.sh $HOME/
