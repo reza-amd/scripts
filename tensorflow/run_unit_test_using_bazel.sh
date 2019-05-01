@@ -40,6 +40,8 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=ROCBLAS_LAYER=2"
 # options="$options --test_env=ROCBLAS_LAYER=3"
 
+# options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
+
 # options="$options --test_env=KMDUMPISA=1"
 # options="$options --test_env=KMDUMPLLVM=1"
 
