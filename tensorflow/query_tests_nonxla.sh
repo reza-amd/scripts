@@ -78,8 +78,8 @@ echo "--- non XLA ---"
 
 
 # bazel query $no_gpu_tests
-bazel query $no_rocm_tests
-# bazel query $no_rocm_v2_tests
+# bazel query $no_rocm_tests
+bazel query $no_rocm_v2_tests
 # bazel query $no_cuda_tests
 # bazel query $no_rocm_no_cuda_tests
 # bazel query $no_rocm_no_rocm_v2_no_cuda_tests
@@ -107,6 +107,8 @@ bazel query $no_rocm_tests
 #
 # //tensorflow/examples/saved_model/integration_tests:saved_model_test
 # //tensorflow/examples/saved_model/integration_tests:saved_model_test_gpu
+#
+## //tensorflow/lite/python:interpreter_test
 #
 # //tensorflow/lite/python:lite_test
 #
@@ -140,8 +142,12 @@ bazel query $no_rocm_tests
 # //tensorflow/python/distribute:distribute_lib_test
 # //tensorflow/python/distribute:keras_saved_model_test
 # //tensorflow/python/distribute:keras_saved_model_test_gpu
+## //tensorflow/python/distribute:minimize_loss_test
+## //tensorflow/python/distribute:minimize_loss_test_gpu
 # //tensorflow/python/distribute:mirrored_strategy_test
 # //tensorflow/python/distribute:mirrored_strategy_test_gpu
+## //tensorflow/python/distribute:step_fn_test
+## //tensorflow/python/distribute:step_fn_test_gpu
 #
 # //tensorflow/python/eager:backprop_test
 # //tensorflow/python/eager:backprop_test_gpu
@@ -183,6 +189,9 @@ bazel query $no_rocm_tests
 #
 # //tensorflow/python/ops/parallel_for:control_flow_ops_test
 # //tensorflow/python/ops/parallel_for:control_flow_ops_test_gpu
+## //tensorflow/python/ops/parallel_for:xla_control_flow_ops_test
+## //tensorflow/python/ops/parallel_for:xla_control_flow_ops_test_gpu
+#
 # //tensorflow/python/saved_model:save_test
 # //tensorflow/python/tools/api/generator:output_init_files_test
 #

@@ -41,12 +41,19 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=ROCBLAS_LAYER=3"
 
 # options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
+# options="$options --test_env=HIP_TRACE_API=1"
+# options="$options --test_env=HIP_DB=api+mem+copy"
+# options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
+# options="$options --test_env=HIP_API_BLOCKING=1"
+# options="$options --test_env=HIP_LAUNCH_BLOCKING_KERNELS=kernel1,kernel2,... "
+
+# options="$options --test_env=HCC_DB=0x48a"
+# options="$options --test_env=HCC_SERIALIZE_KERNEL=3"
+# options="$options --test_env=HCC_SERIALIZE_COPY=3"
 
 # options="$options --test_env=KMDUMPISA=1"
 # options="$options --test_env=KMDUMPLLVM=1"
 
-# options="$options --test_env=HCC_DB=0x48a"
-# options="$options --test_env=HIP_TRACE_API=2"
 
 # options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
 
@@ -106,7 +113,7 @@ if [[ ! -z $testlist ]]; then
 fi
 
 if [[ ! -z $all_tests ]]; then
-    rm -rf /tmp/amdgpu_xla-*
+    rm -rf /tmp/amdgpu_xla*
     bazel test $options $all_tests
 else
     echo "no testcase specified"

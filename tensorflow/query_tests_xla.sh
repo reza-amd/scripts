@@ -56,4 +56,6 @@ bazel cquery $no_rocm_no_cuda_tests
 # bazel cquery $no_rocm_tests
 # echo "--------"
 
+# bazel cquery $rocm_ci_tests
+
 
