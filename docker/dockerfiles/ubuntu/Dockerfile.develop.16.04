@@ -1,0 +1,17 @@
+FROM ubuntu:16.04
+MAINTAINER Deven Desai <deven.desai.amd@gmail.com>
+
+RUN apt-get update
+
+ENV DEBIAN_FRONTEND noninteractive
+
+#install emacs
+RUN apt-get install -y emacs24-nox
+RUN cd /root && rm -rf .emacs.d && git clone https://github.com/deven-amd/.emacs.d.git
+
+
+# configure git
+RUN git config --global user.email "deven.desai.amd@gmail.com"
+RUN git config --global user.name "Deven Desai"
+RUN git config --global core.editor "emacs"
+
