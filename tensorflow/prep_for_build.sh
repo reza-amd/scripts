@@ -98,7 +98,7 @@ HOME=/root
 cd $HOME/miopen && rm -rf build && mkdir build && cd build && \
     CXX=/opt/rocm/bin/hcc cmake \
        -DMIOPEN_BACKEND=HIP \
-       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip" \
+       -DCMAKE_PREFIX_PATH="/opt/rocm/hcc;/opt/rocm/hip;/opt/rocm/bin/clang-ocl" \
        -DCMAKE_BUILD_TYPE=Release \
        ..  && \
     make package -j$(nproc) && dpkg -i ./MIOpen*.deb

@@ -8,16 +8,17 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_FIRECT=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=0"
 
-env_vars="$env_vars HIP_HIDDEN_FREE_MEM=300"
+# env_vars="$env_vars HIP_HIDDEN_FREE_MEM=1000"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
 
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
-
-#env_vars="$env_vars TF_ROCM_MIMIC_FIND_MODE=1"
+ 
+# env_vars="$env_vars TF_ROCM_MIMIC_FIND_MODE=1"
 
 # env_vars="$env_vars HCC_DB=0x48a"
 # env_vars="$env_vars HCC_DB=0x68a"
@@ -33,7 +34,7 @@ options=""
 
 # options="$options --model=alexnet"
 # options="$options --model=googlenet"
-options="$options --model=resnet50"
+# options="$options --model=resnet50"
 # options="$options --model=inception3"
 # options="$options --model=inception4"
 
@@ -57,3 +58,8 @@ options="$options --model=resnet50"
 export $env_vars
 cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
 # cd /root/benchmarks && ltrace -b -n 1 -x hip* -L python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
+
+
+
+# @deven-amd User Db is found in your docker at /root/.config/miopen which will be empty.
+# The System Db is found in /opt/rocm/miopen/share/miopen/db. I just moved the entire directory.
