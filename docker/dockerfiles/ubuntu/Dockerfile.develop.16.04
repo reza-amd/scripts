@@ -5,13 +5,32 @@ RUN apt-get update
 
 ENV DEBIAN_FRONTEND noninteractive
 
-#install emacs
-RUN apt-get install -y emacs24-nox
-RUN cd /root && rm -rf .emacs.d && git clone https://github.com/deven-amd/.emacs.d.git
-
-
-# configure git
+# install git
+RUN apt-get install -y git
 RUN git config --global user.email "deven.desai.amd@gmail.com"
 RUN git config --global user.name "Deven Desai"
 RUN git config --global core.editor "emacs"
 
+# install emacs
+RUN apt-get install -y emacs24-nox
+RUN cd /root && rm -rf .emacs.d && git clone https://github.com/deven-amd/.emacs.d.git
+
+# install GCC 7
+RUN apt-get install -y --reinstall build-essential
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+RUN apt-get update
+RUN apt-get install -y gcc-7 g++-7
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60
+
+
+#install python3
+RUN apt-get install -y python3
+
+# install cmake and ninja
+RUN apt-get install -y cmake
+RUN apt-get install -y ninja-build
+
+
+CMD /bin/bash
