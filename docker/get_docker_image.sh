@@ -4,13 +4,14 @@
 # docker_repo=rocm/tensorflow-private
 #
 # docker_repo=devenamd/tensorflow
-docker_repo=devenamd/ubuntu
+docker_repo=devenamd/mlir
 #
 # docker_repo=sunway513/hiptensorflow
 
 
 # tag=latest
-tag=develop.16.04
+# tag=develop.16.04
+tag=rocm-2.6-latest
 
 docker_image=$docker_repo:$tag
 
@@ -27,4 +28,3 @@ options="$options --security-opt seccomp=unconfined"
 options="$options -v $HOME/deven/common:/common"
 
 docker run $options --name $container_name $docker_image
-
