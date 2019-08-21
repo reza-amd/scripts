@@ -22,8 +22,10 @@ options="$options --config=rocm"
 # options="$options --config=monolithic"
 
 
+# options="$options --subcommands"
+
 options="$options --test_sharding_strategy=disabled"
-options="$options --test_timeout 600,9000,2400,7200"
+options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
 # options="$options --test_output="
@@ -62,6 +64,9 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
+
+# options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
+
 
 # options="$options --test_env=HSA_TOOLS_LIB=\"librocr_debug_agent64.so\""
 # options="$options --test_env=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib"
