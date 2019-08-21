@@ -1,28 +1,31 @@
 # docker_repo=rocm/eigen-test
 # docker_repo=rocm/tensorflow
 # docker_repo=rocm/tensorflow-autobuilds
-# docker_repo=rocm/tensorflow-private
+docker_repo=rocm/tensorflow-private
 #
 # docker_repo=devenamd/tensorflow
-docker_repo=devenamd/mlir
+# docker_repo=devenamd/mlir
 #
 # docker_repo=sunway513/hiptensorflow
 
 
-# tag=latest
+#tag=latest
 # tag=develop.16.04
-tag=rocm-2.6-latest
+# tag=rocm-2.6-latest
+# tag=fused_batchnorm_bug
+tag=rocm2.6-tf1.13-miopen1.8.0-alexnet-triage
+
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_MLIR
+container_name=deven_miopen_alexnet_1947_debug
 
 options=""
 options="$options -it"
 options="$options --network=host"
-# options="$options --device=/dev/kfd"
-# options="$options --device=/dev/dri"
-# options="$options --group-add video"
+options="$options --device=/dev/kfd"
+options="$options --device=/dev/dri"
+options="$options --group-add video"
 options="$options --cap-add=SYS_PTRACE"
 options="$options --security-opt seccomp=unconfined"
 options="$options -v $HOME/deven/common:/common"
