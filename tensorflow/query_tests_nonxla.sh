@@ -34,16 +34,19 @@ no_rocm_tests="attr(tags, \"no_rocm[^_]\", $ci_tests)"
 no_rocm_v2_tests="attr(tags, \"no_rocm_v2[^_]\", $ci_tests)"
 # echo $no_rocm_v2_tests
 
+v1only_tests="attr(tags, \"v1only\", $ci_tests)"
+# echo $no_rocm_v2_tests
+
 no_gpu_no_rocm_tests="attr(tags, \"no_gpu[^_]|no_rocm[^_]\", $ci_tests)"
 # echo $no_gpu_no_rocm_tests
 
 rocm_ci_tests="$ci_tests except $no_gpu_no_rocm_tests"
 # echo $rocm_ci_tests
 
-no_gpu_no_rocm_no_rocm_v2_tests="attr(tags, \"no_gpu[^_]|no_rocm[^_]|no_rocm_v2[^_]\", $ci_tests)"
+no_gpu_no_rocm_no_rocm_v2_v1only_tests="attr(tags, \"no_gpu[^_]|no_rocm[^_]|no_rocm_v2[^_]|v1only\", $ci_tests)"
 # echo $no_gpu_no_rocm_no_rocm_v2_tests
 
-rocm_v2_ci_tests="$ci_tests except $no_gpu_no_rocm_no_rocm_v2_tests"
+rocm_v2_ci_tests="$ci_tests except $no_gpu_no_rocm_no_rocm_v2_v1only_tests"
 # echo $rocm_ci_tests
 
 no_rocm_no_cuda_tests="attr(tags, \"no_rocm[^_]|no_cuda[^_]\", $ci_tests)"
@@ -59,18 +62,19 @@ echo "--- non XLA ---"
 # echo "small medium tests :" `bazel query $small_medium_tests | wc -l`
 # echo "excluded tests :" `bazel query $excluded_tests | wc -l`
 
-# echo "ci tests :" `bazel query $rocm_config $ci_tests | wc -l`
-# echo "--------"
-# echo "no_gpu tests :" `bazel query $no_gpu_tests | wc -l`
-# echo "--------"
-# echo "no_rocm tests :" `bazel query $no_rocm_tests | wc -l`
-# echo "no_cuda tests :" `bazel query $no_cuda_tests | wc -l`
-# echo "no_rocm_v2 tests :" `bazel query $no_rocm_v2_tests | wc -l`
-# echo "--------"
-# echo "rocm_ci tests :" `bazel query $rocm_ci_tests | wc -l`
-# echo "cuda_ci tests :" `bazel query $cuda_ci_tests | wc -l`
-# echo "rocm_v2_ci tests :" `bazel query $rocm_v2_ci_tests | wc -l`
-# echo "--------"
+echo "ci tests :" `bazel query $rocm_config $ci_tests | wc -l`
+echo "--------"
+echo "no_gpu tests :" `bazel query $no_gpu_tests | wc -l`
+echo "--------"
+echo "no_rocm tests :" `bazel query $no_rocm_tests | wc -l`
+echo "no_cuda tests :" `bazel query $no_cuda_tests | wc -l`
+echo "no_rocm_v2 tests :" `bazel query $no_rocm_v2_tests | wc -l`
+echo "v1only tests :" `bazel query $v1only_tests | wc -l`
+echo "--------"
+echo "rocm_ci tests :" `bazel query $rocm_ci_tests | wc -l`
+echo "cuda_ci tests :" `bazel query $cuda_ci_tests | wc -l`
+echo "rocm_v2_ci tests :" `bazel query $rocm_v2_ci_tests | wc -l`
+echo "--------"
 
 # echo "no_gpu_no_rocm tests :" `bazel query $no_gpu_no_rocm_tests | wc -l`
 # echo "no_gpu_no_cuda tests :" `bazel query $no_gpu_no_cuda_tests | wc -l`
@@ -79,7 +83,8 @@ echo "--- non XLA ---"
 
 # bazel query $no_gpu_tests
 # bazel query $no_rocm_tests
-bazel query $no_rocm_v2_tests
+# bazel query $no_rocm_v2_tests
+# bazel query $v1only_tests
 # bazel query $no_cuda_tests
 # bazel query $no_rocm_no_cuda_tests
 # bazel query $no_rocm_no_rocm_v2_no_cuda_tests
@@ -204,3 +209,59 @@ bazel query $no_rocm_v2_tests
 #
 # //tensorflow/tools/api/tests:api_compatibility_test
 # //tensorflow/tools/api/tests:deprecation_test
+
+
+
+# //tensorflow/lite/python:interpreter_test
+
+# //tensorflow/python/compiler/tensorrt:base_test
+# //tensorflow/python/compiler/tensorrt:batch_matmul_test
+# //tensorflow/python/compiler/tensorrt:biasadd_matmul_test
+# //tensorflow/python/compiler/tensorrt:binary_tensor_weight_broadcast_test
+# //tensorflow/python/compiler/tensorrt:combined_nms_test
+# //tensorflow/python/compiler/tensorrt:concatenation_test
+# //tensorflow/python/compiler/tensorrt:const_broadcast_test
+# //tensorflow/python/compiler/tensorrt:conv2d_test
+# //tensorflow/python/compiler/tensorrt:dynamic_input_shapes_test
+# //tensorflow/python/compiler/tensorrt:identity_output_test
+# //tensorflow/python/compiler/tensorrt:int32_test
+# //tensorflow/python/compiler/tensorrt:lru_cache_test
+# //tensorflow/python/compiler/tensorrt:memory_alignment_test
+# //tensorflow/python/compiler/tensorrt:multi_connection_neighbor_engine_test
+# //tensorflow/python/compiler/tensorrt:neighboring_engine_test
+# //tensorflow/python/compiler/tensorrt:quantization_test
+# //tensorflow/python/compiler/tensorrt:rank_two_test
+# //tensorflow/python/compiler/tensorrt:reshape_transpose_test
+# //tensorflow/python/compiler/tensorrt:topk_test
+# //tensorflow/python/compiler/tensorrt:trt_convert_test
+# //tensorflow/python/compiler/tensorrt:trt_convert_test_gpu
+# //tensorflow/python/compiler/tensorrt:unary_test
+# //tensorflow/python/compiler/tensorrt:vgg_block_nchw_test
+# //tensorflow/python/compiler/tensorrt:vgg_block_test
+
+# //tensorflow/python/keras/distribute:distribute_strategy_test
+# //tensorflow/python/keras/distribute:distribute_strategy_test_gpu
+
+# //tensorflow/python/keras:base_layer_test
+# //tensorflow/python/keras:cudnn_recurrent_test
+# //tensorflow/python/keras:cudnn_recurrent_test_gpu
+# //tensorflow/python/keras:gru_v2_test
+# //tensorflow/python/keras:gru_v2_test_gpu
+# //tensorflow/python/keras:lstm_v2_test
+# //tensorflow/python/keras:lstm_v2_test_gpu
+# //tensorflow/python/keras:training_test
+
+# //tensorflow/python/kernel_tests/signal:fft_ops_test
+# //tensorflow/python/kernel_tests/signal:fft_ops_test_gpu
+# //tensorflow/python/kernel_tests/signal:spectral_ops_test
+# //tensorflow/python/kernel_tests/signal:spectral_ops_test_gpu
+# //tensorflow/python/kernel_tests:cholesky_op_test
+# //tensorflow/python/kernel_tests:cholesky_op_test_gpu
+# //tensorflow/python/kernel_tests:pooling_ops_3d_test
+# //tensorflow/python/kernel_tests:pooling_ops_3d_test_gpu
+
+# //tensorflow/python:nn_fused_batchnorm_test
+# //tensorflow/python:nn_fused_batchnorm_test_gpu
+
+# //tensorflow/tools/api/tests:api_compatibility_test
+

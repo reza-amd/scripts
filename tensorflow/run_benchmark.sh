@@ -10,7 +10,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=0"
 
-# env_vars="$env_vars HIP_HIDDEN_FREE_MEM=1000"
+# env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
 
@@ -19,6 +19,8 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
  
 # env_vars="$env_vars TF_ROCM_MIMIC_FIND_MODE=1"
+
+env_vars="$env_vars TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 
 # env_vars="$env_vars HCC_DB=0x48a"
 # env_vars="$env_vars HCC_DB=0x68a"
@@ -32,7 +34,8 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 options=""
 
-# options="$options --model=alexnet"
+options="$options --model=alexnet"
+# options="$options --model=vgg16"
 # options="$options --model=googlenet"
 # options="$options --model=resnet50"
 # options="$options --model=inception3"
@@ -50,8 +53,12 @@ options=""
 # options="$options --num_intra_threads=1"
 # options="$options --num_inter_threads=1"
 
-# options="$options --num_batches=1"
+options="$options --num_batches=1"
+# options="$options --num_batches=10"
+# options="$options --num_batches=100"
+
 # options="$options --batch_size=128"
+options="$options --batch_size=1024"
      
 # options="$options --num_warmup_batches=0"
 

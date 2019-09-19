@@ -9,7 +9,7 @@ cd /root/tensorflow && git fetch google_upstream
 cd /root/tensorflow && /common/scripts/misc/git_config.sh
 
 # download the benchamrks repo
-# cd /root && git clone https://github.com/tensorflow/benchmarks
+cd /root && git clone https://github.com/tensorflow/benchmarks
 
 # download the models repo
-# cd /root && git clone https://github.com/tensorflow/models
+cd /root && git clone https://github.com/tensorflow/models

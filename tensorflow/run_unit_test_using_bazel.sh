@@ -91,6 +91,9 @@ while (( $# )); do
 	options="$options --config=xla"
     elif [ $1 == "-v2" ]; then
 	options="$options --config=v2"
+	# options="$options --define=tf_api_version=2"
+	options="$options --test_env=TF2_BEHAVIOR=1"
+	options="$options --test_tag_filters=-v1only"
     elif [ $1 == "-dbg" ]; then
 	options="$options --compilation_mode=dbg"
     elif [ $1 == "-f" ]; then
