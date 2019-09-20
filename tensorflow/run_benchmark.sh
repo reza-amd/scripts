@@ -19,6 +19,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
  
 # env_vars="$env_vars TF_ROCM_MIMIC_FIND_MODE=1"
+# env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 
 env_vars="$env_vars TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 

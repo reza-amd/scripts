@@ -9,7 +9,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 
-#env_vars="$env_vars HIP_HIDDEN_FREE_MEM=300"
+# env_vars="$env_vars HIP_HIDDEN_FREE_MEM=1024"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
 
@@ -21,6 +21,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars HCC_DB=0x68a"
 
 # env_vars="$env_vars TF_ROCM_MIMIC_FIND_API=1"
+env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 
 # env_vars="$env_vars "
 
