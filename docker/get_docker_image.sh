@@ -1,24 +1,24 @@
 # docker_repo=rocm/eigen-test
 # docker_repo=rocm/tensorflow
-docker_repo=rocm/tensorflow-autobuilds
+# docker_repo=rocm/tensorflow-autobuilds
 # docker_repo=rocm/tensorflow-private
 #
 # docker_repo=devenamd/tensorflow
-# docker_repo=devenamd/mlir
+docker_repo=devenamd/mlir
 #
 # docker_repo=sunway513/hiptensorflow
 
-tag=rocm2.6-2704edd
+# tag=rocm2.6-2704edd
 # tag=latest
 # tag=develop.16.04
-# tag=rocm-2.6-latest
+tag=rocm-2.6-latest
 # tag=fused_batchnorm_bug
 # tag=rocm2.6-tf1.13-miopen1.8.0-alexnet-triage
 
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_tf20_misc_01
+container_name=deven_rocm26_MLIR
 
 options=""
 options="$options -it"

@@ -1,22 +1,48 @@
 BASE=$HOME
 
-cd $BASE
-
+# cd $BASE
 # git clone https://github.com/llvm/llvm-project.git
-
 # git clone https://github.com/tensorflow/mlir llvm-project/llvm/projects/mlir
+# git clone https://github.com/whchung/mlir    llvm-project/llvm/projects/mlir
+# git clone https://github.com/deven-amd/mlir  llvm-project/llvm/projects/mlir
+# cd llvm-project/llvm/projects/mlir && git checkout deven-rocdl-dialect
 
-# git clone -b exp-mlir-rocm-runner https://github.com/whchung/mlir llvm-project/llvm/projects/mlir
-
+# cd $BASE
 # rm -rf llvm-project/build && mkdir llvm-project/build
-cd llvm-project/build
-
-# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_ENABLE_CXX1Y=Y -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DMLIR_ROCM_RUNNER_ENABLED=1
-
+# cd llvm-project/build
+# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DCMAKE_BUILD_TYPE=Release -DMLIR_ROCM_RUNNER_ENABLED=1
 # cmake --build . --target check-mlir
 
-cmake --build . --target mlir-rocm-runner
+# cd $BASE
+# cd llvm-project/build
+# cmake --build . --target check-mlir
 
-/home/rocm-user/llvm-project/build/bin/mlir-rocm-runner \
-    /home/rocm-user/llvm-project/llvm/projects/mlir/test/mlir-rocm-runner/gpu-to-hsaco.mlir \
-    --shared-libs=/home/rocm-user/llvm-project/build/lib/libhip-runtime-wrappers.so
+cd $BASE
+cd llvm-project/build
+cmake --build . --target MLIRROCDLIR && \
+    cmake --build . --target MLIRTargetROCDLIR && \
+    cmake --build . --target MLIRGPUtoROCDLTransforms && \
+    cmake --build . --target MLIRGPUtoROCMTransforms && \
+    cmake --build . --target mlir-translate && \
+    cmake --build . --target mlir-opt && \
+    cmake --build . --target mlir-rocm-runner && \
+    cmake --build . --target check-mlir-dialect-llvmir && \
+    cmake --build . --target check-mlir-target && \
+    cmake --build . --target check-mlir-conversion-gputorocdl && \
+    cmake --build . --target check-mlir-conversion-gputorocm && \
+    cmake --build . --target check-mlir-mlir-rocm-runner
+
+
+# /home/rocm-user/llvm-project/build/bin/mlir-translate -mlir-to-rocdlir /home/rocm-user/llvm-project/llvm/projects/mlir/test/Dialect/LLVMIR/rocdl.mlir
+
+# cmake --build . --target check-mlir -- -j8
+# cmake --build . --target mlir-rocm-runner
+
+# /home/rocm-user/llvm-project/build/bin/mlir-rocm-runner \
+#     /home/rocm-user/llvm-project/llvm/projects/mlir/test/mlir-rocm-runner/gpu-to-hsaco.mlir \
+#     --shared-libs=/home/rocm-user/llvm-project/build/lib/libhip-runtime-wrappers.so
+
+# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_ENABLE_CXX1Y=Y -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DMLIR_ROCM_RUNNER_ENABLED=1
+# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_ENABLE_CXX1Y=Y -DLLVM_TARGETS_TO_BUILD="host"
+# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD=host -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DCMAKE_BUILD_TYPE=Release
+
