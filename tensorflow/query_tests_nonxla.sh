@@ -1,5 +1,5 @@
 
-all_tests="tests(//tensorflow/... except //tensorflow/compiler/... except //tensorflow/contrib/...)"
+all_tests="tests(//tensorflow/... except //tensorflow/compiler/...)"
 #echo $all_tests
 
 python_tests="kind(py_*, $all_tests)"

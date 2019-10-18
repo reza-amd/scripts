@@ -1,4 +1,4 @@
-FROM rocm/rocm-terminal:2.6
+FROM rocm/rocm-terminal:2.8
 MAINTAINER Deven Desai <deven.desai@amd.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -51,7 +51,9 @@ RUN sudo apt-get install -y --no-install-recommends \
 RUN cd $HOME && git clone https://github.com/llvm/llvm-project.git
 
 # clone the MLIR repo (Jack's version)
-RUN cd $HOME && git clone -b exp-mlir-rocm-runner https://github.com/whchung/mlir llvm-project/llvm/projects/mlir
+# RUN cd $HOME && git clone https://github.com/tensorflow/mlir llvm-project/llvm/projects/mlir
+# RUN cd $HOME && git clone https://github.com/whchung/mlir llvm-project/llvm/projects/mlir
+RUN cd $HOME && git clone https://github.com/deven-amd/mlir llvm-project/llvm/projects/mlir
 
 
 # build

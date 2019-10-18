@@ -1,14 +1,15 @@
 # docker_repo=rocm/eigen-test
 # docker_repo=rocm/tensorflow
-docker_repo=rocm/tensorflow-autobuilds
+# docker_repo=rocm/tensorflow-autobuilds
 # docker_repo=rocm/tensorflow-private
 #
 # docker_repo=devenamd/tensorflow
-# docker_repo=devenamd/mlir
+docker_repo=devenamd/mlir
 #
 # docker_repo=sunway513/hiptensorflow
 
-tag=rocm2.8-c750a36
+tag=rocm-2.8-latest
+# tag=rocm2.8-c750a36
 # tag=rocm2.6-2704edd
 # tag=latest
 # tag=develop.16.04
@@ -18,7 +19,7 @@ tag=rocm2.8-c750a36
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm28_tf_immd_mode
+container_name=deven_rocm28_MLIR
 
 options=""
 options="$options -it"
