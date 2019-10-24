@@ -89,6 +89,10 @@ while (( $# )); do
 
     if [ $1 == "-xla" ]; then
 	options="$options --config=xla"
+    elif [ $1 == "-v1" ]; then
+	options="$options --config=v1"
+	# options="$options --define=tf_api_version=1"
+	# options="$options --test_env=TF2_BEHAVIOR=0"
     elif [ $1 == "-v2" ]; then
 	options="$options --config=v2"
 	# options="$options --define=tf_api_version=2"

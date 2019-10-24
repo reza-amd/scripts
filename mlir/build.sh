@@ -10,26 +10,26 @@ BASE=$HOME
 # git clone https://github.com/deven-amd/mlir  llvm-project/llvm/projects/mlir
 # cd llvm-project/llvm/projects/mlir && git checkout deven-rocdl-dialect
 
-# cd $BASE
-# rm -rf llvm-project/build && mkdir llvm-project/build
-# cd llvm-project/build
-# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DCMAKE_BUILD_TYPE=Release -DMLIR_ROCM_RUNNER_ENABLED=1
-# # cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DMLIR_ROCM_RUNNER_ENABLED=1
-# cmake --build . --target check-mlir
-
-# cd $BASE
-# cd llvm-project/build
-# cmake --build . --target check-mlir
-
 cd $BASE
+rm -rf llvm-project/build && mkdir llvm-project/build
 cd llvm-project/build
-cmake --build . --target MLIRROCDLIR && \
-    cmake --build . --target MLIRTargetROCDLIR && \
-    cmake --build . --target MLIRGPUtoROCDLTransforms && \
-    cmake --build . --target MLIRGPUtoROCMTransforms && \
-    cmake --build . --target mlir-translate && \
-    cmake --build . --target mlir-opt && \
-    cmake --build . --target check-mlir-conversion-gputorocm
+cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DCMAKE_BUILD_TYPE=Release -DMLIR_ROCM_RUNNER_ENABLED=1
+# cmake -G Ninja ../llvm -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host;AMDGPU" -DCMAKE_RULE_MESSAGES:BOOL=OFF -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DMLIR_ROCM_RUNNER_ENABLED=1
+cmake --build . --target check-mlir
+
+# cd $BASE
+# cd llvm-project/build
+# cmake --build . --target check-mlir
+
+# cd $BASE
+# cd llvm-project/build
+# cmake --build . --target MLIRROCDLIR && \
+#     cmake --build . --target MLIRTargetROCDLIR && \
+#     cmake --build . --target MLIRGPUtoROCDLTransforms && \
+#     cmake --build . --target MLIRGPUtoROCMTransforms && \
+#     cmake --build . --target mlir-translate && \
+#     cmake --build . --target mlir-opt && \
+#     cmake --build . --target check-mlir-conversion-gputorocm
 
 # cd $BASE
 # cd llvm-project/build
