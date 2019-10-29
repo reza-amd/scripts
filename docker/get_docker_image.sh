@@ -5,8 +5,8 @@
 # docker_repo=rocm/tensorflow
 #
 
-# docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm2.8-c750a36
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm2.8-c750a36
 # tag=rocm2.6-2704edd
 
 # docker_repo=rocm/tensorflow-private
@@ -23,7 +23,7 @@
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm28_tf_misc_01
+container_name=deven_rocm28_tf_fix_unit_tests
 
 options=""
 options="$options -it"

@@ -28,6 +28,7 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
+options="$options --test_tag_filters=gpu"
 # options="$options --test_output="
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
