@@ -8,7 +8,7 @@ cpp_tests="kind(cc_*, $all_tests)"
 small_medium_tests="attr(size, \"small|medium\", $cpp_tests)"
 # echo $small_medium_tests
 
-excluded_tests="attr(tags, \"no_oss|oss_serial|no_gpu|benchmark-test\", $small_medium_tests)"
+excluded_tests="attr(tags, \"no_oss|oss_serial|no_gpu|benchmark-test|v1only\", $small_medium_tests)"
 # echo $excluded_tests
 
 ci_tests="$small_medium_tests except $excluded_tests"

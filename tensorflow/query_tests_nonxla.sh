@@ -1,5 +1,5 @@
 
-all_tests="tests(//tensorflow/... except //tensorflow/compiler/...)"
+all_tests="tests(//tensorflow/... except //tensorflow/compiler/... except //tensorflow/python/compiler/tensorrt/...)"
 #echo $all_tests
 
 python_tests="kind(py_*, $all_tests)"
@@ -11,7 +11,7 @@ python_tests="kind(py_*, $all_tests)"
 # v1only_tests="attr(tags, \"v1only\", $ci_tests)"
 # echo $no_rocm_v2_tests
 
-excluded_tests="attr(tags, \"no_oss|oss_serial|no_gpu|benchmark-test\", $python_tests)"
+excluded_tests="attr(tags, \"no_oss|oss_serial|no_gpu|benchmark-test|v1only\", $python_tests)"
 # echo $excluded_tests
 
 ci_tests="$python_tests except $excluded_tests"
