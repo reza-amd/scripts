@@ -14,6 +14,9 @@ cd /root && git clone https://github.com/tensorflow/benchmarks
 # download the models repo
 cd /root && git clone https://github.com/tensorflow/models
 
+# download the BERT repo
+cd /root && git clone https://github.com/ROCmSoftwarePlatform/BERT
+
 # check/uninstall rocprim
 # apt --installed list | grep rocprim
 # apt autoremove -y rocprim

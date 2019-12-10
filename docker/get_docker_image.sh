@@ -4,10 +4,11 @@
 # tag=rocm-2.8
 # tag=rocm-2.6
 
-# docker_repo=rocm/tensorflow
-#
+docker_repo=rocm/tensorflow
+tag=rocm2.9-tf1.15-dev
 
 # docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm2.8-7eb6e3f
 # tag=rocm2.8-5516f09
 # tag=rocm2.8-c750a36
 # tag=rocm2.6-2704edd
@@ -26,7 +27,7 @@
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm28_
+container_name=deven_rocm29_tf_bert
 
 options=""
 options="$options -it"
