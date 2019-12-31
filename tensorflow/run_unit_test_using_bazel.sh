@@ -52,6 +52,7 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=HCC_DB=0x48a"
 # options="$options --test_env=HCC_SERIALIZE_KERNEL=3"
 # options="$options --test_env=HCC_SERIALIZE_COPY=3"
+# options="$options --test_env=HCC_PROFILE=2"
 
 # options="$options --test_env=KMDUMPISA=1"
 # options="$options --test_env=KMDUMPLLVM=1"
