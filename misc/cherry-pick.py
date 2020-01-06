@@ -28,25 +28,59 @@ def get_PRs():
     #         "e8360cd9b2d10ffb706ebecb5202b77dac84e0cc"
     #     ]])
     
-    PRs.append([
-        "google_upstream",
-        "35497",
-        "[ROCm] Updating Dockerfile.rocm to use ROCm 3.0",
-        [
-            "68f7d55e5296626c202fcb57824c0c49af04c8d8"
-        ]])
+    # PRs.append([
+    #     "google_upstream",
+    #     "35497",
+    #     "[ROCm] Updating Dockerfile.rocm to use ROCm 3.0",
+    #     [
+    #         "68f7d55e5296626c202fcb57824c0c49af04c8d8"
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35503",
+    #     "[ROCm] Updating ROCm implementation to use MIOpen Immediate Mode API",
+    #     [
+    #         "1ad0ff755e2dddcc37d9b57e271642fd4d1d405d",
+    #         "f5b5f3d22dfea28cd62566ed7de67d5bc4640309",
+    #         "80c49615ee4501c40efa0b5e2036c73dd1f1e65e",
+    #         "81ab633a4934c3e1f673e0abbfb229d7f3c1d029",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35400",
+    #     "[ROCm] disabling 3D pooling ops subtests of //tensorflow/cc:gradients_nn_grad_test",
+    #     [
+    #         "1b1c46ebe85cb0cb0b182c87d896d6499a13b581",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35519",
+    #     "[ROCm] Unit-test updates for the ROCm platform",
+    #     [
+    #         # commit before rebase: "c9f00e8015ea7f8e85ff13c4c3223cd7edfacd92",
+    #         "7227ed89ce55d5f760d4a435da2d1fc99701f236",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35401",
+    #     "[ROCm] Improved launch config calculation",
+    #     [
+    #         "8a4be4e58557663cebddc87aae96944515046051",
+    #     ]])
     
-    PRs.append([
-        "google_upstream",
-        "35503",
-        "[ROCm] Updating ROCm implementation to use MIOpen Immediate Mode API",
-        [
-            "1ad0ff755e2dddcc37d9b57e271642fd4d1d405d",
-            "f5b5f3d22dfea28cd62566ed7de67d5bc4640309",
-            "80c49615ee4501c40efa0b5e2036c73dd1f1e65e",
-            "81ab633a4934c3e1f673e0abbfb229d7f3c1d029",
-        ]])
-    
+    # PRs.append([
+    #     "google_upstream",
+    #     "35572",
+    #     "[ROCm] Fix for the broken ROCm CSB - 200103",
+    #     [
+    #         "ab527339f66193b4c22b10f95165c204ce459f11",
+    #         "614babf5f56029ba8b173939ced0447b5f34b9fa",
+    #     ]])
+
     # PRs.append([
     #     "",
     #     "",
@@ -93,11 +127,11 @@ def get_commits():
     #     "e06fb71b21e10f0895ca87af9641e45b8002d20f"
     # ])
 
-    # PR 726 - cherry-picking an Immediate Mode optimization from the r1.15-rocm stream
-    commits.extend([
-        # "7ca59ba5bbd1f2179dccc1ec611c470c6dbc6086",
-        "55959f061c467bb139f80d69e2c66456c748ff16",
-    ])
+    # # PR 726 - cherry-picking an Immediate Mode optimization from the r1.15-rocm stream
+    # commits.extend([
+    #     "7ca59ba5bbd1f2179dccc1ec611c470c6dbc6086",
+    #     "55959f061c467bb139f80d69e2c66456c748ff16",
+    # ])
     
     return commits
     
@@ -114,5 +148,5 @@ def cherry_pick_commits():
 
         
 if __name__ == "__main__" :
-    # cherry_pick_PRs()
-    cherry_pick_commits()
+    cherry_pick_PRs()
+    # cherry_pick_commits()
