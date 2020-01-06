@@ -82,6 +82,14 @@ def get_PRs():
     #     ]])
 
     # PRs.append([
+    #     "rocm_fork",
+    #     "782",
+    #     "[DO NOT MERGE] Porting ROCm Fusion support to master-rocm-enhanced",
+    #     [
+    #         "dff79b7d699dde6271ad8188c1c16e8dfdb43f3d",
+    #     ]])
+
+    # PRs.append([
     #     "",
     #     "",
     #     "",

@@ -1,4 +1,5 @@
 # docker_repo=rocm/eigen-test
+# tag=rocm-3.0
 # tag=rocm-2.10.0-gitlab
 # tag=rocm-2.8-gitlab
 # tag=rocm-2.8
