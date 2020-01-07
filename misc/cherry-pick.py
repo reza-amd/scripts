@@ -75,10 +75,15 @@ def get_PRs():
     # PRs.append([
     #     "google_upstream",
     #     "35572",
-    #     "[ROCm] Fix for the broken ROCm CSB - 200103",
+    #     # title before rebase: "[ROCm] Fix for the broken ROCm CSB - 200103",
+    #     "[ROCm] XLA unit-test updates for the ROCm platform",
     #     [
-    #         "ab527339f66193b4c22b10f95165c204ce459f11",
-    #         "614babf5f56029ba8b173939ced0447b5f34b9fa",
+    #         # commit before rebase: "ab527339f66193b4c22b10f95165c204ce459f11",
+    #         # commit before rebase: "614babf5f56029ba8b173939ced0447b5f34b9fa",
+    #         "7cc4b739812e2495e991d5925d758d3726f0ebaa",
+    #         "1197d2c4ffff53a8cbc0b96138b37e76dd29a8b9",
+    #         "3d78c04a46af6bcbc3a5dca6b49a5daa721457dd",
+    #         "ed7df9cb4c9c5f3c6f5572b0b6eb3facefee55a3"
     #     ]])
 
     # PRs.append([
@@ -89,6 +94,17 @@ def get_PRs():
     #         "dff79b7d699dde6271ad8188c1c16e8dfdb43f3d",
     #     ]])
 
+    # PRs.append([
+    #     "google_upstream",
+    #     "35624",
+    #     "[ROCm] Misc updates for the ROCm platform",
+    #     [
+    #         "09e2eaf34227ef922d8e85b0caef2c0eb5749df5",
+    #         "d325b255ff7d0bf1ca04229880dffb0a37d52e2d",
+    #         "17b87f0b51ad290269f983a85b887ae838c2ebe2",
+    #         "04fb568df083a1903dd4f061539b29b4a849fd18"
+    #     ]])
+    
     # PRs.append([
     #     "",
     #     "",
