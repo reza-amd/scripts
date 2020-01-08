@@ -36,7 +36,7 @@
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm30_eigen
+container_name=deven_rocm30_tf_keras
 
 options=""
 options="$options -it"

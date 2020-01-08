@@ -95,6 +95,15 @@ def get_PRs():
     #     ]])
 
     # PRs.append([
+    #     "rocm_fork",
+    #     "783",
+    #     "[DO NOT MERGE] Porting ROCm blfoat16 support to master-rocm-enhanced",
+    #     [
+    #         # commit before rebase: "f5d29c6150117c27f7785bf8f7da63717f2c36ae",
+    #         "418633269838d525b81f54d40c66a79ee544975c",
+    #     ]])
+
+    # PRs.append([
     #     "google_upstream",
     #     "35624",
     #     "[ROCm] Misc updates for the ROCm platform",
@@ -104,14 +113,87 @@ def get_PRs():
     #         "17b87f0b51ad290269f983a85b887ae838c2ebe2",
     #         "04fb568df083a1903dd4f061539b29b4a849fd18"
     #     ]])
-    
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35395",
+    #     "[ROCm] stateful random ops",
+    #     [
+    #         "968a674ecb6db34e5d2e09068a8d9ca5ca4e3e24",
+    #         "f7b28191777b6ae86c0dbdab7a74b8370e53eaa8",
+    #         "eee5851777b842945b12937600b005a58aae0f2c",
+    #         "3122804c8537e920c4cfd2b92c141fd400fabe19",
+    #     ]])
+
+    # PRs.append([
+    #     "rocm_fork",
+    #     "789",
+    #     "[DO NOT MERGE] Porting ROCm hipclang support to mater-rocm-enhanced",
+    #     [
+    #         "afe52fc3212b97d811d143b173ba68d494e26592",
+    #     ]])
+
+    # PRs.append([
+    #     "rocm_fork",
+    #     "790",
+    #     "[DO NOT MERGE] Porting ROCm Dropout support to master-rocm-enhanced",
+    #     [
+    #         "a9afccad8fce9a350168ecb1dc5591b64a982d41",
+    #         "279bd153aa8301164d0b83efd54f0b13f8585368",
+    #         "2680fa591e24e3e8ced3022ed72a1a396b018db9",
+    #     ]])
+
+    # PRs.append([
+    #     "rocm_fork",
+    #     "791",
+    #     "[DO NOT MERGE] Porting ROCm githooks to the master-rocm-enhanced branch",
+    #     [
+    #         "9c8604f7d367a0e7f21bcd3536b634f666dc88f5",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35394",
+    #     "[ROCm] Support of GRU and LSTM",
+    #     [
+    #         "75a65d44e9fb7bc2ca94e1d17fa71e48aff739cb",
+    #         "58f96c08e561c1ad1280c5264ff2c769cad8f7b3",
+    #         "5afa56da8e0e2f64ec8df55d66eb8ce535f710c9",
+    #         "d8e50e6613aa44803df63ff9f288abcf7580ccb1",
+    #     ]])
+
+    # PRs.append([
+    #     "rocm_fork",
+    #     "794",
+    #     "[DO NOT MERGE] Porting ROCm docs to master-rocm-enhanced",
+    #     [
+    #         "41b45a4405e47f785870c2da2733580e11e4b20c",
+    #     ]])
+
+    # PRs.append([
+    #     "rocm_fork",
+    #     "795",
+    #     "[DO NOT MERGE] Porting ROCm scripts to master-rocm-enhanced branch",
+    #     [
+    #         "7f5e9c8d5118eb72e473fa60ceb71ed6efffed30",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35666",
+    #     "[ROCm] Support for complex type BLAS operations #35666",
+    #     [
+    #         "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
+    #         "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
+    #     ]])
+
     # PRs.append([
     #     "",
     #     "",
     #     "",
     #     [
     #     ]])
-    
+
     return PRs
 
 
