@@ -141,6 +141,7 @@ def get_PRs():
     #         "a9afccad8fce9a350168ecb1dc5591b64a982d41",
     #         "279bd153aa8301164d0b83efd54f0b13f8585368",
     #         "2680fa591e24e3e8ced3022ed72a1a396b018db9",
+    #         "cbb9e56c07f9249603741950ceacd29914e94de0",
     #     ]])
 
     # PRs.append([
@@ -186,6 +187,14 @@ def get_PRs():
     #         "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
     #         "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
     #     ]])
+
+    PRs.append([
+        "rocm_fork",
+        "799",
+        "[DO NOT MERGE] Porting ROCm batch_gemm support to master-rocm-enhanced",
+        [
+            "0e2126f1f74139c9c8e5c860e02cbbc4dae9fa3e"
+        ]])
 
     # PRs.append([
     #     "",
