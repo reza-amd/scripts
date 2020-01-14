@@ -6,7 +6,8 @@
 #version=0.26.1
 #version=0.27.1
 #version=0.29.1
-version=1.1.0
+#version=1.1.0
+version=1.2.1
 cd /root/
 wget https://github.com/bazelbuild/bazel/releases/download/$version/bazel-$version-installer-linux-x86_64.sh
 chmod a+x bazel-$version-installer-linux-x86_64.sh

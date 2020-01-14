@@ -20,72 +20,131 @@ def get_PRs():
     #         "5d1ccc1eeeebd527427ff02c24b7a967861e2868",
     #     ]])
 
+    PRs.append([
+        "google_upstream",
+        "35394",
+        "[ROCm] Support of GRU and LSTM",
+        [
+            "75a65d44e9fb7bc2ca94e1d17fa71e48aff739cb",
+            "58f96c08e561c1ad1280c5264ff2c769cad8f7b3",
+            "5afa56da8e0e2f64ec8df55d66eb8ce535f710c9",
+            "d8e50e6613aa44803df63ff9f288abcf7580ccb1",
+            "8a35d335bc917fd3452032e594c6dab7459a19f8",
+            "ababeaabc08215b5d2809d49c8652e2ad6a01543",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35395",
+        "[ROCm] stateful random ops",
+        [
+            "968a674ecb6db34e5d2e09068a8d9ca5ca4e3e24",
+            "f7b28191777b6ae86c0dbdab7a74b8370e53eaa8",
+            "eee5851777b842945b12937600b005a58aae0f2c",
+            "3122804c8537e920c4cfd2b92c141fd400fabe19",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35519",
+        "[ROCm] Unit-test updates for the ROCm platform",
+        [
+            "f580a3debd6902383e44daba50ee6aaf0d49a4eb",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35572",
+        "[ROCm] XLA unit-test updates for the ROCm platform",
+        [
+            "f2dad05e6aa776f056a8130e594e137a707d843f",
+            "1cee4339ad0af796c7a4cbaa83e3fd1fbfc08f5c",
+            "67af653f8b80e6b644ef1ee0e489527e2f3d73fb",
+            "da17fdf9d67a5ab6613ffcaa4fc737aeb4115dcd"
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35624",
+        "[ROCm] Misc updates for the ROCm platform",
+        [
+            "09e2eaf34227ef922d8e85b0caef2c0eb5749df5",
+            "d325b255ff7d0bf1ca04229880dffb0a37d52e2d",
+            "17b87f0b51ad290269f983a85b887ae838c2ebe2",
+            "04fb568df083a1903dd4f061539b29b4a849fd18"
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35666",
+        "[ROCm] Support for complex type BLAS operations #35666",
+        [
+            "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
+            "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
+        ]])
+
     # PRs.append([
     #     "google_upstream",
-    #     "35360",
-    #     "[ROCm] Fix for the broken ROCm CSB - 191223",
+    #     "35751",
+    #     "[XLA] Update the path for the LLVM FileCheck executable",
     #     [
-    #         "e8360cd9b2d10ffb706ebecb5202b77dac84e0cc"
+    #         "f99e0cb70658f93885ce07600918e386d6a10017",
     #     ]])
+
+    PRs.append([
+        "google_upstream",
+        "35752",
+        "[ROCm] Fix the ROCm CSB breakage - 200110",
+        [
+            "f8ba03dfd976278a605e53ac741210fbab14c7ae",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "35764",
+        "[ROCm] Minor updates to sync some of the ROCm fork contents ",
+        [
+            "bbe6c4b4ef839ce45362c4882eb335aa7577eefe",
+            "a6c9e23a9ff887eb571b320e070a53bbd194c6d8",
+            "6e7be1f6a55fe35f82b7c8c94014b31811cfad88",
+            "8923d8d389e10ff2efd32f86e1e03c553a74757c",
+        ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35779",
+    #     "[ROCm] Reenable the zero division test",
+    #     [
+    #         "38ecda3528b87630752d66a983b82656d31e9984",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35780",
+    #     "[ROCm] Add a GPU kernel for RELU int8x4",
+    #     [
+    #         "d1f1d78b86465a2c74a01464c96e36953be3ed79",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35832",
+    #     "[ROCm] Fix for the ROCm CSB breakage - 200113 - ",
+    #     [
+    #         "212eeb3732404cffc31504293019d18e79051218",
+    #         "473d15a87f28793d34d943ae104da696b9176554",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35834",
+    #     "[ROCm] Fix the ROCm CSB breakage - 200113 - 2",
+    #     [
+    #         "6e6791db417afd4266f051db533ce585db471f94",
+    #     ]])
+
+    #######################################################
     
-    # PRs.append([
-    #     "google_upstream",
-    #     "35497",
-    #     "[ROCm] Updating Dockerfile.rocm to use ROCm 3.0",
-    #     [
-    #         "68f7d55e5296626c202fcb57824c0c49af04c8d8"
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35503",
-    #     "[ROCm] Updating ROCm implementation to use MIOpen Immediate Mode API",
-    #     [
-    #         "1ad0ff755e2dddcc37d9b57e271642fd4d1d405d",
-    #         "f5b5f3d22dfea28cd62566ed7de67d5bc4640309",
-    #         "80c49615ee4501c40efa0b5e2036c73dd1f1e65e",
-    #         "81ab633a4934c3e1f673e0abbfb229d7f3c1d029",
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35400",
-    #     "[ROCm] disabling 3D pooling ops subtests of //tensorflow/cc:gradients_nn_grad_test",
-    #     [
-    #         "1b1c46ebe85cb0cb0b182c87d896d6499a13b581",
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35519",
-    #     "[ROCm] Unit-test updates for the ROCm platform",
-    #     [
-    #         # commit before rebase: "c9f00e8015ea7f8e85ff13c4c3223cd7edfacd92",
-    #         "7227ed89ce55d5f760d4a435da2d1fc99701f236",
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35401",
-    #     "[ROCm] Improved launch config calculation",
-    #     [
-    #         "8a4be4e58557663cebddc87aae96944515046051",
-    #     ]])
-    
-    # PRs.append([
-    #     "google_upstream",
-    #     "35572",
-    #     # title before rebase: "[ROCm] Fix for the broken ROCm CSB - 200103",
-    #     "[ROCm] XLA unit-test updates for the ROCm platform",
-    #     [
-    #         # commit before rebase: "ab527339f66193b4c22b10f95165c204ce459f11",
-    #         # commit before rebase: "614babf5f56029ba8b173939ced0447b5f34b9fa",
-    #         "7cc4b739812e2495e991d5925d758d3726f0ebaa",
-    #         "1197d2c4ffff53a8cbc0b96138b37e76dd29a8b9",
-    #         "3d78c04a46af6bcbc3a5dca6b49a5daa721457dd",
-    #         "ed7df9cb4c9c5f3c6f5572b0b6eb3facefee55a3"
-    #     ]])
-
     # PRs.append([
     #     "rocm_fork",
     #     "782",
@@ -99,30 +158,7 @@ def get_PRs():
     #     "783",
     #     "[DO NOT MERGE] Porting ROCm blfoat16 support to master-rocm-enhanced",
     #     [
-    #         # commit before rebase: "f5d29c6150117c27f7785bf8f7da63717f2c36ae",
-    #         "418633269838d525b81f54d40c66a79ee544975c",
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35624",
-    #     "[ROCm] Misc updates for the ROCm platform",
-    #     [
-    #         "09e2eaf34227ef922d8e85b0caef2c0eb5749df5",
-    #         "d325b255ff7d0bf1ca04229880dffb0a37d52e2d",
-    #         "17b87f0b51ad290269f983a85b887ae838c2ebe2",
-    #         "04fb568df083a1903dd4f061539b29b4a849fd18"
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35395",
-    #     "[ROCm] stateful random ops",
-    #     [
-    #         "968a674ecb6db34e5d2e09068a8d9ca5ca4e3e24",
-    #         "f7b28191777b6ae86c0dbdab7a74b8370e53eaa8",
-    #         "eee5851777b842945b12937600b005a58aae0f2c",
-    #         "3122804c8537e920c4cfd2b92c141fd400fabe19",
+    #         "418633269838d525b81f54d40c66a79ee544975c",  # need to rebase this commit
     #     ]])
 
     # PRs.append([
@@ -138,7 +174,7 @@ def get_PRs():
     #     "790",
     #     "[DO NOT MERGE] Porting ROCm Dropout support to master-rocm-enhanced",
     #     [
-    #         "a9afccad8fce9a350168ecb1dc5591b64a982d41",
+    #         "a9afccad8fce9a350168ecb1dc5591b64a982d41",  # need to rebase this commit
     #         "279bd153aa8301164d0b83efd54f0b13f8585368",
     #         "2680fa591e24e3e8ced3022ed72a1a396b018db9",
     #         "cbb9e56c07f9249603741950ceacd29914e94de0",
@@ -150,17 +186,6 @@ def get_PRs():
     #     "[DO NOT MERGE] Porting ROCm githooks to the master-rocm-enhanced branch",
     #     [
     #         "9c8604f7d367a0e7f21bcd3536b634f666dc88f5",
-    #     ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35394",
-    #     "[ROCm] Support of GRU and LSTM",
-    #     [
-    #         "75a65d44e9fb7bc2ca94e1d17fa71e48aff739cb",
-    #         "58f96c08e561c1ad1280c5264ff2c769cad8f7b3",
-    #         "5afa56da8e0e2f64ec8df55d66eb8ce535f710c9",
-    #         "d8e50e6613aa44803df63ff9f288abcf7580ccb1",
     #     ]])
 
     # PRs.append([
@@ -180,21 +205,21 @@ def get_PRs():
     #     ]])
 
     # PRs.append([
-    #     "google_upstream",
-    #     "35666",
-    #     "[ROCm] Support for complex type BLAS operations #35666",
+    #     "rocm_fork",
+    #     "799",
+    #     "[DO NOT MERGE] Porting ROCm batch_gemm support to master-rocm-enhanced",
     #     [
-    #         "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
-    #         "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
+    #         "0e2126f1f74139c9c8e5c860e02cbbc4dae9fa3e"
     #     ]])
 
-    PRs.append([
-        "rocm_fork",
-        "799",
-        "[DO NOT MERGE] Porting ROCm batch_gemm support to master-rocm-enhanced",
-        [
-            "0e2126f1f74139c9c8e5c860e02cbbc4dae9fa3e"
-        ]])
+    # PRs.append([
+    #     "rocm_fork",
+    #     "803",
+    #     "[DO NOT MERGE] Porting 3d pooling support to master-rocm-enhanced",
+    #     [
+    #         "64607bbd755ab61edcc55006ce15ceb8fdefffc2",
+    #         "d210cfd869f620bea62d045c39a7ac0d235e628b",
+    #     ]])
 
     # PRs.append([
     #     "",

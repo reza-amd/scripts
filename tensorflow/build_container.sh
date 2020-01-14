@@ -3,7 +3,7 @@ TF_REPO_LOC=/home/deven/deven/repos/tensorflow-upstream
 DOCKERFILE_PATH=$TF_REPO_LOC/tensorflow/tools/ci_build/Dockerfile.rocm
 DOCKER_CONTEXT_PATH=$TF_REPO_LOC/tensorflow/tools/ci_build
 
-DOCKER_IMAGE_NAME=devenamd/tensorflow:rocm3.0_200103
+DOCKER_IMAGE_NAME=devenamd/tensorflow:rocm3.0_200113
 
 
 cd $TF_REPO_LOC && \
