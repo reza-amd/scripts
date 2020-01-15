@@ -6,141 +6,164 @@ import subprocess
 def get_PRs():
     PRs = []
 
-    # PRs.append([
-    #     "google_upstream",
-    #     "34800",
-    #     "[ROCm] Add ROCm support for CSR Sparse Matrix Ops",
-    #     [
-    #         "9e7eae9f71855efe83287977e1844806675adaee",
-    #         "f725b464549eab744148ad940e04060cbaa7ae90",
-    #         "5ad7620d6f18f4a3c123fb7f365f0cb20dda2760",
-    #         "7e8ccbd22be53cade35de31631a8ada0bccfbac5",
-    #         "2e1cdaa4b62103d1d6f2e18845bbc2c69ffc117b",
-    #         "e762347e79f10f0ee3a730385f4959808ec2fb1e",
-    #         "5d1ccc1eeeebd527427ff02c24b7a967861e2868",
-    #     ]])
-
-    PRs.append([
-        "google_upstream",
-        "35394",
-        "[ROCm] Support of GRU and LSTM",
-        [
-            "75a65d44e9fb7bc2ca94e1d17fa71e48aff739cb",
-            "58f96c08e561c1ad1280c5264ff2c769cad8f7b3",
-            "5afa56da8e0e2f64ec8df55d66eb8ce535f710c9",
-            "d8e50e6613aa44803df63ff9f288abcf7580ccb1",
-            "8a35d335bc917fd3452032e594c6dab7459a19f8",
-            "ababeaabc08215b5d2809d49c8652e2ad6a01543",
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35395",
-        "[ROCm] stateful random ops",
-        [
-            "968a674ecb6db34e5d2e09068a8d9ca5ca4e3e24",
-            "f7b28191777b6ae86c0dbdab7a74b8370e53eaa8",
-            "eee5851777b842945b12937600b005a58aae0f2c",
-            "3122804c8537e920c4cfd2b92c141fd400fabe19",
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35519",
-        "[ROCm] Unit-test updates for the ROCm platform",
-        [
-            "f580a3debd6902383e44daba50ee6aaf0d49a4eb",
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35572",
-        "[ROCm] XLA unit-test updates for the ROCm platform",
-        [
-            "f2dad05e6aa776f056a8130e594e137a707d843f",
-            "1cee4339ad0af796c7a4cbaa83e3fd1fbfc08f5c",
-            "67af653f8b80e6b644ef1ee0e489527e2f3d73fb",
-            "da17fdf9d67a5ab6613ffcaa4fc737aeb4115dcd"
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35624",
-        "[ROCm] Misc updates for the ROCm platform",
-        [
-            "09e2eaf34227ef922d8e85b0caef2c0eb5749df5",
-            "d325b255ff7d0bf1ca04229880dffb0a37d52e2d",
-            "17b87f0b51ad290269f983a85b887ae838c2ebe2",
-            "04fb568df083a1903dd4f061539b29b4a849fd18"
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35666",
-        "[ROCm] Support for complex type BLAS operations #35666",
-        [
-            "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
-            "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
-        ]])
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "34800",
+    # #     "[ROCm] Add ROCm support for CSR Sparse Matrix Ops",
+    # #     [
+    # #         "9e7eae9f71855efe83287977e1844806675adaee",
+    # #         "f725b464549eab744148ad940e04060cbaa7ae90",
+    # #         "5ad7620d6f18f4a3c123fb7f365f0cb20dda2760",
+    # #         "7e8ccbd22be53cade35de31631a8ada0bccfbac5",
+    # #         "2e1cdaa4b62103d1d6f2e18845bbc2c69ffc117b",
+    # #         "e762347e79f10f0ee3a730385f4959808ec2fb1e",
+    # #         "5d1ccc1eeeebd527427ff02c24b7a967861e2868",
+    # #     ]])
 
     # PRs.append([
     #     "google_upstream",
-    #     "35751",
-    #     "[XLA] Update the path for the LLVM FileCheck executable",
+    #     "35394",
+    #     "[ROCm] Support of GRU and LSTM",
     #     [
-    #         "f99e0cb70658f93885ce07600918e386d6a10017",
-    #     ]])
-
-    PRs.append([
-        "google_upstream",
-        "35752",
-        "[ROCm] Fix the ROCm CSB breakage - 200110",
-        [
-            "f8ba03dfd976278a605e53ac741210fbab14c7ae",
-        ]])
-
-    PRs.append([
-        "google_upstream",
-        "35764",
-        "[ROCm] Minor updates to sync some of the ROCm fork contents ",
-        [
-            "bbe6c4b4ef839ce45362c4882eb335aa7577eefe",
-            "a6c9e23a9ff887eb571b320e070a53bbd194c6d8",
-            "6e7be1f6a55fe35f82b7c8c94014b31811cfad88",
-            "8923d8d389e10ff2efd32f86e1e03c553a74757c",
-        ]])
-
-    # PRs.append([
-    #     "google_upstream",
-    #     "35779",
-    #     "[ROCm] Reenable the zero division test",
-    #     [
-    #         "38ecda3528b87630752d66a983b82656d31e9984",
+    #         "75a65d44e9fb7bc2ca94e1d17fa71e48aff739cb",
+    #         "58f96c08e561c1ad1280c5264ff2c769cad8f7b3",
+    #         "5afa56da8e0e2f64ec8df55d66eb8ce535f710c9",
+    #         "d8e50e6613aa44803df63ff9f288abcf7580ccb1",
+    #         "8a35d335bc917fd3452032e594c6dab7459a19f8",
+    #         "ababeaabc08215b5d2809d49c8652e2ad6a01543",
     #     ]])
 
     # PRs.append([
     #     "google_upstream",
-    #     "35780",
-    #     "[ROCm] Add a GPU kernel for RELU int8x4",
+    #     "35395",
+    #     "[ROCm] stateful random ops",
     #     [
-    #         "d1f1d78b86465a2c74a01464c96e36953be3ed79",
+    #         "968a674ecb6db34e5d2e09068a8d9ca5ca4e3e24",
+    #         "f7b28191777b6ae86c0dbdab7a74b8370e53eaa8",
+    #         "eee5851777b842945b12937600b005a58aae0f2c",
+    #         "3122804c8537e920c4cfd2b92c141fd400fabe19",
     #     ]])
 
     # PRs.append([
     #     "google_upstream",
-    #     "35832",
-    #     "[ROCm] Fix for the ROCm CSB breakage - 200113 - ",
+    #     "35519",
+    #     "[ROCm] Unit-test updates for the ROCm platform",
     #     [
-    #         "212eeb3732404cffc31504293019d18e79051218",
-    #         "473d15a87f28793d34d943ae104da696b9176554",
+    #         "f580a3debd6902383e44daba50ee6aaf0d49a4eb",
     #     ]])
 
     # PRs.append([
     #     "google_upstream",
-    #     "35834",
-    #     "[ROCm] Fix the ROCm CSB breakage - 200113 - 2",
+    #     "35572",
+    #     "[ROCm] XLA unit-test updates for the ROCm platform",
     #     [
-    #         "6e6791db417afd4266f051db533ce585db471f94",
+    #         "c14b6951de82cd4c4957ccb181ef2946a8309ff1",
+    #         "11b85f74734aa3cc2df422aec8a758d91d2ae1e0",
+    #         "88a1e3b399d7f46cc33ed9a6d14f1873e292bf36",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35624",
+    #     "[ROCm] Misc updates for the ROCm platform",
+    #     [
+    #         "09e2eaf34227ef922d8e85b0caef2c0eb5749df5",
+    #         "d325b255ff7d0bf1ca04229880dffb0a37d52e2d",
+    #         "17b87f0b51ad290269f983a85b887ae838c2ebe2",
+    #         "04fb568df083a1903dd4f061539b29b4a849fd18"
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35666",
+    #     "[ROCm] Support for complex type BLAS operations #35666",
+    #     [
+    #         "c329f1c5020c3df814be0a1e98cd740c5a4e4621",
+    #         "543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2",
+    #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35751",
+    # #     "[XLA] Update the path for the LLVM FileCheck executable",
+    # #     [
+    # #         "f99e0cb70658f93885ce07600918e386d6a10017",
+    # #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35752",
+    #     "[ROCm] Fix the ROCm CSB breakage - 200110",
+    #     [
+    #         "f8ba03dfd976278a605e53ac741210fbab14c7ae",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35764",
+    #     "[ROCm] Minor updates to sync some of the ROCm fork contents ",
+    #     [
+    #         "bbe6c4b4ef839ce45362c4882eb335aa7577eefe",
+    #         "a6c9e23a9ff887eb571b320e070a53bbd194c6d8",
+    #         "6e7be1f6a55fe35f82b7c8c94014b31811cfad88",
+    #         "8923d8d389e10ff2efd32f86e1e03c553a74757c",
+    #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35779",
+    # #     "[ROCm] Reenable the zero division test",
+    # #     [
+    # #         "38ecda3528b87630752d66a983b82656d31e9984",
+    # #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35780",
+    # #     "[ROCm] Add a GPU kernel for RELU int8x4",
+    # #     [
+    # #         "d1f1d78b86465a2c74a01464c96e36953be3ed79",
+    # #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35832",
+    # #     "[ROCm] Fix for the ROCm CSB breakage - 200113 - ",
+    # #     [
+    # #         "212eeb3732404cffc31504293019d18e79051218",
+    # #         "473d15a87f28793d34d943ae104da696b9176554",
+    # #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35834",
+    # #     "[ROCm] Fix the ROCm CSB breakage - 200113 - 2",
+    # #     [
+    # #         "6e6791db417afd4266f051db533ce585db471f94",
+    # #     ]])
+
+    # # PRs.append([
+    # #     "google_upstream",
+    # #     "35881",
+    # #     "[ROCm][XLA] Adding address space cast to generate correct llvm",
+    # #     [
+    # #         "9e657d7223869174ffe683de41b70b229db75ca5",
+    # #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35890",
+    #     "[ROCm] Fix for //tensorflow/python/kernel_tests/signal:mel_ops_test",
+    #     [
+    #         "3c7596fc76855b07125cbfa9eb2a7a093ee8719c",
+    #     ]])
+
+    # PRs.append([
+    #     "google_upstream",
+    #     "35891",
+    #     "[ROCm] Fix for //tensorflow/python/eager/benchmarks/resnet50:*",
+    #     [
+    #         "ee1c2f112dc666a19e0d9e4ad679c0e948ebde8a",
     #     ]])
 
     #######################################################

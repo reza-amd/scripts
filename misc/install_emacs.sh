@@ -1,5 +1,5 @@
-# SUDO=
-SUDO=sudo
+SUDO=
+# SUDO=sudo
 
 $SUDO apt-get update && $SUDO apt-get install -y emacs24-nox
 
