@@ -166,6 +166,21 @@ def get_PRs():
     #         "ee1c2f112dc666a19e0d9e4ad679c0e948ebde8a",
     #     ]])
 
+    # PRs.append([
+    #     "google_upstream",
+    #     "35924",
+    #     "[ROCm] Optimized training apply ops",
+    #     [
+    #         "3693256ba03f67d38fe33daa495b296d45539076",
+    #     ]])
+
+    # PRs.append([
+    #     "",
+    #     "",
+    #     "",
+    #     [
+    #     ]])
+
     #######################################################
     
     # PRs.append([

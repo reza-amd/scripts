@@ -65,6 +65,8 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
+# options="$options --test_env=TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
+# options="$options --test_env=TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 
