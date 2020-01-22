@@ -60,7 +60,7 @@ def run_github_query(query):
     curl_cmd.extend(["https://api.github.com/graphql"])
 
     # print(query_string)
-    print(curl_cmd)
+    # print(curl_cmd)
     
     result = subprocess.run(curl_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode != 0:
@@ -73,7 +73,7 @@ def get_commits_for_pr(owner, name, pr_number):
     query_str = pr_commits_template.substitute(owner=owner, name=name, pr_number=pr_number)
     json_result = run_github_query(query_str)
     result = json.loads(json_result)
-    print (result)
+    # print (result)
     title = result["data"]["repository"]["pullRequest"]["title"]
     commits = [x["node"]["commit"]["oid"] for x in result["data"]["repository"]["pullRequest"]["commits"]["edges"]]
     return (title, commits)
@@ -97,15 +97,41 @@ def print_pr_commits(repo, pr_number, title, commits):
 
 def get_google_upstream_PRs():
     PRs = []
-    PRs.append(35834)
-    PRs.append(35881)
-    # PRs.append()
+    PRs.append(35394)
+    PRs.append(35395)
+    PRs.append(35519)
+    PRs.append(35624)
+    PRs.append(35666)
+    PRs.append(35752)
+    PRs.append(35890)
+    PRs.append(35891)
+    PRs.append(35924)
+    PRs.append(35964)
+    PRs.append(35965)
+    PRs.append(35966)
+    PRs.append(35971)
+    PRs.append(35972)
+    PRs.append(35991)
+    PRs.append(36017)
+    PRs.append(36018)
+    PRs.append(36019)
+    PRs.append(36031)
+    PRs.append(36032)
+    PRs.append(36106)
+    PRs.append(36110)
     return PRs
     
 def get_rocm_fork_PRs():
     PRs = []
+    PRs.append(782)
+    PRs.append(783)
     PRs.append(789)
     PRs.append(790)
+    PRs.append(791)
+    PRs.append(794)
+    PRs.append(795)
+    PRs.append(799)
+    PRs.append(803)
     # PRs.append()
     return PRs
     
@@ -124,7 +150,7 @@ def generate_pr_commits():
         title, commits = get_commits_for_rocm_fork_pr(pr_number)
         print_pr_commits("rocm_fork", pr_number, title, commits)
 
-    print("return PRs")
+    print ("    return PRs")
 
 def simple_query():
     output = run_query("query { viewer { login }}")
