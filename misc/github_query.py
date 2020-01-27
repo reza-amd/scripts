@@ -25,11 +25,15 @@ query {\
  repository(owner:$owner, name:$name) {\
   pullRequest(number:$pr_number) {\
    title\
+   state\
    commits(first:20) {\
     edges {\
      node {\
       commit {\
        oid\
+       parents {\
+        totalCount\
+       }\
       }\
      }\
     }\
@@ -74,9 +78,11 @@ def get_commits_for_pr(owner, name, pr_number):
     json_result = run_github_query(query_str)
     result = json.loads(json_result)
     # print (result)
-    title = result["data"]["repository"]["pullRequest"]["title"]
-    commits = [x["node"]["commit"]["oid"] for x in result["data"]["repository"]["pullRequest"]["commits"]["edges"]]
-    return (title, commits)
+    pullRequest = result["data"]["repository"]["pullRequest"]
+    title = pullRequest["title"]
+    state = pullRequest["state"]
+    commits = [x["node"]["commit"] for x in pullRequest["commits"]["edges"]]
+    return (title, state, commits)
 
 def get_commits_for_google_upstream_pr(pr_number):
     return get_commits_for_pr('\\"tensorflow\\"', '\\"tensorflow\\"', pr_number)
@@ -84,16 +90,27 @@ def get_commits_for_google_upstream_pr(pr_number):
 def get_commits_for_rocm_fork_pr(pr_number):
     return get_commits_for_pr('\\"ROCmSoftwarePlatform\\"', '\\"tensorflow-upstream\\"', pr_number)
 
-def print_pr_commits(repo, pr_number, title, commits):
-    print('    PRs.append([')
-    print('        "{}",'.format(repo))
-    print('        "{}",'.format(pr_number))
-    print('        "{}",'.format(title))
-    print('        [')
+def print_pr_commits(repo, pr_number, title, state, commits):
+
+    # print ('{} - {} : {}'.format(state, pr_number, title))
+
+    if (state != "OPEN"):
+        return
+
+    print ('    PRs.append([')
+    print ('        "{}",'.format(repo))
+    print ('        "{}",'.format(pr_number))
+    print ('        "{}",'.format(title))
+    print ('        [')
     for commit in commits:
-        print('            "{}",'.format(commit))
-    print('        ]])')
-    print('')
+        oid = commit["oid"]
+        num_parents = commit["parents"]["totalCount"]
+        if num_parents > 1 :
+            print ('            # "{}",'.format(oid))
+        else :
+            print ('            "{}",'.format(oid))
+    print ('        ]])')
+    print ('')
 
 def get_google_upstream_PRs():
     PRs = []
@@ -119,6 +136,8 @@ def get_google_upstream_PRs():
     PRs.append(36032)
     PRs.append(36106)
     PRs.append(36110)
+    PRs.append(36187)
+    PRs.append(36191)
     return PRs
     
 def get_rocm_fork_PRs():
@@ -142,13 +161,13 @@ def generate_pr_commits():
     
     google_upstream_PRs = get_google_upstream_PRs()
     for pr_number in google_upstream_PRs:
-        title, commits = get_commits_for_google_upstream_pr(pr_number)
-        print_pr_commits("google_upstream", pr_number, title, commits)
+        title, state, commits = get_commits_for_google_upstream_pr(pr_number)
+        print_pr_commits("google_upstream", pr_number, title, state, commits)
     
     rocm_fork_PRs = get_rocm_fork_PRs()
     for pr_number in rocm_fork_PRs:
-        title, commits = get_commits_for_rocm_fork_pr(pr_number)
-        print_pr_commits("rocm_fork", pr_number, title, commits)
+        title, state, commits = get_commits_for_rocm_fork_pr(pr_number)
+        print_pr_commits("rocm_fork", pr_number, title, state, commits)
 
     print ("    return PRs")
 
