@@ -2,7 +2,6 @@
 
 import subprocess
 
-
 def get_PRs():
     PRs = []
 
@@ -139,14 +138,6 @@ def get_PRs():
 
     PRs.append([
         "google_upstream",
-        "36019",
-        "[ROCm] Adding/Removing no_rocm tag to/from tests",
-        [
-            "ff523f35ced55fde5e6fd40df30873e5d806de6f",
-        ]])
-
-    PRs.append([
-        "google_upstream",
         "36106",
         "[ROCm] add ROCm support for XLA RCCL thunk",
         [
@@ -155,19 +146,10 @@ def get_PRs():
 
     PRs.append([
         "google_upstream",
-        "36110",
-        "[ROCm][XLA] Adding address space cast in ir_emitter",
-        [
-            "a63f8eeb227b1f49e7f514b4ed8e7617c01d9013",
-            "062e7530b24b77f34947a1631ed968356984d5a8",
-        ]])
-
-    PRs.append([
-        "google_upstream",
         "36187",
         "[ROCm][XLA:GPU] Fixing Atomic CAS codegen in ir_emitter",
         [
-            "f6cddc4c6142a03c0f0f836850f02759d8208801",
+            "c636d349510b6b1c480d2320bcbb21b51b4a005a",
         ]])
 
     PRs.append([
@@ -176,6 +158,31 @@ def get_PRs():
         "[ROCm][XLA] Adding three passes to  amdgpu compiler",
         [
             "9d3d2d3b3e4d8ef139970460490e30c11a29540b",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36263",
+        "[ROCm] Adding ROCm support for CTC Loss",
+        [
+            "d7dbb77bd663aaa016efc9cf350169f418b0905d",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36267",
+        "[ROCm] Reverting ROCm to use MIOpen Find Mode APIs (be default) for convolution",
+        [
+            "d5eb53b58e1cbecb4ef233ae68dbdd82256d28db",
+            "bdeac49239452228a3a0b58d33068b48f01a1756",
+            "dd74624b082b002cbe90eca367518e6bdf673228",
+            "8a44cb798fd10e619b84e78f9e6f6a273bc24c0a",
+            "3cb4a728f876895c91204bf7ad626a583e38e726",
+            "1d6a1be33fd3050d419b88a783828e969af8720e",
+            "f3714797020720650ede00a1defbc75fca845986",
+            "1dde494b6399cf0fde6a426ca64dcddb97ad17a0",
+            "f7befd30d1e0f685ee1f8adbf2282e84b517025d",
+            "5e8c52d82a1db999e487afedf401609be0b5f565",
         ]])
 
     # PRs.append([
@@ -255,6 +262,7 @@ def get_PRs():
     #     ]])
 
     return PRs
+
 
 
 
