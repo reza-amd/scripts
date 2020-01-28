@@ -156,7 +156,7 @@ def get_rocm_fork_PRs():
     # PRs.append()
     return PRs
     
-def generate_pr_commits():
+def generate_pr_commits_1():
     print ("def get_PRs():")
     print ("    PRs = []")
     print ("")
@@ -173,10 +173,22 @@ def generate_pr_commits():
 
     print ("    return PRs")
 
+
+def generate_pr_commits_2(pr_number):
+    print ("    commits = [")
+
+    title, state, commits = get_commits_for_rocm_fork_pr(pr_number)
+    for commit in commits:
+        print ('        "{}",'.format(commit["oid"]))
+
+    print ('        ]')
+
+
 def simple_query():
     output = run_query("query { viewer { login }}")
     print(output)
 
 if __name__ == "__main__" :
     # simple_query()
-    generate_pr_commits()
+    generate_pr_commits_1()
+    # generate_pr_commits_2(839)

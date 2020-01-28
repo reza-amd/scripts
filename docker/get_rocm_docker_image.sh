@@ -1,20 +1,13 @@
 # docker_repo=rocm/eigen-test
 # tag=rocm-3.0
-# tag=rocm-2.10.0-gitlab
-# tag=rocm-2.8-gitlab
-# tag=rocm-2.8
-# tag=rocm-2.6
 
 # docker_repo=rocm/tensorflow
 # tag=rocm2.9-tf1.15-dev
 
 docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.0-26c8e05
-# tag=rocm3.0-9567cdd
-# tag=rocm2.8-7eb6e3f
-# tag=rocm2.8-5516f09
-# tag=rocm2.8-c750a36
-# tag=rocm2.6-2704edd
+tag=rocm3.0-csb-1f404dc
+# tag=rocm3.0-fba6e87
+# tag=rocm3.0-26c8e05
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm2.10-tf-rocsparse-test
@@ -22,6 +15,7 @@ tag=rocm3.0-26c8e05
 # tag=rocm2.9-tf1.15-roctracer-v3
 # tag=rocm2.9-tf1.15-roctracer-v2
 # tag=rocm2.9-tf1.15-roctracer-v1
+
 # docker_repo=devenamd/tensorflow
 # tag=fused_batchnorm_bug
 
@@ -37,7 +31,7 @@ tag=rocm3.0-26c8e05
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm30_tf_training_ops_eigen
+container_name=deven_rocm30_tf_upstream_misc_01
 
 options=""
 options="$options -it"
