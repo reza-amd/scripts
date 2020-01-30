@@ -2,6 +2,7 @@
 
 import subprocess
 
+
 def get_PRs():
     PRs = []
 
@@ -146,14 +147,6 @@ def get_PRs():
 
     PRs.append([
         "google_upstream",
-        "36187",
-        "[ROCm][XLA:GPU] Fixing Atomic CAS codegen in ir_emitter",
-        [
-            "c636d349510b6b1c480d2320bcbb21b51b4a005a",
-        ]])
-
-    PRs.append([
-        "google_upstream",
         "36191",
         "[ROCm][XLA] Adding three passes to  amdgpu compiler",
         [
@@ -185,12 +178,28 @@ def get_PRs():
             "5e8c52d82a1db999e487afedf401609be0b5f565",
         ]])
 
+    PRs.append([
+        "google_upstream",
+        "36292",
+        "[XLA][ROCm] Disable test that invokes rocBlas TRSM",
+        [
+            "1f4186c64f76854fe26335729022b7dea4dec941",
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36341",
+        "[ROCm] Adding no_rocm tag to tests that started failing after the 200129 weekly sync",
+        [
+            "ccceb0e77a596559c0c818884e2860b859dd479d",
+        ]])
+
     # PRs.append([
     #     "rocm_fork",
     #     "782",
     #     "[DO NOT MERGE] Porting ROCm Fusion support to master-rocm-enhanced",
     #     [
-    #         "dff79b7d699dde6271ad8188c1c16e8dfdb43f3d",
+    #         "a1cbb7a7844cdb0dd82c0c7d15c871d00acb2c5d",
     #     ]])
 
     # PRs.append([
@@ -198,7 +207,7 @@ def get_PRs():
     #     "783",
     #     "[DO NOT MERGE] Porting ROCm blfoat16 support to master-rocm-enhanced",
     #     [
-    #         "418633269838d525b81f54d40c66a79ee544975c",
+    #         "9bf87efe4d7ccbd00732767824af60f886d59c0e",
     #     ]])
 
     # PRs.append([
@@ -214,10 +223,10 @@ def get_PRs():
     #     "790",
     #     "[DO NOT MERGE] Porting ROCm Dropout support to master-rocm-enhanced",
     #     [
-    #         "a9afccad8fce9a350168ecb1dc5591b64a982d41",
-    #         "279bd153aa8301164d0b83efd54f0b13f8585368",
-    #         "2680fa591e24e3e8ced3022ed72a1a396b018db9",
-    #         "cbb9e56c07f9249603741950ceacd29914e94de0",
+    #         "1ed173b7374f2e590b624e0a7e4fd5434b56ab36",
+    #         "f205c5a7b957ea62672fd1cefbbc25264ec134da",
+    #         "1871ee82a8806fee4c3a7e11fc46c5a59f190651",
+    #         "c9b7778e0ba4dedc720bf067b77b5c8746cde74a",
     #     ]])
 
     # PRs.append([
@@ -233,7 +242,7 @@ def get_PRs():
     #     "794",
     #     "[DO NOT MERGE] Porting ROCm docs to master-rocm-enhanced",
     #     [
-    #         "41b45a4405e47f785870c2da2733580e11e4b20c",
+    #         "8943b7a1e32ecc434bfe31c11c027b9a8fcc1147",
     #     ]])
 
     # PRs.append([
@@ -257,13 +266,11 @@ def get_PRs():
     #     "803",
     #     "[DO NOT MERGE] Porting 3d pooling support to master-rocm-enhanced",
     #     [
-    #         "64607bbd755ab61edcc55006ce15ceb8fdefffc2",
-    #         "d210cfd869f620bea62d045c39a7ac0d235e628b",
+    #         "e479022fd61b611874bf5ed5db49a0e15a619e9a",
+    #         "af22602cdc993379e89f5cd32e9d2541996b7ab0",
     #     ]])
 
     return PRs
-
-
 
 
 def get_commit_specific_options(commit):
@@ -318,5 +325,5 @@ def cherry_pick_commits():
 
 
 if __name__ == "__main__" :
-    # cherry_pick_PRs()
-    cherry_pick_commits()
+    cherry_pick_PRs()
+    # cherry_pick_commits()
