@@ -499,30 +499,31 @@ def cherry_pick_diff_apply(number, title, base_commit, head_commit):
     return result.returncode
 
 
-def cherry_pick_PRs(base_commit):
+def cherry_pick_PRs(dest_branch_base_commit):
 
-    for repo, number, title, state, merge_commit, commits in get_PRs():
+    for repo, number, title, state, pr_merge_commit, commits in get_PRs():
         
         print ("Cherry-picking {} PR {} - {}".format(state, number, title))
 
         if state == "CLOSED":
-            print ("CLOSEED")
+            print ("...Skipping cherry pick as PR was CLOSED without merging")
             continue
             
         if state == "MERGED":
-            is_ancestor_cmd = ["git", "merge-base", "--is-ancestor", merge_commit, base_commit]
-            print (is_ancestor_cmd)
+            assert (pr_merge_commit != "None")
+            is_ancestor_cmd = ["git", "merge-base", "--is-ancestor", pr_merge_commit, dest_branch_base_commit]
+            # print (is_ancestor_cmd)
             result = subprocess.run(is_ancestor_cmd)
             if result.returncode == 0:
-                print ("ALREADY MERGED")
+                print ("...Skipping cherry pick as PR is ALREADY MERGED into the destination branch")
                 continue
 
         has_merge_commit, base_commit, head_commit = check_for_merge_commit(commits)
         if (repo == "google_upstream") and has_merge_commit:
-            print ("CHERRY PICK - DIFF_APPLY")
+            print ("...using the DIFF_APPLY route to do the cherry-picking")
             result = cherry_pick_diff_apply(number, title, base_commit, head_commit)
         else:
-            print ("CHERRY PICK - SIMPLE")
+            print ("...using the SIMPLE route to do the cherry-picking")
             result = cherry_pick_simple(number, title, commits)
 
         if result != 0:
@@ -559,7 +560,7 @@ if __name__ == "__main__" :
     # parser.add_argument("--base_commit", required=True)
     # args = parser.parse_args()
 
-    base_commit = "05ea2b6d7f7a986827d9c9ec32a4a94e30714f9c"
-    cherry_pick_PRs(base_commit)
+    dest_branch_base_commit = "05ea2b6d7f7a986827d9c9ec32a4a94e30714f9c"
+    cherry_pick_PRs(dest_branch_base_commit)
     # cherry_pick_PRs_alt()
     # cherry_pick_commits()
