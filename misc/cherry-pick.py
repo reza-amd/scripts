@@ -3,7 +3,6 @@
 import subprocess
 import argparse
 
-
 def get_PRs():
     PRs = []
 
@@ -16,6 +15,10 @@ def get_PRs():
         [
             ("ae0e325a9fd53f2981bc569a2e3f8699c72a2ddc",["3ebe6b2479bd0578953a18298ff55863fa20ed61"]),
             ("451487e515d978aeec3c7e3c8f42ad11e51ac0ab",["ae0e325a9fd53f2981bc569a2e3f8699c72a2ddc", "6deb2d610d7671ace9f5a5ddc8c61c30dca72665"]),
+            ("d26ee9801c8117f7fd6297a05a82eab98023a2c3",["451487e515d978aeec3c7e3c8f42ad11e51ac0ab"]),
+            ("eb713b7448f61c610850ded6113ee7eace764fd3",["d26ee9801c8117f7fd6297a05a82eab98023a2c3"]),
+            ("f026e707d34db8c8f06e48eba699a2cb6bf2ecde",["eb713b7448f61c610850ded6113ee7eace764fd3"]),
+            ("5f8828b16ed35dfdc448975443175829eb599ca3",["f026e707d34db8c8f06e48eba699a2cb6bf2ecde"]),
         ]])
 
     PRs.append([
@@ -259,8 +262,8 @@ def get_PRs():
         "google_upstream",
         "36191",
         "[ROCm][XLA] Adding three passes to  amdgpu compiler",
-        "OPEN",
-        "None",
+        "MERGED",
+        "9d3d2d3b3e4d8ef139970460490e30c11a29540b",
         [
             ("9d3d2d3b3e4d8ef139970460490e30c11a29540b",["9d1ec06b01d741f258589ea9279a03b488551f9a"]),
         ]])
@@ -328,10 +331,72 @@ def get_PRs():
         "google_upstream",
         "36351",
         "[ROCm][XLA] Disable ResizeBilinearTest in image_ops_test",
+        "MERGED",
+        "ae6fbe68f01839fd19230f38e43edc6c4fc8ab08",
+        [
+            ("ae6fbe68f01839fd19230f38e43edc6c4fc8ab08",["944e6fe82a2b7733dd2f58ad352fcaeb7ad066b8"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36558",
+        "[ROCm] Fix for a test regression on the ROCm platform - 200207 - 1",
         "OPEN",
         "None",
         [
-            ("ae6fbe68f01839fd19230f38e43edc6c4fc8ab08",["944e6fe82a2b7733dd2f58ad352fcaeb7ad066b8"]),
+            ("6e77109e62ada17e4d08d62c18a173092ee9f8e6",["75e2a0a14f4a127892477c29044de1f3a6c4b242"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36560",
+        "[ROCm] Fix for a test regression on the ROCm platform - 200207 - 2",
+        "OPEN",
+        "None",
+        [
+            ("c41b27a0256220a30e7dd7e61497502e9c6ba14f",["75e2a0a14f4a127892477c29044de1f3a6c4b242"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36625",
+        "[ROCm] Fix for a test failure on the ROCm platform - 200210 - 1",
+        "OPEN",
+        "None",
+        [
+            ("26cb4818648691456d484f91265c78383dc41fa3",["1cb495c7eba21d77641ccb045833072889bd8abc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36639",
+        "[ROCm]  Grappler unit tests and _FusedConv2D",
+        "OPEN",
+        "None",
+        [
+            ("6aa431f8c9f8d21acfafe8ab3b29537774ecd262",["432ef2bee21eaa05fdc5e1bd7539b699dd43c265"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36640",
+        "[ROCm] Create a wrapper header for rocprim and cub",
+        "OPEN",
+        "None",
+        [
+            ("25956c47d6fa218b1fe04fcfd8d9352e6c31b842",["432ef2bee21eaa05fdc5e1bd7539b699dd43c265"]),
+            ("04336cf0c6d492653c746e26b6b024a7b9d5fe9a",["25956c47d6fa218b1fe04fcfd8d9352e6c31b842"]),
+            ("0b058fb52e7f1669b197ffe7ea42da90fb1e8514",["04336cf0c6d492653c746e26b6b024a7b9d5fe9a"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "36641",
+        "[ROCm] CUDA/ROCm shared interface",
+        "OPEN",
+        "None",
+        [
+            ("d67070b4eaa49a7dd86405ad0158a71e5dd5ae94",["432ef2bee21eaa05fdc5e1bd7539b699dd43c265"]),
         ]])
 
     # PRs.append([
@@ -341,7 +406,7 @@ def get_PRs():
     #     "OPEN",
     #     "None",
     #     [
-    #         ("a1cbb7a7844cdb0dd82c0c7d15c871d00acb2c5d",["1384c138c75d204ba0be9049be2bfd063552ea33"]),
+    #         ("b0ad492bd6b86e701584b5506346da6fdac388fa",["4b32a7f169598c52a0c042756b87788b6930783d"]),
     #     ]])
 
     # PRs.append([
@@ -351,7 +416,7 @@ def get_PRs():
     #     "OPEN",
     #     "None",
     #     [
-    #         ("9bf87efe4d7ccbd00732767824af60f886d59c0e",["1384c138c75d204ba0be9049be2bfd063552ea33"]),
+    #         ("b85e1015b7ba934b39081356d0e91c8c29a6c854",["4b32a7f169598c52a0c042756b87788b6930783d"]),
     #     ]])
 
     # PRs.append([
@@ -371,10 +436,10 @@ def get_PRs():
     #     "OPEN",
     #     "None",
     #     [
-    #         ("1ed173b7374f2e590b624e0a7e4fd5434b56ab36",["1384c138c75d204ba0be9049be2bfd063552ea33"]),
-    #         ("f205c5a7b957ea62672fd1cefbbc25264ec134da",["1ed173b7374f2e590b624e0a7e4fd5434b56ab36"]),
-    #         ("1871ee82a8806fee4c3a7e11fc46c5a59f190651",["f205c5a7b957ea62672fd1cefbbc25264ec134da"]),
-    #         ("c9b7778e0ba4dedc720bf067b77b5c8746cde74a",["1871ee82a8806fee4c3a7e11fc46c5a59f190651"]),
+    #         ("b3d01a6c4ae1fc99ebc3fa26122a31355e153323",["4b32a7f169598c52a0c042756b87788b6930783d"]),
+    #         ("1b988295dfea60d42d769655d37de08c5ead595d",["b3d01a6c4ae1fc99ebc3fa26122a31355e153323"]),
+    #         ("b233c96a7d1f0892398ff03722d65f9a1c2b87b0",["1b988295dfea60d42d769655d37de08c5ead595d"]),
+    #         ("ff3c39a88366c967d49e5dca9554199b36099907",["b233c96a7d1f0892398ff03722d65f9a1c2b87b0"]),
     #     ]])
 
     # PRs.append([
@@ -394,7 +459,7 @@ def get_PRs():
     #     "OPEN",
     #     "None",
     #     [
-    #         ("8943b7a1e32ecc434bfe31c11c027b9a8fcc1147",["1384c138c75d204ba0be9049be2bfd063552ea33"]),
+    #         ("1d606a16d3f8e50d91afb584ce0bb07661a027c9",["4b32a7f169598c52a0c042756b87788b6930783d"]),
     #     ]])
 
     # PRs.append([
@@ -424,10 +489,10 @@ def get_PRs():
     #     "OPEN",
     #     "None",
     #     [
-    #         ("e479022fd61b611874bf5ed5db49a0e15a619e9a",["1384c138c75d204ba0be9049be2bfd063552ea33"]),
-    #         ("af22602cdc993379e89f5cd32e9d2541996b7ab0",["e479022fd61b611874bf5ed5db49a0e15a619e9a"]),
+    #         ("6f14d3ef6c44e685a4cc9a92753f29dbd4db5858",["4b32a7f169598c52a0c042756b87788b6930783d"]),
+    #         ("650d5eaa65344219dd56570d8ade2b1ba0526c01",["6f14d3ef6c44e685a4cc9a92753f29dbd4db5858"]),
     #     ]])
-    
+
     return PRs
 
 
@@ -502,7 +567,8 @@ def cherry_pick_diff_apply(number, title, base_commit, head_commit):
 def cherry_pick_PRs(dest_branch_base_commit):
 
     for repo, number, title, state, pr_merge_commit, commits in get_PRs():
-        
+
+        print ("\n\n")
         print ("Cherry-picking {} PR {} - {}".format(state, number, title))
 
         if state == "CLOSED":
@@ -560,7 +626,8 @@ if __name__ == "__main__" :
     # parser.add_argument("--base_commit", required=True)
     # args = parser.parse_args()
 
-    dest_branch_base_commit = "05ea2b6d7f7a986827d9c9ec32a4a94e30714f9c"
+    # dest_branch_base_commit = "05ea2b6d7f7a986827d9c9ec32a4a94e30714f9c"
+    dest_branch_base_commit = "google_upstream/master"
     cherry_pick_PRs(dest_branch_base_commit)
     # cherry_pick_PRs_alt()
     # cherry_pick_commits()
