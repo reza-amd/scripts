@@ -150,6 +150,12 @@ def get_google_upstream_PRs():
     PRs.append(36341)
     PRs.append(36342)
     PRs.append(36351)
+    PRs.append(36558)
+    PRs.append(36560)
+    PRs.append(36625)
+    PRs.append(36639)
+    PRs.append(36640)
+    PRs.append(36641)
     return PRs
     
 def get_rocm_fork_PRs():
