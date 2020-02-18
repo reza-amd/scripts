@@ -1,8 +1,8 @@
 import os
 
 os.environ["HIP_VISIBLE_DEVICES"]="0"
-os.environ["TF_ROCM_RETURN_BEST_ALGO_ONLY"]="1"
-os.environ["TF_ROCM_USE_IMMEDIATE_MODE"]="1"
+# os.environ["TF_ROCM_RETURN_BEST_ALGO_ONLY"]="1"
+# os.environ["TF_ROCM_USE_IMMEDIATE_MODE"]="1"
 #os.environ["TF_CPP_MIN_VLOG_LEVEL"]="3"
 
 
@@ -65,7 +65,7 @@ def run_mnist_model(args):
     x_test = x_test.reshape(10000, 784).astype('float32') / 255
     dtype = tf.float32
     
-    history = model.fit(x_train, y_train, batch_size=8192, epochs=10, validation_split=0.2)
+    history = model.fit(x_train, y_train, batch_size=8192, epochs=20, validation_split=0.2)
     test_scores = model.evaluate(x_test, y_test, verbose=2)
     print('Test loss:', test_scores[0])
     print('Test accuracy:', test_scores[1])
