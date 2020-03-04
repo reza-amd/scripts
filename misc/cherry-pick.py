@@ -128,12 +128,23 @@ def cherry_pick_commits():
             print ("...FAILED (cherry-pick {}".format(commit))
             return
 
-
-if __name__ == "__main__" :
-
+def main():
+    
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base_commit", default="google_upstream/master")
+    parser.add_argument("--base_commit")
     parser.add_argument("--merge_rocm_prs", action='store_true')
     args = parser.parse_args()
 
+    if not args.base_commit :
+        result = subprocess.run(["git", "rev-parse", "HEAD"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if result.returncode != 0:
+            print('ERROR...call to "git rev-parse HEAD" failed.')
+            print('\t', result.stderr.decode())
+            return
+        args.base_commit = result.stdout.decode()
+    
     cherry_pick_PRs(args)
+    
+if __name__ == "__main__" :
+    main()
+    

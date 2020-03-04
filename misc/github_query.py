@@ -120,44 +120,27 @@ def print_pr_commits(repo, pr_number, title, state, merge_commit, commits):
 
 def get_google_upstream_PRs():
     PRs = []
-    PRs.append(35394)
-    PRs.append(35395)
+
     PRs.append(35519)
-    PRs.append(35624)
+
     PRs.append(35666)
-    PRs.append(35752)
     PRs.append(35890)
-    PRs.append(35891)
     PRs.append(35924)
-    PRs.append(35964)
     PRs.append(35965)
     PRs.append(35966)
-    PRs.append(35971)
-    PRs.append(35972)
-    PRs.append(35991)
-    PRs.append(36017)
-    PRs.append(36018)
-    PRs.append(36019)
-    PRs.append(36031)
-    PRs.append(36032)
     PRs.append(36106)
-    PRs.append(36110)
-    PRs.append(36187)
-    PRs.append(36191)
-    PRs.append(36263)
     PRs.append(36267)
-    PRs.append(36292)
     PRs.append(36341)
-    PRs.append(36342)
-    PRs.append(36351)
+
     PRs.append(36558)
     PRs.append(36560)
-    PRs.append(36625)
     PRs.append(36639)
     PRs.append(36640)
     PRs.append(36641)
     PRs.append(36762)
     PRs.append(36765)
+    PRs.append(36838)
+
     return PRs
     
 def get_rocm_fork_PRs():
