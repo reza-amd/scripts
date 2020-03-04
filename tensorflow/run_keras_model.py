@@ -1,8 +1,8 @@
 import os
 
 os.environ["HIP_VISIBLE_DEVICES"]="0"
-os.environ["TF_ROCM_RETURN_BEST_ALGO_ONLY"]="1"
-os.environ["TF_ROCM_USE_IMMEDIATE_MODE"]="1"
+# os.environ["TF_ROCM_RETURN_BEST_ALGO_ONLY"]="1"
+# os.environ["TF_ROCM_USE_IMMEDIATE_MODE"]="1"
 # os.environ["TF_CPP_MIN_VLOG_LEVEL"]="3"
 
 
@@ -15,7 +15,7 @@ import argparse
 
 def set_keras_options(args):
     keras.backend.set_image_data_format('channels_first' if args.use_NCHW else 'channels_last')
-    if args.use_mixed_precision:
+    if args.use_keras_mixed_precision:
         keras.mixed_precision.experimental.set_policy('mixed_float16')
     
 
@@ -98,7 +98,7 @@ def main(args):
 if __name__ == "__main__" :
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("--use_mixed_precision", action='store_true')
+    parser.add_argument("-k", "--use_keras_mixed_precision", action='store_true')
     parser.add_argument("--use_NCHW", action='store_true')
     parser.add_argument("--num_epochs", type=int, default=1)
     parser.add_argument("--num_batches", type=int, default=10)
