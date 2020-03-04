@@ -5,8 +5,8 @@
 # tag=rocm2.9-tf1.15-dev
 
 docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.0-csb-d237fc3
-# tag=rocm3.0-2e335db
+tag=rocm3.0-csb-867c320
+#tag=rocm3.0-e34d41e
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm2.10-tf-rocsparse-test
@@ -30,7 +30,7 @@ tag=rocm3.0-csb-d237fc3
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm30_tf_upstream_testing
+container_name=deven_rocm30_tf_upstream_sync_branches
 
 options=""
 options="$options -it"
