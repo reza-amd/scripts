@@ -108,21 +108,22 @@ def cherry_pick_PRs(args):
 def cherry_pick_commits():
 
     commits = [
-        "2294526571ca2bb959a616b3feceebef8e525b7c",
-        "916584b2746064ba3096200c4129a56320124b1c",
-        "72bae743a5a6d1ec03078b494df37f8c2ddd2b08",
-        "900a3db2a5af1992dc5d771edbb0874afd5a3ad3",
-        "236cb3ac9fc40567b0f2ac6d8752cdbd523735f2",
-        "8e1987c2db551ad44cbb60f292bb89d8fe37f1dd",
-        "7387909d1cf10143ef0e33e8fc4652846297ec0a",
-        "8fc5646d0ce97fbef44727dcf36c1c9a6a672ee9",
-        "67f97220a9a3be65fb4e7cddf6d32afdadb2297e",
-        "80f8bb77c698f1bae573dcdb3329b2e4d8cd815c",
+        # Fix for broken ROCm CSB - 20030
+        "1e8a36e1b8f6fc902c91e009e0570330670ab10b",
+        
+        # Add no_rocm tag for regressions introduced in 200309 weely sync
+        "2e9460c2d6063ab69fa0cf3878786fb488d7d03b",
+        
+        # Add no_rocm tag for regressions introduced in 200302 weely sync
+        "99b392004bc0263cf599a4c47713069b2b391f1a",
+
+        # PR 36560 - Fix regression in //tensorflow/python/eager:profiler_test_gpu
+        "040abb5a8518388486aac74552a0e0c305bf3fea",
         ]
 
 
     for commit in commits:
-        cherry_pick_cmd = ["git", "cherry-pick", commit]
+        cherry_pick_cmd = ["git", "cherry-pick", "--no_commit", commit]
         result = subprocess.run(cherry_pick_cmd)
         if result.returncode != 0:
             print ("...FAILED (cherry-pick {}".format(commit))

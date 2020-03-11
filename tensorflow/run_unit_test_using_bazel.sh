@@ -57,9 +57,6 @@ options="$options --flaky_test_attempts=1"
 # options="$options --action_env=KMDUMPISA=1"
 # options="$options --action_env=KMDUMPLLVM=1"
 
-
-# options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
-
 # options="$options --test_env=TF_CPP_MIN_LOG_LEVEL=1"
 # options="$options --test_env=TF_CPP_MIN_VLOG_LEVEL=3"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
