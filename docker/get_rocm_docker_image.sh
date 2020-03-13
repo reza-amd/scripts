@@ -4,7 +4,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm2.9-tf1.15-dev
 
-# docker_repo=rocm/tensorflow-autobuilds
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.1-377c195
 # tag=rocm3.0-csb-867c320
 # tag=rocm3.0-e34d41e
 
@@ -15,11 +16,11 @@
 # tag=rocm2.9-tf1.15-roctracer-v2
 # tag=rocm2.9-tf1.15-roctracer-v1
 
-docker_repo=devenamd/tensorflow
+# docker_repo=devenamd/tensorflow
 # tag=fused_batchnorm_bug
 # tag=rocm3.1.0-200304
 # tag=rocm3.1.0-200305-01
-tag=rocm3.1.0-200305-02
+# tag=rocm3.1.0-200305-02
  
 # docker_repo=devenamd/tensorflow
 # tag=rocm3.0_191220
@@ -31,9 +32,14 @@ tag=rocm3.1.0-200305-02
 # docker_repo=sunway513/hiptensorflow
 #
 
+
+# docker_repo=mlperf_mitest/object_detection_tf1.14
+# docker_repo=mlperf_mitest/object_detection_tf1.15
+# tag=rocmgpu
+
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm31_tf_upstream_baseline_0502
+container_name=deven_rocm31_tf_rocmfork_roctracer
 
 options=""
 options="$options -it"

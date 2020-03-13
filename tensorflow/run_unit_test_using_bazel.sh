@@ -137,3 +137,4 @@ fi
 # llvm-objdump -disassemble -mcpu=gfx900 your.hsaco
 
 # bazel run --config=rocm --config=opt //tensorflow/compiler/xla/tools:hlo_proto_to_json -- --input_file=/common/LOGS/Types.4.pb --output_file=/common/LOGS/Types.4.pb.json
+options="$options --run_under=/usr/bin/pdb"
