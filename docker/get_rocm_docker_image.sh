@@ -4,8 +4,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm2.9-tf1.15-dev
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.1-377c195
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.1-377c195
 # tag=rocm3.0-csb-867c320
 # tag=rocm3.0-e34d41e
 
@@ -32,26 +32,30 @@ tag=rocm3.1-377c195
 # docker_repo=sunway513/hiptensorflow
 #
 
-
 # docker_repo=mlperf_mitest/object_detection_tf1.14
 # docker_repo=mlperf_mitest/object_detection_tf1.15
 # tag=rocmgpu
 
+docker_repo=tensorflow/tensorflow
+tag=nightly-py3
+
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm31_tf_rocmfork_roctracer
+container_name=deven_tf_official_01
 
 options=""
 options="$options -it"
 options="$options --network=host"
 options="$options --ipc=host"
 options="$options --shm-size 16G"
-options="$options --device=/dev/kfd"
-options="$options --device=/dev/dri"
 options="$options --group-add video"
 options="$options --cap-add=SYS_PTRACE"
 options="$options --security-opt seccomp=unconfined"
 options="$options -v $HOME/deven/common:/common"
+
+# options="$options --device=/dev/kfd"
+# options="$options --device=/dev/dri"
+
 # options="$options -v /data/imagenet-inception:/imagenet"
 
 docker run $options --name $container_name $docker_image
