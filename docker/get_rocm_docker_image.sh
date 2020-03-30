@@ -1,11 +1,13 @@
 # docker_repo=rocm/eigen-test
 # tag=rocm-3.0
 
-# docker_repo=rocm/tensorflow
+docker_repo=rocm/tensorflow
+tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.1-377c195
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.1-716d80c
+# tag=rocm3.1-377c195
 # tag=rocm3.0-csb-867c320
 # tag=rocm3.0-e34d41e
 
@@ -45,7 +47,7 @@ tag=rocm3.1-377c195
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_rocm31_tf_rocmfork_misc_01
+container_name=deven_rocm31_tf_issue_902
 
 options=""
 options="$options -it"
