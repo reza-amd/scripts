@@ -4,8 +4,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm2.9-tf1.15-dev
 
-# docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm3.1-377c195
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.1-377c195
 # tag=rocm3.0-csb-867c320
 # tag=rocm3.0-e34d41e
 
@@ -15,13 +15,17 @@
 # tag=rocm2.9-tf1.15-roctracer-v3
 # tag=rocm2.9-tf1.15-roctracer-v2
 # tag=rocm2.9-tf1.15-roctracer-v1
+# tag=hipclang-bkc2-build40-tf1.15-VDI-source
 
 # docker_repo=devenamd/tensorflow
 # tag=fused_batchnorm_bug
 # tag=rocm3.1.0-200304
 # tag=rocm3.1.0-200305-01
 # tag=rocm3.1.0-200305-02
- 
+# tag=hipclang-vdi-bkc-2-40
+# tag=hipclang-vdi-bkc-2-40
+# tag=hipclang-vdi-03
+
 # docker_repo=devenamd/tensorflow
 # tag=rocm3.0_191220
 
@@ -36,12 +40,12 @@
 # docker_repo=mlperf_mitest/object_detection_tf1.15
 # tag=rocmgpu
 
-docker_repo=tensorflow/tensorflow
-tag=nightly-py3
+# docker_repo=tensorflow/tensorflow
+# tag=nightly-py3
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_tf_official_01
+container_name=deven_rocm31_tf_rocmfork_misc_01
 
 options=""
 options="$options -it"
@@ -53,8 +57,8 @@ options="$options --cap-add=SYS_PTRACE"
 options="$options --security-opt seccomp=unconfined"
 options="$options -v $HOME/deven/common:/common"
 
-# options="$options --device=/dev/kfd"
-# options="$options --device=/dev/dri"
+options="$options --device=/dev/kfd"
+options="$options --device=/dev/dri"
 
 # options="$options -v /data/imagenet-inception:/imagenet"
 

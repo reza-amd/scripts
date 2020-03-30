@@ -44,6 +44,7 @@ options="$options --flaky_test_attempts=1"
 
 # options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
 # options="$options --test_env=HIP_TRACE_API=1"
+# options="$options --test_env=LOG_LEVEL=3"
 # options="$options --test_env=HIP_DB=api+mem+copy"
 # options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
 # options="$options --test_env=HIP_API_BLOCKING=1"
