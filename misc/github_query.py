@@ -91,6 +91,12 @@ def get_commits_for_pr(owner, name, pr_number):
     merge_commit = pullRequest["mergeCommit"]
     merge_commit = merge_commit["oid"] if state == "MERGED" else None
     commits = [x["node"]["commit"] for x in pullRequest["commits"]["edges"]]
+
+    # Add any special casing here
+    if (pr_number == 36267) :
+        state = "MERGED"
+        merge_commit = "c6667ea3f238027a844062f104b191adf4242f54"
+
     return (title, state, merge_commit, commits)
 
 def get_commits_for_google_upstream_pr(pr_number):
@@ -140,6 +146,15 @@ def get_google_upstream_PRs():
     PRs.append(36762)
     PRs.append(36765)
     PRs.append(36838)
+    PRs.append(36939)
+    PRs.append(37136)
+
+    PRs.append(37452)
+    PRs.append(37518)
+    PRs.append(37937)
+
+    PRs.append(38289)
+    PRs.append(38582)
 
     return PRs
     

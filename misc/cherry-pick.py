@@ -103,8 +103,7 @@ def cherry_pick_PRs(args):
             if result != 0:
                 return
 
-            
-            
+
 def cherry_pick_commits():
 
     commits = [
@@ -142,7 +141,7 @@ def main():
             print('ERROR...call to "git rev-parse HEAD" failed.')
             print('\t', result.stderr.decode())
             return
-        args.base_commit = result.stdout.decode()
+        args.base_commit = result.stdout.decode().strip()
     
     cherry_pick_PRs(args)
     
