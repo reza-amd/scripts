@@ -1,4 +1,4 @@
-FROM rocm/rocm-terminal:2.10.0
+FROM rocm/rocm-terminal:3.3
 
 MAINTAINER Deven Desai <deven.desai@amd.com>
 

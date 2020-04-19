@@ -44,6 +44,7 @@ options="$options --flaky_test_attempts=1"
 
 # options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
 # options="$options --test_env=HIP_TRACE_API=1"
+# options="$options --test_env=LOG_LEVEL=3"
 # options="$options --test_env=HIP_DB=api+mem+copy"
 # options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
 # options="$options --test_env=HIP_API_BLOCKING=1"
@@ -52,18 +53,19 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=HCC_DB=0x48a"
 # options="$options --test_env=HCC_SERIALIZE_KERNEL=3"
 # options="$options --test_env=HCC_SERIALIZE_COPY=3"
+# options="$options --test_env=HCC_PROFILE=2"
 
-# options="$options --test_env=KMDUMPISA=1"
-# options="$options --test_env=KMDUMPLLVM=1"
-
-
-# options="$options --test_env=HIP_LAUNCH_BLOCKING=1"
+# options="$options --action_env=KMDUMPISA=1"
+# options="$options --action_env=KMDUMPLLVM=1"
 
 # options="$options --test_env=TF_CPP_MIN_LOG_LEVEL=1"
 # options="$options --test_env=TF_CPP_MIN_VLOG_LEVEL=3"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
+# options="$options --test_env=TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
+# options="$options --test_env=TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
+# options="$options --test_env=TF_ROCM_USE_IMMEDIATE_MODE=1"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 
@@ -136,3 +138,4 @@ fi
 # llvm-objdump -disassemble -mcpu=gfx900 your.hsaco
 
 # bazel run --config=rocm --config=opt //tensorflow/compiler/xla/tools:hlo_proto_to_json -- --input_file=/common/LOGS/Types.4.pb --output_file=/common/LOGS/Types.4.pb.json
+options="$options --run_under=/usr/bin/pdb"

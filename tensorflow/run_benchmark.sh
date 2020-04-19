@@ -18,7 +18,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
  
-# env_vars="$env_vars TF_ROCM_MIMIC_FIND_MODE=1"
+# env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 
 # env_vars="$env_vars TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
@@ -35,7 +35,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 options=""
 
-# options="$options --model=alexnet"
+options="$options --model=alexnet"
 # options="$options --model=googlenet"
 # options="$options --model=inception3"
 # options="$options --model=inception4"
@@ -47,7 +47,7 @@ options=""
 # options="$options --model=trivial"
 # options="$options --model=vgg11"
 # options="$options --model=vgg16"
-options="$options --model=vgg19"
+# options="$options --model=vgg19"
 
 # options="$options --xla"
 # options="$options --noxla"
@@ -67,7 +67,7 @@ options="$options --model=vgg19"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
-options="$options --batch_size=128"
+# options="$options --batch_size=128"
 # options="$options --batch_size=256"
 # options="$options --batch_size=512"
 # options="$options --batch_size=1024"

@@ -20,8 +20,8 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars HCC_DB=0x48a"
 # env_vars="$env_vars HCC_DB=0x68a"
 
-# env_vars="$env_vars TF_ROCM_MIMIC_FIND_API=1"
-env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
+# env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
+# env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 
 # env_vars="$env_vars "
 
