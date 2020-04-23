@@ -2,13 +2,15 @@ docker_repo=rocm/eigen-test
 tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
+# tag=rocm3.3-tf2.1-dev
+# tag=rocm3.3-tf1.15-dev
 # tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
 # docker_repo=rocm/tensorflow-autobuilds
 # tag=rocm3.1-716d80c
 # tag=rocm3.1-377c195
-# tag=rocm3.0-csb-867c320
+# tag=rocm3.0-csb-cee9b26
 # tag=rocm3.0-e34d41e
 
 # docker_repo=rocm/tensorflow-private
@@ -22,7 +24,8 @@ tag=rocm-3.3
 # tag=hipclang-bkc2-build40-tf1.15-VDI-source
 
 docker_repo=devenamd/tensorflow
-tag=hcv_1746
+tag=rocm3.3-python3.6-200422
+# tag=hcv_1746
 # tag=fused_batchnorm_bug
 # tag=rocm3.1.0-200304
 # tag=rocm3.1.0-200305-01
@@ -32,6 +35,7 @@ tag=hcv_1746
 # tag=hipclang-vdi-03
 
 # docker_repo=devenamd/tensorflow
+# tag=rocm3.3-200408
 # tag=rocm3.0_191220
 
 # docker_repo=devenamd/mlir
@@ -50,7 +54,7 @@ tag=hcv_1746
 
 docker_image=$docker_repo:$tag
 
-container_name=deven_hcv1746_tf_rocmfork_01
+container_name=deven_rocm33_py36_tf_rocmfork_01
 
 options=""
 options="$options -it"
