@@ -23,8 +23,10 @@ COPY install/.bazelrc /etc/bazel.bazelrc
 # RUN sh -c "echo deb [arch=amd64] $ROCM_DEB_REPO xenial main > /etc/apt/sources.list.d/rocm.list"
 
 ARG ROCM_INTERNAL_ARTIFACTORY=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/
-ARG ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang-int-bkc-2
-ARG ROCM_BUILD_NUM=40
+# ARG ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang-int-bkc-2
+# ARG ROCM_BUILD_NUM=40
+ARG ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang
+ARG ROCM_BUILD_NUM=2027
 RUN sh -c "echo deb [arch=amd64 trusted=yes] $ROCM_INTERNAL_ARTIFACTORY $ROCM_BUILD_NAME $ROCM_BUILD_NUM > /etc/apt/sources.list.d/rocm.list"
 
 ENV ROCM_PATH=/opt/rocm

@@ -1,5 +1,5 @@
-docker_repo=rocm/eigen-test
-tag=rocm-3.3
+# docker_repo=rocm/eigen-test
+# tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
 # tag=rocm3.3-tf2.1-dev
@@ -8,7 +8,8 @@ tag=rocm-3.3
 # tag=rocm2.9-tf1.15-dev
 
 # docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm3.1-716d80c
+# tag=rocm3.3-5744b43
+#tag=rocm3.1-716d80c
 # tag=rocm3.1-377c195
 # tag=rocm3.0-csb-cee9b26
 # tag=rocm3.0-e34d41e
@@ -24,8 +25,10 @@ tag=rocm-3.3
 # tag=hipclang-bkc2-build40-tf1.15-VDI-source
 
 docker_repo=devenamd/tensorflow
-tag=rocm3.3-python3.6-200422
+tag=compute-rocm-dkms-no-npi-hipclang-2027
+# tag=rocm3.3-python3.6-200422
 # tag=hcv_1746
+# tag=swdev-231360
 # tag=fused_batchnorm_bug
 # tag=rocm3.1.0-200304
 # tag=rocm3.1.0-200305-01
@@ -53,8 +56,7 @@ tag=rocm3.3-python3.6-200422
 # tag=nightly-py3
 
 docker_image=$docker_repo:$tag
-
-container_name=deven_rocm33_py36_tf_rocmfork_01
+container_name=deven_rocmVDI_tf_rocmfork_roctracer
 
 options=""
 options="$options -it"
