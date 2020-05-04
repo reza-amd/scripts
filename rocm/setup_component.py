@@ -13,6 +13,10 @@ supported_libraries = {
         "url" : "https://github.com/RadeonOpenCompute/hcc",
         "clone_options" : ["--recursive"],
         },
+    "MLOpen" : {
+        "url" : "https://github.com/AMDComputeLibraries/MLOpen",
+        "clone_options" : [],
+        },
 }
 
 def handle_clone(library, location):
