@@ -7,12 +7,8 @@
 # tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
-# docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm3.3-5744b43
-#tag=rocm3.1-716d80c
-# tag=rocm3.1-377c195
-# tag=rocm3.0-csb-cee9b26
-# tag=rocm3.0-e34d41e
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.3-52a88d2 # 200512
 
 # docker_repo=rocm/tensorflow-private
 # tag=hipclang-vdi-04-fix
@@ -24,8 +20,8 @@
 # tag=rocm2.9-tf1.15-roctracer-v1
 # tag=hipclang-bkc2-build40-tf1.15-VDI-source
 
-docker_repo=devenamd/tensorflow
-tag=compute-rocm-dkms-no-npi-hipclang-2027
+# docker_repo=devenamd/tensorflow
+# tag=compute-rocm-dkms-no-npi-hipclang-2027
 # tag=rocm3.3-python3.6-200422
 # tag=hcv_1746
 # tag=swdev-231360
@@ -56,7 +52,7 @@ tag=compute-rocm-dkms-no-npi-hipclang-2027
 # tag=nightly-py3
 
 docker_image=$docker_repo:$tag
-container_name=deven_rocmVDI_tf_rocmfork_roctracer
+container_name=deven_auto_rocm33_200512_update_upstream_merge_branches
 
 options=""
 options="$options -it"

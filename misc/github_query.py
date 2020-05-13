@@ -127,34 +127,9 @@ def print_pr_commits(repo, pr_number, title, state, merge_commit, commits):
 def get_google_upstream_PRs():
     PRs = []
 
-    PRs.append(35519)
-
-    PRs.append(35666)
-    PRs.append(35890)
-    PRs.append(35924)
-    PRs.append(35965)
-    PRs.append(35966)
-    PRs.append(36106)
-    PRs.append(36267)
-    PRs.append(36341)
-
-    PRs.append(36558)
-    PRs.append(36560)
-    PRs.append(36639)
-    PRs.append(36640)
-    PRs.append(36641)
-    PRs.append(36762)
-    PRs.append(36765)
-    PRs.append(36838)
-    PRs.append(36939)
-    PRs.append(37136)
-
-    PRs.append(37452)
-    PRs.append(37518)
-    PRs.append(37937)
-
-    PRs.append(38289)
-    PRs.append(38582)
+    PRs.append(39106)
+    PRs.append(39427)
+    PRs.append(39429)
 
     return PRs
     
