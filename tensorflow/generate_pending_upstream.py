@@ -3,6 +3,7 @@
 import subprocess
 import argparse
 import sys
+import re
 
 from datetime import date
 
@@ -33,6 +34,21 @@ def generate_diff_stats(upstream_branch, fork_branch):
     return diff_stats
 
 
+def display_diffs(upstream_branch, fork_branch, diff_stats):
+
+    # pattern = r'third_party/'
+    # pattern = r'tensorflow/core/grappler/optimizers/'
+    # pattern = r'tensorflow/core/profiler/internal/gpu/
+    pattern = r'tensorflow/core/common_runtime'
+    
+    for stat in diff_stats:
+        num_lines_added, num_lines_deleted, filename = stat.split('\t')
+        match = re.match(pattern, filename)
+        if match is not None:
+            # subprocess.run(["git", "diff", "--word-diff", upstream_branch, fork_branch, "--", filename])
+            subprocess.run(["git", "diff", upstream_branch, fork_branch, "--", filename])
+            
+
 def write_to_excel(upstream_branch, fork_branch, diff_stats, excel_file):
     
     workbook = Workbook()
@@ -60,4 +76,6 @@ if __name__ == '__main__':
     # run_shell_command(["git", "fetch", "origin"])
     diff_stats = generate_diff_stats(upstream_branch, fork_branch)
 
-    write_to_excel(upstream_branch, fork_branch, diff_stats, excel_filename)
+    display_diffs(upstream_branch, fork_branch, diff_stats)
+    
+    # write_to_excel(upstream_branch, fork_branch, diff_stats, excel_filename)
