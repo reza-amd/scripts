@@ -1,6 +1,18 @@
 env_vars=""
 env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
+
+# The MIOPEN_LOG_LEVEL=6 can be grepped to check the selected kernels by grepping for "Selected" string.
+# This will be sufficient for convolution kernels.
+# All other kernels are automatically selected, so grepping for that string will not make it apparent.
+
+# Use "export MIOPEN_CHECK_NUMERICS=1" then rerun the application.
+# This will attempt to check every layer being executed for the apperance of NaNs.
+
+# @deven-amd User Db is found in your docker at /root/.config/miopen which will be empty.
+# The System Db is found in /opt/rocm/miopen/share/miopen/db. I just moved the entire directory.
+
+
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING=1"
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
 # env_vars="$env_vars MIOPEN_LOG_LEVEL=6"
@@ -9,6 +21,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=0"
+# env_vars="$env_vars MIOPEN_CHECK_NUMERICS=1"
 
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
@@ -18,8 +31,13 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
  
+# env_vars="$env_vars TF_ROCM_FUSION_ENABLE=1"
+# env_vars="$env_vars TF_ROCM_USE_IMMEDIATE_MODE=1"
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
+
 # env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM_XDLOPS=1"
+# env_vars="$env_vars MIOPEN_DEBUG_IMPLICIT_GEMM_XDLOPS_INLINE_ASM=1"
 
 # env_vars="$env_vars TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 
@@ -74,11 +92,12 @@ options="$options --model=alexnet"
      
 # options="$options --num_warmup_batches=0"
 
+# options="$options --trace_file=/common/resnet50_trace.json"
+# options="$options --use_chrome_trace_format"
+
 export $env_vars
 cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
 # cd /root/benchmarks && ltrace -b -n 1 -x hip* -L python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
 
 
 
-# @deven-amd User Db is found in your docker at /root/.config/miopen which will be empty.
-# The System Db is found in /opt/rocm/miopen/share/miopen/db. I just moved the entire directory.

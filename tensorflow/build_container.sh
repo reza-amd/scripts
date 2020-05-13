@@ -5,7 +5,7 @@ DOCKERFILE_PATH=$TF_REPO_LOC/tensorflow/tools/ci_build/Dockerfile.rocm-hipclang-
 
 DOCKER_CONTEXT_PATH=$TF_REPO_LOC/tensorflow/tools/ci_build
 
-DOCKER_IMAGE_NAME=devenamd/tensorflow:compute-rocm-dkms-no-npi-hipclang-2027
+DOCKER_IMAGE_NAME=devenamd/tensorflow:compute-rocm-dkms-no-npi-hipclang-2226
 
 # docker image rm -f $DOCKER_IMAGE_NAME
 

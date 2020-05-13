@@ -11,45 +11,26 @@ docker_repo=rocm/tensorflow-autobuilds
 tag=rocm3.3-52a88d2 # 200512
 
 # docker_repo=rocm/tensorflow-private
-# tag=hipclang-vdi-04-fix
-# tag=hipclang-bkc3-14-tf1.15-hipcc-x
-# tag=rocm2.10-tf-rocsparse-test
-# tag=rocm2.9-tf2.0-roctracer-v5
-# tag=rocm2.9-tf1.15-roctracer-v3
-# tag=rocm2.9-tf1.15-roctracer-v2
-# tag=rocm2.9-tf1.15-roctracer-v1
-# tag=hipclang-bkc2-build40-tf1.15-VDI-source
+# tag=
 
 # docker_repo=devenamd/tensorflow
-# tag=compute-rocm-dkms-no-npi-hipclang-2027
-# tag=rocm3.3-python3.6-200422
-# tag=hcv_1746
-# tag=swdev-231360
-# tag=fused_batchnorm_bug
-# tag=rocm3.1.0-200304
-# tag=rocm3.1.0-200305-01
-# tag=rocm3.1.0-200305-02
-# tag=hipclang-vdi-bkc-2-40
-# tag=hipclang-vdi-bkc-2-40
-# tag=hipclang-vdi-03
+# tag=compute-rocm-dkms-no-npi-hipclang-2226
 
 # docker_repo=devenamd/tensorflow
 # tag=rocm3.3-200408
 # tag=rocm3.0_191220
 
 # docker_repo=devenamd/mlir
-# tag=devenamd/mlir:rocm-3.1-200309
-# tag=rocm-2.6-latest
+# tag=rocm-3.1-200309
 
 # docker_repo=sunway513/hiptensorflow
-#
-
-# docker_repo=mlperf_mitest/object_detection_tf1.14
-# docker_repo=mlperf_mitest/object_detection_tf1.15
-# tag=rocmgpu
+# tag=
 
 # docker_repo=tensorflow/tensorflow
 # tag=nightly-py3
+
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+# tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
 container_name=deven_auto_rocm33_200512_update_upstream_merge_branches

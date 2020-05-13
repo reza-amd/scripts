@@ -6,4 +6,5 @@
 # basically uninstall all things TF and then re-install it
 #
 pip3 uninstall tb-nightly tensorboard tensorflow-estimator tensorflow-gpu tf-estimator-nightly
-pip3 install /tmp/tensorflow_pkg/tensorflow-2.0.0-cp35-cp35m-linux_x86_64.whl 
+pip3 install /tmp/tensorflow_pkg/tensorflow*.whl 
+pip3 install -U tensorboard_plugin_profile

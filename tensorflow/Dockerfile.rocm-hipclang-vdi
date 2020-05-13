@@ -26,7 +26,7 @@ ARG ROCM_INTERNAL_ARTIFACTORY=http://compute-artifactory.amd.com/artifactory/lis
 # ARG ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang-int-bkc-2
 # ARG ROCM_BUILD_NUM=40
 ARG ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang
-ARG ROCM_BUILD_NUM=2027
+ARG ROCM_BUILD_NUM=2226
 RUN sh -c "echo deb [arch=amd64 trusted=yes] $ROCM_INTERNAL_ARTIFACTORY $ROCM_BUILD_NAME $ROCM_BUILD_NUM > /etc/apt/sources.list.d/rocm.list"
 
 ENV ROCM_PATH=/opt/rocm
