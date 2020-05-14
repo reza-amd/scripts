@@ -1,0 +1,7 @@
+{
+    "insecure-registries": [
+	"compute-artifactory.amd.com:5000",
+	"compute-artifactory.amd.com:5001"
+    ],
+    "storage-driver": "overlay2"
+}
