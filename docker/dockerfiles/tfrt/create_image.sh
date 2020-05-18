@@ -1,7 +1,4 @@
-temp_name=trial_3
-
-image_name=devenamd/tfrt:$temp_name
-container_name=deven_$temp_name
+image_name=devenamd/tfrt:cpu_200517
 
 docker build -t $image_name -f Dockerfile .  && \
 docker run \

@@ -1,9 +1,6 @@
-docker_repo=devenamd/ubuntu
-tag=develop.16.04
+image_name=devenamd/tfrt:cpu_200517
 
-docker_image=$docker_repo:$tag
-
-container_name=deven_MLIR
+container_name=deven_tfrt_01
 
 docker run \
        -it \
@@ -15,4 +12,4 @@ docker run \
        --security-opt seccomp=unconfined \
        -v $HOME/deven/common:/common \
        --name $container_name \
-       $docker_image \
+       $image_name
