@@ -32,9 +32,9 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # commit = args.commit
 
-    commit = "3ba00b04c16ed75cfa97237adf8089c711f030ea"
+    commit = "ff2019a216aed7bbb1e30432b47abcfe5567f0b4" # 200518 sync
     
-    # Add eugene's fork as a remote for merging PR 39429
+    # # Add eugene's fork as a remote for merging PR 39429
     # run_shell_command(["git", "remote", "add", "eugene_fork", "https://github.com/ekuznetsov139/tensorflow"])
     # run_shell_command(["git", "fetch", "eugene_fork"])
     

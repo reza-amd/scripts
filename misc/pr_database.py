@@ -15,10 +15,11 @@ def get_PRs():
         "google_upstream",
         "39427",
         "[ROCm] hip-clang / ROCm 3.5 build fixes",
-        "OPEN",
-        "None",
+        "MERGED",
+        "9282621aa9e14bdd64622542a16f495ec78c5f65",
         [
             ("0a980f296919766407af45b95c9e8aa290f72569",["b8ff27ef4ebbe3d7b8b219dfd1c96eb3b3e6beaa"]),
+            ("8dd28457699100145cad17aa4d44da81fddefda9",["0a980f296919766407af45b95c9e8aa290f72569"]),
         ]])
 
     PRs.append([
@@ -29,6 +30,17 @@ def get_PRs():
         "None",
         [
             ("774d448266a5d1ff41cb8579f3469835d386bae4",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "39562",
+        "[ROCm] NonMaxSuppression",
+        "OPEN",
+        "None",
+        [
+            ("073b8d248324968d9df328596e419d854d6242b0",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
+            ("931a71a9283ad4e0d918c376730b5528d25e3aee",["073b8d248324968d9df328596e419d854d6242b0"]),
         ]])
 
     PRs.append([
