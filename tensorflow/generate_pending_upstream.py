@@ -8,7 +8,7 @@ import re
 from datetime import date
 
 from openpyxl import Workbook
-from openpyxl.styles import NamedStyle
+from openpyxl.styles import Font
 
 
 def run_shell_command(cmd):
@@ -84,13 +84,21 @@ def write_to_excel(branch_1, branch_2, excel_file):
     sheet.append(["branch1:", branch_1])
     sheet.append(["branch2:", branch_2])
     sheet.append([])
-    sheet.append(["command to display diff for <filename>:", "git diff {} {} -- <filename>".format(branch_1, branch_2)])
+    sheet.append(["command to display diff for <filename>:", "", "git diff {} {} -- <filename>".format(branch_1, branch_2)])
     sheet.append([])
-    sheet.append(["# lines ADDED", "# lines DELETED", "Filename"])
+    sheet.append(["# lines ADDED", "# lines DELETED", "Owner", "Filename"])
     for stat in diff_stats:
-        sheet.append(stat.split('\t'))
+        num_lines_added, num_lines_deleted, filename = stat.split('\t')
+        owner = ""
+        sheet.append([num_lines_added, num_lines_deleted, owner, filename])
 
-    workbook.save(filename=excel_filename)
+    for col in ['A', 'B', 'C']:
+        sheet.column_dimensions[col].width = 20
+
+    for cell in ['A1', 'A2', 'A4', 'A6', 'B6', 'C6', 'D6']:
+        sheet[cell].font = Font(bold=True)
+
+    workbook.save(filename=excel_file)
 
 
 if __name__ == '__main__':
