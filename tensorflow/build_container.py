@@ -56,6 +56,18 @@ def get_docker_config_hipclang_bkc_build(tf_branch, bkc_major, bkc_minor):
     return docker_image, docker_file, docker_build_args
 
 
+def develop_upstream_hipclang_internal_build():
+    tf_branch = "develop-upstream"
+    internal_build_number = 2363
+    update_tf_repo(tf_branch)
+    return get_docker_config_hipclang_internal_build(tf_branch, internal_build_number)
+
+
+def upstream_r21_build():
+    tf_branch = "r2.1_rocm33"
+    return get_docker_config(tf_branch)
+
+
 if __name__ == '__main__':
     
     # parser = argparse.ArgumentParser()
@@ -63,12 +75,9 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # commit = args.commit
 
-    tf_branch = "develop-upstream"
-    internal_build_number = 2363
+    # docker_image, docker_file, docker_build_args = develop_upstream_hipclang_internal_build()
+    docker_image, docker_file, docker_build_args = upstream_r21_build()
     
-    update_tf_repo(tf_branch)
-    
-    docker_image, docker_file, docker_build_args = get_docker_config_hipclang_internal_build(tf_branch, internal_build_number)
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
     docker_build_command = ["docker", "build", "-t", docker_image, "-f", docker_file]
