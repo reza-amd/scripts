@@ -38,6 +38,9 @@ def display_num_diffs(branch_1, branch_2):
 
     diff_stats = generate_diff_stats(branch_1, branch_2)
     print("Num different files : ", len(diff_stats))
+    # for stat in diff_stats:
+    #     num_lines_added, num_lines_deleted, filename = stat.split('\t')
+    #     print (stat)
 
 
 def display_diffs(branch_1, branch_2):
@@ -46,21 +49,15 @@ def display_diffs(branch_1, branch_2):
     
     def show_this_diff(stat):
         num_lines_added, num_lines_deleted, filename = stat.split('\t')
-        num_lines_added = int(num_lines_added)
-        num_lines_deleted = int(num_lines_deleted)
 
-        pattern = r'third_party/'
-        # pattern = r'tensorflow/core/grappler/optimizers/'
-        # pattern = r'tensorflow/core/profiler/internal/gpu/
-        # pattern = r'tensorflow/core/common_runtime'
-        # pattern = r'tensorflow/python/distribute'
-        # pattern = r'tensorflow/tools/ci_build'
-        # pattern = r'tensorflow/tools/compatibility'
+        pattern = r'tensorflow/compiler/xla/tests/exhaustive'
         match = re.match(pattern, filename)
         if match is not None:
             return filename
 
-        # if (num_lines_added == 0) and (num_lines_deleted == 1):
+        # num_lines_added = int(num_lines_added)
+        # num_lines_deleted = int(num_lines_deleted)
+        # if (num_lines_added <= 5) and (num_lines_deleted <= 5):
         #     return filename
 
         return None
@@ -74,8 +71,12 @@ def display_diffs(branch_1, branch_2):
                 subprocess.run(["git", "diff", branch_1, "--", filename])
 
 
-def write_to_excel(branch_1, branch_2, excel_file):
+def write_to_excel(branch_1, branch_2):
     
+    today = date.today()
+
+    excel_file = "/common/pending_upstream_{}.xlsx".format(today.strftime("%y%m%d"))
+
     diff_stats = generate_diff_stats(branch_1, branch_2)
     
     workbook = Workbook()
@@ -103,20 +104,13 @@ def write_to_excel(branch_1, branch_2, excel_file):
 
 if __name__ == '__main__':
 
-    today = date.today()
-    excel_filename = "/common/pending_upstream_{}.xlsx".format(today.strftime("%y%m%d"))
-    upstream_branch = "origin/master-with-triaged-diffs"
-    fork_branch = "origin/develop-upstream"
-    current_working_tree = None
+    branch_1 = "origin/master-with-triaged-diffs"
+    branch_2 = "origin/develop-upstream"
+    # branch_2 = None
 
-    branch_1 = upstream_branch
-    branch_2 = current_working_tree
-    
-    # run_shell_command(["git", "fetch", "origin"])
+    run_shell_command(["git", "fetch", "origin"])
 
+    # display_num_diffs(branch1, branch2)
     # display_diffs(branch_1, branch_2)
-    
-    display_num_diffs(upstream_branch, fork_branch)
-    display_num_diffs(upstream_branch, current_working_tree)
 
-    # write_to_excel(branch_1, branch_2, excel_filename)
+    # write_to_excel(branch_1, branch_2)

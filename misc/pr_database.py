@@ -44,6 +44,26 @@ def get_PRs():
         ]])
 
     PRs.append([
+        "google_upstream",
+        "39860",
+        "Enforce host memory for DT_INT32 inputs of functional ops",
+        "OPEN",
+        "None",
+        [
+            ("0ed28eec1577983757e8cc05458b8faa5a65ba93",["291125835ea056c6a1621d9fd83054178e5eaedc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "39914",
+        "[ROCm] Fix for ROCm CSB breakage - 200527",
+        "OPEN",
+        "None",
+        [
+            ("1c2527fd1134753431796831dcf225ce0846862d",["b847ff9b3067a101296d1d857358b5bdeefd2342"]),
+        ]])
+
+    PRs.append([
         "rocm_fork",
         "782",
         "[DO NOT MERGE] Porting ROCm Fusion support to master-rocm-enhanced",
@@ -103,7 +123,7 @@ def get_PRs():
         "OPEN",
         "None",
         [
-            ("9e21cdd415346403b18750a3645693a83482b180",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
+            ("62b83ac7af22e9a9c10daa89fe772ac4e94ccd31",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
         ]])
 
     PRs.append([
@@ -113,7 +133,7 @@ def get_PRs():
         "OPEN",
         "None",
         [
-            ("944126fcd1b43da922302e5bd5c1666770c52ad1",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
+            ("bb019ebddd52c4b933ff5e7282049f0857cb9887",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
         ]])
 
     PRs.append([
