@@ -8,6 +8,7 @@ import re
 from datetime import date
 
 def run_shell_command(cmd):
+    # print (" ".join(cmd))
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode != 0:
         print("FAILED - {}".format(" ".join(cmd)))
@@ -15,6 +16,16 @@ def run_shell_command(cmd):
         print("         {}".format(result.stderr.decode()))
         sys.exit(result.returncode)
     return result
+
+
+def collate_passing_failing(passing_tests, failing_tests):
+    test_status = {}
+    for test in passing_tests:
+        test_status[test] = "PASS"
+    for test in failing_tests:
+        test_status[test] = "FAIL"
+    return test_status
+
 
 
 def get_xla_tests():
@@ -36,7 +47,7 @@ def get_xla_tests():
 
     passing_tests = get_test_list(passing_xla_tests)
     failing_tests = get_test_list(failing_xla_tests)
-    return (passing_tests, failing_tests)
+    return collate_passing_failing(passing_tests, failing_tests)
 
 
 
@@ -60,7 +71,14 @@ def get_cpp_tests():
 
     passing_tests = get_test_list(passing_cpp_tests)
     failing_tests = get_test_list(failing_cpp_tests)
-    return (passing_tests, failing_tests)
+
+    # Special case "//tensorflow/core/nccl:nccl_manager_test"
+    nccl_manager_test = "//tensorflow/core/nccl:nccl_manager_test"
+    if nccl_manager_test in failing_tests:
+        failing_tests.remove(nccl_manager_test)
+        passing_tests.append(nccl_manager_test)
+
+    return collate_passing_failing(passing_tests, failing_tests)
 
 
 
@@ -84,13 +102,81 @@ def get_py_tests():
 
     passing_tests = get_test_list(passing_py_tests)
     failing_tests = get_test_list(failing_py_tests)
-    return (passing_tests, failing_tests)
+    return collate_passing_failing(passing_tests, failing_tests)
+
+
+
+def get_branch_stats(branch, get_stats_funcs):
+    run_shell_command(["git", "checkout", branch])
+    stats = {}
+    for ci_type, get_stats_func in get_stats_funcs.items():
+        stats[ci_type]  = get_stats_func()
+    return stats
+
+
+
+def process_branch_stats(branch_stats, branches, ci_types):
+
+    default_stat = {}
+    for branch in branches:
+        default_stat[branch] = "NA"
+    
+    def process_stats(ci_type):
+        stats = {}
+        for branch in branches:
+            for test, status in branch_stats[branch][ci_type].items():
+                test_stat = stats.get(test, dict(default_stat))
+                test_stat[branch] = status
+                stats[test] = test_stat
+        return stats
+
+    test_stats = {}
+    for ci_type in ci_types:
+        test_stats[ci_type] = process_stats(ci_type)
+        
+    return test_stats
+
+
+
+def display_stats(test_stats, branches, ci_types):
+
+    def display_ci_type_stats(ci_type_stats):
+        for test, status in ci_type_stats.items():
+            # print (test, status)
+            for branch in branches :
+                if status[branch] == "FAIL":
+                    print (test, status)
+                    break
+
+    for ci_type in ci_types:
+        display_ci_type_stats(test_stats[ci_type])
 
 
 
 if __name__ == '__main__':
 
-    xla_pass, xla_fail = get_xla_tests()
-    cpp_pass, cpp_fail = get_cpp_tests()
-    py_pass, py_fail = get_py_tests()
+    run_shell_command(["git", "fetch", "origin"])
+    run_shell_command(["git", "fetch", "google_upstream"])
 
+    get_stats_funcs = {
+        # "xla" : get_xla_tests,
+        "cpp" : get_cpp_tests,
+        # "py" : get_py_tests,
+    }
+
+    ci_types = get_stats_funcs.keys()
+    
+    branches =  [
+        "origin/develop-upstream",
+        "google_upstream/master",
+    ]
+    
+    branch_stats = {}
+    for branch in branches:
+        branch_stats[branch] = get_branch_stats(branch, get_stats_funcs)
+    # print (branch_stats)
+    
+    test_stats = process_branch_stats(branch_stats, branches, ci_types)
+    # print (test_stats)
+    
+    display_stats(test_stats, branches, ci_types)

@@ -113,4 +113,4 @@ if __name__ == '__main__':
     # display_num_diffs(branch1, branch2)
     # display_diffs(branch_1, branch_2)
 
-    # write_to_excel(branch_1, branch_2)
+    write_to_excel(branch_1, branch_2)
