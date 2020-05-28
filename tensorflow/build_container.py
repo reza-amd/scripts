@@ -23,16 +23,19 @@ def run_shell_command(cmd, workdir):
     return result.returncode
 
 
-def update_tf_repo(tf_branch):
-    shutil.copy("/home/deven/deven/common/scripts/tensorflow/Dockerfile.rocm-internal", os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build"))
-    
-def get_docker_config(tf_branch):
-    docker_image = "devenamd/tensorflow:{}-{}".format(tf_branch, date.today().strftime("%y%m%d"))
+def get_docker_config(tag):
+    docker_image = "devenamd/tensorflow:{}-{}".format(tag, date.today().strftime("%y%m%d"))
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
     return docker_image, docker_file, None
 
 
-def get_docker_config_hipclang_internal_build(tf_branch, internal_build_number):
+def get_docker_config_rc_build(tag):
+    docker_image = "devenamd/tensorflow:{}-{}".format(tag, date.today().strftime("%y%m%d"))
+    docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm-rc")
+    return docker_image, docker_file, None
+
+
+def get_docker_config_hipclang_internal_build(tag, internal_build_number):
     build_name="compute-rocm-dkms-no-npi-hipclang-{}".format(internal_build_number)
     docker_image = "devenamd/tensorflow:{}-{}".format(build_name, date.today().strftime("%y%m%d"))
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm-internal")
@@ -44,7 +47,7 @@ def get_docker_config_hipclang_internal_build(tf_branch, internal_build_number):
     return docker_image, docker_file, docker_build_args
 
 
-def get_docker_config_hipclang_bkc_build(tf_branch, bkc_major, bkc_minor):
+def get_docker_config_hipclang_bkc_build(tag, bkc_major, bkc_minor):
     build_name="compute-rocm-dkms-no-npi-hipclang-int-bkc-{}-{}".format(bkc_major, bkc_minor)
     docker_image = "devenamd/tensorflow:{}-{}".format(build_name, date.today().strftime("%y%m%d"))
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm-internal")
@@ -59,13 +62,19 @@ def get_docker_config_hipclang_bkc_build(tf_branch, bkc_major, bkc_minor):
 def develop_upstream_hipclang_internal_build():
     tf_branch = "develop-upstream"
     internal_build_number = 2363
-    update_tf_repo(tf_branch)
+    shutil.copy("/home/deven/deven/common/scripts/tensorflow/Dockerfile.rocm-internal", os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build"))
     return get_docker_config_hipclang_internal_build(tf_branch, internal_build_number)
 
 
 def upstream_r21_build():
     tf_branch = "r2.1_rocm33"
     return get_docker_config(tf_branch)
+
+
+def develop_upstream_rocm35_rc_build():
+    tag = "rocm35_rc2"
+    shutil.copy("/home/deven/deven/common/scripts/tensorflow/Dockerfile.rocm-rc", os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build"))
+    return get_docker_config_rc_build(tag)
 
 
 if __name__ == '__main__':
@@ -75,8 +84,7 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # commit = args.commit
 
-    # docker_image, docker_file, docker_build_args = develop_upstream_hipclang_internal_build()
-    docker_image, docker_file, docker_build_args = upstream_r21_build()
+    docker_image, docker_file, docker_build_args = develop_upstream_rocm35_rc_build()
     
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 

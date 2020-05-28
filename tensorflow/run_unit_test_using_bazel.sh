@@ -66,6 +66,7 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # options="$options --test_env=TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 # options="$options --test_env=TF_ROCM_USE_IMMEDIATE_MODE=1"
+# options="$options --test_env=TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 
