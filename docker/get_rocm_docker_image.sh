@@ -8,7 +8,8 @@
 # tag=rocm2.9-tf1.15-dev
 
 docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.3-52a88d2 # 200512
+tag=rocm3.3-csb-edab186 # 200601
+# tag=rocm3.3-91d408c # 200601
 
 # docker_repo=rocm/tensorflow-private
 # tag=
@@ -33,7 +34,7 @@ tag=rocm3.3-52a88d2 # 200512
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_auto_rocm33_200512_update_upstream_merge_branches
+container_name=deven_rocm33_tf_upstream_01
 
 options=""
 options="$options -it"
