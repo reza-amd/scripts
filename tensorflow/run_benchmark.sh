@@ -92,6 +92,10 @@ options="$options --model=alexnet"
      
 # options="$options --num_warmup_batches=0"
 
+# DOES NOT WORK
+# env_vars="$env_vars PYTHONPATH=/root/models"
+# options="$options --benchmark_log_dir=/common/tf_cnn_benchmarks_log_dir"
+
 # options="$options --trace_file=/common/resnet50_trace.json"
 # options="$options --use_chrome_trace_format"
 

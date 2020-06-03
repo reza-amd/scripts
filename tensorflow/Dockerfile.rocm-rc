@@ -14,7 +14,7 @@ RUN apt update && apt install -y wget software-properties-common
 # Add rocm repository
 RUN apt-get clean all
 # RUN wget -qO - $DEB_ROCM_REPO/rocm.gpg.key | apt-key add -
-RUN sh -c  "echo deb [arch=amd64 trusted=yes] $DEB_ROCM_REPO 3.5 rel-25 > /etc/apt/sources.list.d/rocm.list"
+RUN sh -c  "echo deb [arch=amd64 trusted=yes] $DEB_ROCM_REPO 3.5 rel-30 > /etc/apt/sources.list.d/rocm.list"
 
 
 # Install misc pkgs

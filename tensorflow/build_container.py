@@ -72,7 +72,7 @@ def upstream_r21_build():
 
 
 def develop_upstream_rocm35_rc_build():
-    tag = "rocm35_rc2"
+    tag = "rocm35_rc3"
     shutil.copy("/home/deven/deven/common/scripts/tensorflow/Dockerfile.rocm-rc", os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build"))
     return get_docker_config_rc_build(tag)
 
