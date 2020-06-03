@@ -133,6 +133,8 @@ def get_google_upstream_PRs():
     PRs.append(39562)
     PRs.append(39860)
     PRs.append(39914)
+    PRs.append(40011)
+    PRs.append(40093)
 
     return PRs
     

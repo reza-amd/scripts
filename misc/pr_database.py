@@ -4,7 +4,7 @@ def get_PRs():
     PRs.append([
         "google_upstream",
         "39106",
-        "[ROCm] XLA enhancements & bugfixes",
+        "[ROCm] AMDGPU XLA compiler bugfixes, HLO slice sorting",
         "OPEN",
         "None",
         [
@@ -57,10 +57,32 @@ def get_PRs():
         "google_upstream",
         "39914",
         "[ROCm] Fix for ROCm CSB breakage - 200527",
+        "MERGED",
+        "f150cad3cb4c29fb19fbbfea6c2e5e07c2fc7dbe",
+        [
+            ("1c2527fd1134753431796831dcf225ce0846862d",["b847ff9b3067a101296d1d857358b5bdeefd2342"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40011",
+        "[ROCm] Adding a GPU kernel for dropout",
         "OPEN",
         "None",
         [
-            ("1c2527fd1134753431796831dcf225ce0846862d",["b847ff9b3067a101296d1d857358b5bdeefd2342"]),
+            ("112b85a1ba36c4fa415b1e819d3ed36f1fe57017",["291125835ea056c6a1621d9fd83054178e5eaedc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40093",
+        "[ROCm] Fix for ROCm CSB breakage - 200529",
+        "OPEN",
+        "None",
+        [
+            ("4cb805dba2d406debcfeea724efd3f973589c0f3",["5c3cdff00bb933d17572fe01895068eef51cd13f"]),
+            ("f38b02d59a7b95dd5fb8b3fc711b3ec09735b171",["4cb805dba2d406debcfeea724efd3f973589c0f3"]),
+            ("b68ee7ad8a2ef79da62faaad6b2291337da171a3",["f38b02d59a7b95dd5fb8b3fc711b3ec09735b171"]),
         ]])
 
     PRs.append([

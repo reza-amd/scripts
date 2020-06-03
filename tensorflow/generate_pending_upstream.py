@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     run_shell_command(["git", "fetch", "origin"])
 
-    # display_num_diffs(branch1, branch2)
+    # display_num_diffs(branch_1, branch_2)
     # display_diffs(branch_1, branch_2)
 
     write_to_excel(branch_1, branch_2)

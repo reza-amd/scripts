@@ -33,7 +33,8 @@ if __name__ == '__main__':
     # commit = args.commit
 
     # commit = "ff2019a216aed7bbb1e30432b47abcfe5567f0b4" # 200518 sync
-    commit = "463c3055ecd3bba92d7e1da3ebe48e7e8394a0c1" # 200527 sync
+    # commit = "463c3055ecd3bba92d7e1da3ebe48e7e8394a0c1" # 200527 sync
+    commit = "a26381f3dc49cfe7ef4bdc05652fc71b62f932f1" # 200601 sync
     
     # # Add eugene's fork as a remote for merging PR 39429
     # run_shell_command(["git", "remote", "add", "eugene_fork", "https://github.com/ekuznetsov139/tensorflow"])
