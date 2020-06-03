@@ -9,6 +9,9 @@ import sys
 
 from datetime import datetime
 
+from openpyxl import Workbook
+from openpyxl.styles import Font
+
 os.environ["HIP_VISIBLE_DEVICES"]="0";
 
 def run_shell_command(cmd):
@@ -93,6 +96,9 @@ def gather_stats(data):
     N = data["N"]
     
     stats = {}
+    stats["models"] = models
+    stats["configs"] = configs
+    stats["N"] = N
 
     def get_stats(N, config_data):
         run_stats = []
@@ -117,15 +123,53 @@ def gather_stats(data):
     return stats
 
 
-def dump_stats(stats):
-    print (stats)
+def dump_stats(excel_file, stats):
+
+    workbook = Workbook()
+    sheet = workbook.active
+
+    workbook = Workbook()
+    sheet = workbook.active
+
+    models = stats["models"]
+    configs = stats["configs"]
+    N = stats["N"]
+    
+    header_1 = ["", ""]
+    for name, options in configs:
+        header_1.append(name)
+        for i in range(N):
+            header_1.append("")
+        header_1.append("")
+    # print (header_1)
+    sheet.append(header_1)
+    
+    header_2 = ["benchmark", ""]
+    for name, options in configs:
+        for i in range(N):
+            header_2.append("run_{}".format(i))
+        header_2.append("AVERAGE") 
+        header_2.append("") 
+    # print (header_2)
+    sheet.append(header_2)
+
+    for model in models:
+        row = [model, ""]
+        model_stats = stats[model]
+        for name, options in configs:
+            config_stats = model_stats[name]
+            for i in range(N):
+                row.append(config_stats[i])
+            row.append("")
+            row.append("")
+        # print(row)
+        sheet.append(row)
+            
+    workbook.save(filename=excel_file)
+
 
 if __name__ == '__main__':
            
-    now = datetime.now()
-    filename = "bm_data_{}.json".format(now.strftime("%y%m%d_%H%M"))
-    print (filename)
-    
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dump_stats_from", default=None)
     args = parser.parse_args()
@@ -135,9 +179,11 @@ if __name__ == '__main__':
         with open(filename) as f:
             data = json.loads(f.read())
             stats = gather_stats(data)
-            dump_stats(stats)
+            dump_stats(filename.replace("json", "xlsx"), stats)
 
     else :
         data = collect_tf_cnn_benchmark_perf_data()
+        now = datetime.now()
+        filename = "bm_data_{}.json".format(now.strftime("%y%m%d_%H%M"))
         with open(filename, "w") as f:
             f.write(json.dumps(data))
