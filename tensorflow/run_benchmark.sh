@@ -1,5 +1,6 @@
 env_vars=""
 env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
+# env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
 
 
 # The MIOPEN_LOG_LEVEL=6 can be grepped to check the selected kernels by grepping for "Selected" string.

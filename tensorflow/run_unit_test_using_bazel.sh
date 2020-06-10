@@ -28,6 +28,7 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
+# options="$options --runs_per_test=10"
 # options="$options --test_output="
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
@@ -67,6 +68,7 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 # options="$options --test_env=TF_ROCM_USE_IMMEDIATE_MODE=1"
 # options="$options --test_env=TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
+# options="$options --test_env=TF_ROCM_BW_POOL_CACHE=1"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 

@@ -13,23 +13,12 @@ def get_PRs():
 
     PRs.append([
         "google_upstream",
-        "39427",
-        "[ROCm] hip-clang / ROCm 3.5 build fixes",
-        "MERGED",
-        "9282621aa9e14bdd64622542a16f495ec78c5f65",
-        [
-            ("0a980f296919766407af45b95c9e8aa290f72569",["b8ff27ef4ebbe3d7b8b219dfd1c96eb3b3e6beaa"]),
-            ("8dd28457699100145cad17aa4d44da81fddefda9",["0a980f296919766407af45b95c9e8aa290f72569"]),
-        ]])
-
-    PRs.append([
-        "google_upstream",
         "39429",
         "[ROCm] Fixing and enabling TopK",
         "OPEN",
         "None",
         [
-            ("774d448266a5d1ff41cb8579f3469835d386bae4",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
+            ("7ef56e66a29608b16d3b5cbd7cfad114ede3b3c1",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
         ]])
 
     PRs.append([
@@ -40,7 +29,7 @@ def get_PRs():
         "None",
         [
             ("073b8d248324968d9df328596e419d854d6242b0",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
-            ("931a71a9283ad4e0d918c376730b5528d25e3aee",["073b8d248324968d9df328596e419d854d6242b0"]),
+            ("cc4c98872a9229371d85cc4e32026f4848e79342",["073b8d248324968d9df328596e419d854d6242b0"]),
         ]])
 
     PRs.append([
@@ -77,12 +66,92 @@ def get_PRs():
         "google_upstream",
         "40093",
         "[ROCm] Fix for ROCm CSB breakage - 200529",
-        "OPEN",
-        "None",
+        "MERGED",
+        "3f8294f6f9ea2e1c83038aab845915e9b72946ae",
         [
             ("4cb805dba2d406debcfeea724efd3f973589c0f3",["5c3cdff00bb933d17572fe01895068eef51cd13f"]),
             ("f38b02d59a7b95dd5fb8b3fc711b3ec09735b171",["4cb805dba2d406debcfeea724efd3f973589c0f3"]),
             ("b68ee7ad8a2ef79da62faaad6b2291337da171a3",["f38b02d59a7b95dd5fb8b3fc711b3ec09735b171"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40173",
+        "[ROCm] Fix for the ROCm CSB breakage - 200604",
+        "MERGED",
+        "2b623518efa48daf88ccad6edcaf63c7d8e804c9",
+        [
+            ("856f899e4e7bf0c7490ed12f6ad7f2c852871459",["1af42f028bb3d18184d3dc7830bc0be5b6638bc7"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40284",
+        "[ROCm] Fix for ROCm CSB breakage - 200608",
+        "MERGED",
+        "a866c95a1a47479990d343a463f3e6dd007ffca3",
+        [
+            ("8abf495b5f4bc1180adbd1d1f2eeb73fd0c86144",["dab7b46024395609e1dff662495fa58949a7d9b6"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40304",
+        "[ROCm] Remove duplicate macros",
+        "OPEN",
+        "None",
+        [
+            ("4644b47db199ccda856c81ca88d6a3c58c41890f",["291125835ea056c6a1621d9fd83054178e5eaedc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40305",
+        "[ROCm] Fixing and enabling //tensorflow/core/util:gpu_kernel_helper_test_gpu",
+        "OPEN",
+        "None",
+        [
+            ("c8a2f59e2e2775808b82c877433ead9545fd7a84",["14e27e3b9ba44e0acd3cde5a4f63067ece780417"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40320",
+        "[ROCm] 3D pooling",
+        "OPEN",
+        "None",
+        [
+            ("8681b1bf543a33c62a9bec29625594d1fd9b921a",["291125835ea056c6a1621d9fd83054178e5eaedc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40324",
+        "[ROCm] Fix for ROCm CSB breakage - 200609",
+        "MERGED",
+        "5c40c90e704ce24ab9d8b6e63683a7b50a8f7d64",
+        [
+            ("2aca3b09445e7e6589a0dc2df9713875060c5118",["f76e9c291518babf9b69b75b969dfb296a3a9988"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40327",
+        "[ROCm] Enabling optimized FusedBatchNormInferenceMetaKernel for half",
+        "OPEN",
+        "None",
+        [
+            ("5f658e2bc1b20794239658bffe0d7bf9cb89c81f",["291125835ea056c6a1621d9fd83054178e5eaedc"]),
+        ]])
+
+    PRs.append([
+        "google_upstream",
+        "40329",
+        "[ROCm] Implementing reduction for complex64 and complex128",
+        "OPEN",
+        "None",
+        [
+            ("9b400ee2d6b4184fcadcb73d5f7f22ebb6cef4f6",["ae29b0fefb64f1d91f18b1c5827b61c4428f5d9f"]),
         ]])
 
     PRs.append([
@@ -113,19 +182,6 @@ def get_PRs():
         "None",
         [
             ("b43a0717607a11d29f281fba608d9eacf453acb1",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
-        ]])
-
-    PRs.append([
-        "rocm_fork",
-        "790",
-        "[DO NOT MERGE] Porting ROCm Dropout support to master-rocm-enhanced",
-        "OPEN",
-        "None",
-        [
-            ("d252f9e9996626f283e25786ad582dbd09ca30e1",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
-            ("d2a353bddca74289dbd9fb32377af7cd7b08772e",["d252f9e9996626f283e25786ad582dbd09ca30e1"]),
-            ("09efca834038a3bab8d29e2dd4fbce479837e760",["d2a353bddca74289dbd9fb32377af7cd7b08772e"]),
-            ("8314fa35255f669ae1628a5eb4edfcffe824c94e",["09efca834038a3bab8d29e2dd4fbce479837e760"]),
         ]])
 
     PRs.append([
@@ -166,17 +222,6 @@ def get_PRs():
         "None",
         [
             ("24e2f9c9bd177f34b3fded57703ba77c06a5d27e",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
-        ]])
-
-    PRs.append([
-        "rocm_fork",
-        "803",
-        "[DO NOT MERGE] Porting 3d pooling support to master-rocm-enhanced",
-        "OPEN",
-        "None",
-        [
-            ("75df904e54a901ba5e5c7defda84b92e1ebc647b",["4926e23ba4772e3007017dda9ee1585d30ca012b"]),
-            ("ed55070ad1936f08e60d7ef9aa87c0d0982666b8",["75df904e54a901ba5e5c7defda84b92e1ebc647b"]),
         ]])
 
     return PRs
