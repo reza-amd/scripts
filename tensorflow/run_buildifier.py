@@ -13,13 +13,13 @@ bazel_buildtools_repo = "https://github.com/bazelbuild/buildtools"
 
 def run_shell_cmd(cmd):
     print (" ".join(cmd))
-    # result = subprocess.run(cmd)
-    # if result.returncode != 0:
-    #     print ("FAILED  - ", cmd)
-    #     sys.exit(1)
+    result = subprocess.run(cmd)
+    if result.returncode != 0:
+        print ("FAILED  - ", cmd)
+        sys.exit(1)
  
 
-def download_buildifer(version):
+def download_buildifier(version):
     os.chdir(home_dir)
 
     wget_cmd = ["wget", "https://github.com/bazelbuild/buildtools/releases/download/{}/buildifier".format(version)]

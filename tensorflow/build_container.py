@@ -77,6 +77,11 @@ def develop_upstream_rocm35_rc_build():
     return get_docker_config_rc_build(tag)
 
 
+def develop_upstream_build():
+    tag = "rocm35"
+    return get_docker_config(tag)
+
+
 if __name__ == '__main__':
     
     # parser = argparse.ArgumentParser()
@@ -84,7 +89,7 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # commit = args.commit
 
-    docker_image, docker_file, docker_build_args = develop_upstream_rocm35_rc_build()
+    docker_image, docker_file, docker_build_args = develop_upstream_build()
     
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
