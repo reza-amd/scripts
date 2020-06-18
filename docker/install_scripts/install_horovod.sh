@@ -32,5 +32,5 @@ export LD_LIBRARY_PATH="$OPENMPI_HOME/lib:${LD_LIBRARY_PATH}"
 export HOROVOD_BUILD_ARCH_FLAGS="-Wall"
 python3 setup.py build && python3 setup.py install
 
-env > > /etc/profile.d/horovod.sh
+env >> /etc/profile.d/horovod.sh
 
