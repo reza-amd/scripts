@@ -7,14 +7,16 @@
 # tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.3-aa1c020 # 200612
-# tag=rocm3.3-csb-7b0071d # 200612
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.5-91b8cf2 # 200620
+# tag=rocm3.3-9ca344d # 200618
+# tag=rocm3.3-csb-5b009f9 # 200618
 
 # docker_repo=rocm/tensorflow-private
 # tag=
 
-# docker_repo=devenamd/tensorflow
+docker_repo=devenamd/tensorflow
+tag=rocm33-tf2.du-200616
 # tag=compute-rocm-dkms-no-npi-hipclang-2226
 
 # docker_repo=devenamd/tensorflow
@@ -34,7 +36,7 @@ tag=rocm3.3-aa1c020 # 200612
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_rocm33_tf_rocmfork_01
+container_name=deven_04_rocm33_tf_rocmfork
 
 options=""
 options="$options -it"
