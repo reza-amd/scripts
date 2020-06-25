@@ -15,8 +15,8 @@
 # docker_repo=rocm/tensorflow-private
 # tag=
 
-docker_repo=devenamd/tensorflow
-tag=rocm33-tf2.du-200616
+# docker_repo=devenamd/tensorflow
+# tag=rocm35_tf21-200622
 # tag=compute-rocm-dkms-no-npi-hipclang-2226
 
 # docker_repo=devenamd/tensorflow
@@ -32,11 +32,12 @@ tag=rocm33-tf2.du-200616
 # docker_repo=tensorflow/tensorflow
 # tag=nightly-py3
 
-# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+tag=2890_ubuntu_py3_tensorflow_r2.1-hipclang
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_04_rocm33_tf_rocmfork
+container_name=deven_02_tf21_experiment_for_peng
 
 options=""
 options="$options -it"
