@@ -7,8 +7,8 @@
 # tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
-# docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm3.5-91b8cf2 # 200620
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.5-b6f54db # 200629
 # tag=rocm3.3-9ca344d # 200618
 # tag=rocm3.3-csb-5b009f9 # 200618
 
@@ -32,12 +32,12 @@
 # docker_repo=tensorflow/tensorflow
 # tag=nightly-py3
 
-docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-tag=2890_ubuntu_py3_tensorflow_r2.1-hipclang
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+# tag=2890_ubuntu_py3_tensorflow_r2.1-hipclang
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_02_tf21_experiment_for_peng
+container_name=deven_05_rocm35_tfdu_rocmfork
 
 options=""
 options="$options -it"
