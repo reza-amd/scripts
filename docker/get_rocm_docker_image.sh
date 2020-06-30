@@ -2,6 +2,10 @@
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
+# tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
+# tag=rocm3.3-tf1.15-ofed4.6-openmpi4.0.0-horovod
+# tag=rocm3.3-tf2.1-ofed4.6-openmpi4.0.0-horovod
+# tag=rocm3.1-tf1.15-ofed4.6-openmpi4.0.0-horovod
 # tag=rocm3.3-tf2.1-dev
 # tag=rocm3.3-tf1.15-dev
 # tag=rocm3.1-tf2.1-python3
@@ -13,7 +17,9 @@ tag=rocm3.5-b6f54db # 200629
 # tag=rocm3.3-csb-5b009f9 # 200618
 
 # docker_repo=rocm/tensorflow-private
-# tag=
+# tag=tf-develop-upstream-ofed4.6-openmpi4.0.0-horovod-debug
+# tag=rocm3.5-tf2.2-enhanced-amp-dev-horovod
+# tag=rocm3.3-tf2.2-enhanced-ofed4.6-openmpi4.0.0-horovod-amp
 
 # docker_repo=devenamd/tensorflow
 # tag=rocm35_tf21-200622
@@ -52,6 +58,7 @@ options="$options -v $HOME/deven/common:/common"
 options="$options --device=/dev/kfd"
 options="$options --device=/dev/dri"
 
+# options="$options -v /data-bert:/data-bert"
 # options="$options -v /data/imagenet-inception:/imagenet"
 
 docker run $options --name $container_name $docker_image
