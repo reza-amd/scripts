@@ -32,13 +32,12 @@ if __name__ == '__main__':
     # args = parser.parse_args()
     # commit = args.commit
 
-    # commit = "ff2019a216aed7bbb1e30432b47abcfe5567f0b4" # 200518 sync
-    # commit = "463c3055ecd3bba92d7e1da3ebe48e7e8394a0c1" # 200527 sync
     # commit = "a26381f3dc49cfe7ef4bdc05652fc71b62f932f1" # 200601 sync
-    commit = "9429a942256175515d240fab5a7ed2da0f3f3d64" # 200608
+    # commit = "9429a942256175515d240fab5a7ed2da0f3f3d64" # 200608
+    commit = "22def20bae7be6d5b790b360abed5919385b16c2" # 200629 sync
     
-    # # Add eugene's fork as a remote for merging PR 39429
-    # run_shell_command(["git", "remote", "add", "eugene_fork", "https://github.com/ekuznetsov139/tensorflow"])
+    # Add eugene's fork as a remote for merging PR 39429
+    run_shell_command(["git", "remote", "add", "eugene_fork", "https://github.com/ekuznetsov139/tensorflow"])
 
     run_shell_command(["git", "fetch", "eugene_fork"])
     run_shell_command(["git", "fetch", "google_upstream"])

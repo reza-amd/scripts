@@ -38,9 +38,9 @@ def display_num_diffs(branch_1, branch_2):
 
     diff_stats = generate_diff_stats(branch_1, branch_2)
     print("Num different files : ", len(diff_stats))
-    # for stat in diff_stats:
-    #     num_lines_added, num_lines_deleted, filename = stat.split('\t')
-    #     print (stat)
+    for stat in diff_stats:
+        num_lines_added, num_lines_deleted, filename = stat.split('\t')
+        print (stat)
 
 
 def display_diffs(branch_1, branch_2):
@@ -50,7 +50,7 @@ def display_diffs(branch_1, branch_2):
     def show_this_diff(stat):
         num_lines_added, num_lines_deleted, filename = stat.split('\t')
 
-        pattern = r'tensorflow/compiler/xla/tests/exhaustive'
+        pattern = r'third_party'
         match = re.match(pattern, filename)
         if match is not None:
             return filename
