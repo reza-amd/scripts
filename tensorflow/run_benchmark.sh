@@ -15,7 +15,7 @@ env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 
 
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING=1"
-# env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
+env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
 # env_vars="$env_vars MIOPEN_LOG_LEVEL=6"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_FFT=0"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_FIRECT=0"
@@ -73,6 +73,7 @@ options="$options --model=resnet50_v1.5"
 # options="$options --noxla"
 
 # options="$options --use_fp16"
+# options="$options --auto_mixed_precision"
 
 # options="$options --allow_growth=true"
 
@@ -98,8 +99,8 @@ options="$options --batch_size=256"
 # env_vars="$env_vars PYTHONPATH=/root/models"
 # options="$options --benchmark_log_dir=/common/tf_cnn_benchmarks_log_dir"
 
-# options="$options --trace_file=/common/resnet50_trace.json"
-# options="$options --use_chrome_trace_format"
+options="$options --trace_file=/common/resnet50_trace.json"
+options="$options --use_chrome_trace_format"
 
 export $env_vars
 cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options

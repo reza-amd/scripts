@@ -43,7 +43,7 @@ tag=rocm3.5-b6f54db # 200629
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_05_rocm35_tfdu_rocmfork
+container_name=deven_01_rocm35_tf_rocmfork_devup
 
 options=""
 options="$options -it"
@@ -60,5 +60,6 @@ options="$options --device=/dev/dri"
 
 # options="$options -v /data-bert:/data-bert"
 # options="$options -v /data/imagenet-inception:/imagenet"
+options="$options -v /data/imagenet-inception:/data/imagenet-inception:"
 
 docker run $options --name $container_name $docker_image

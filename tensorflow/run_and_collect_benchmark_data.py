@@ -67,13 +67,13 @@ def collect_tf_cnn_benchmark_perf_data():
     ]
 
     configs = [
-        ("baseline", ["--batch_size=64"], {"TF_ROCM_FMA_DISABLE":"1",}),
-        # ("XLA", ["--batch_size=64", "--xla"], {"TF_ROCM_FMA_DISABLE":"1",}),
-        ("AMP", ["--batch_size=64", "--auto_mixed_precision"], {"TF_ROCM_FMA_DISABLE":"1",}),
-        # ("FP16", ["--batch_size=64", "--use_fp16"], {"TF_ROCM_FMA_DISABLE":"1",}),
-        ("FUSION", ["--batch_size=64"], {"TF_ROCM_FUSION_ENABLE":"1",}),
-        ("AMP + FUSION", ["--batch_size=64", "--auto_mixed_precision"], {"TF_ROCM_FUSION_ENABLE":"1",}),
-        # ("AMP + XLA", ["--batch_size=64", "--auto_mixed_precision", "--xla"], {"TF_ROCM_FMA_DISABLE":"1",}),
+        ("baseline", ["--batch_size=256"], {"TF_ROCM_FMA_DISABLE":"1",}),
+        # ("XLA", ["--batch_size=256", "--xla"], {"TF_ROCM_FMA_DISABLE":"1",}),
+        ("AMP", ["--batch_size=256", "--auto_mixed_precision"], {"TF_ROCM_FMA_DISABLE":"1",}),
+        # ("FP16", ["--batch_size=256", "--use_fp16"], {"TF_ROCM_FMA_DISABLE":"1",}),
+        ("FUSION", ["--batch_size=256"], {"TF_ROCM_FUSION_ENABLE":"1",}),
+        ("AMP + FUSION", ["--batch_size=256", "--auto_mixed_precision"], {"TF_ROCM_FUSION_ENABLE":"1",}),
+        # ("AMP + XLA", ["--batch_size=256", "--auto_mixed_precision", "--xla"], {"TF_ROCM_FMA_DISABLE":"1",}),
     ]
     
     N = 3
