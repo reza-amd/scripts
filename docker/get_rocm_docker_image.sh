@@ -11,12 +11,14 @@
 # tag=rocm3.1-tf2.1-python3
 # tag=rocm2.9-tf1.15-dev
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.5-b6f54db # 200629
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.5-b6f54db # 200629
 # tag=rocm3.3-9ca344d # 200618
 # tag=rocm3.3-csb-5b009f9 # 200618
 
-# docker_repo=rocm/tensorflow-private
+docker_repo=rocm/tensorflow-private
+tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
+# tag=rocm3.6-rc3-tf2.1-swdev241977
 # tag=tf-develop-upstream-ofed4.6-openmpi4.0.0-horovod-debug
 # tag=rocm3.5-tf2.2-enhanced-amp-dev-horovod
 # tag=rocm3.3-tf2.2-enhanced-ofed4.6-openmpi4.0.0-horovod-amp
@@ -43,7 +45,7 @@ tag=rocm3.5-b6f54db # 200629
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_01_rocm35_tf_rocmfork_devup
+container_name=deven_07_rocm36_tf_rocmfork_r21
 
 options=""
 options="$options -it"
@@ -53,13 +55,13 @@ options="$options --shm-size 16G"
 options="$options --group-add video"
 options="$options --cap-add=SYS_PTRACE"
 options="$options --security-opt seccomp=unconfined"
-options="$options -v $HOME/deven/common:/common"
 
 options="$options --device=/dev/kfd"
 options="$options --device=/dev/dri"
 
+options="$options -v $HOME/deven/common:/common"
 # options="$options -v /data-bert:/data-bert"
 # options="$options -v /data/imagenet-inception:/imagenet"
-options="$options -v /data/imagenet-inception:/data/imagenet-inception:"
+# options="$options -v /data/imagenet-inception:/data/imagenet-inception:"
 
 docker run $options --name $container_name $docker_image

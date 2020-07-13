@@ -44,7 +44,7 @@ def apply_post_tags(suffix):
 
 if __name__ == '__main__':
 
-    suffix = "200629"
+    suffix = "200713"
     
     # add_remote_google_upstream()
     # fetch_remotes()
@@ -56,9 +56,9 @@ if __name__ == '__main__':
     # fix all CI failures
 
     # apply_pre_tags(suffix)
-    # don't forget to enter user-id/password
+    # # don't forget to enter user-id/password
 
     # # merge PR
 
     # apply_post_tags(suffix)
-    # don't forget to enter user-id/password
+    # # don't forget to enter user-id/password
