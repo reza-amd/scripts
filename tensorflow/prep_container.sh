@@ -1,5 +1,5 @@
 #install emacs
-apt-get update && apt-get install -y emacs24-nox
+apt-get update && apt-get install -y emacs25-nox
 cd /root && rm -rf .emacs.d && git clone https://github.com/deven-amd/.emacs.d.git
 
 # download ROCm TF source

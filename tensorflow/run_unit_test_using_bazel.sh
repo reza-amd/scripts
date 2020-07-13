@@ -2,15 +2,16 @@
 set -e
 # set -x
 
-N_JOBS=$(grep -c ^processor /proc/cpuinfo)
-N_GPUS=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
+N_BUILD_JOBS=$(grep -c ^processor /proc/cpuinfo)
+TF_GPU_COUNT=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
+TF_TESTS_PER_GPU=6
+N_TEST_JOBS=$(expr ${TF_GPU_COUNT} \* ${TF_TESTS_PER_GPU})
 
 echo ""
-echo "Bazel will use ${N_JOBS} concurrent build job(s) and ${N_GPUS} concurrent test job(s)."
+echo "Bazel will use ${N_BUILD_JOBS} concurrent build job(s) and ${N_TEST_JOBS} concurrent test job(s)."
 echo ""
 
 export TF_NEED_ROCM=1
-export TF_GPU_COUNT=${N_GPUS}
 #####################
 
 options=""
@@ -72,7 +73,6 @@ options="$options --flaky_test_attempts=1"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 
-
 # options="$options --test_env=HSA_TOOLS_LIB=\"librocr_debug_agent64.so\""
 # options="$options --test_env=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib"
 # options="$options --test_env=PATH=$PATH:/opt/rocm/hcc/bin"
@@ -106,14 +106,16 @@ while (( $# )); do
     elif [ $1 == "-dbg" ]; then
 	options="$options --compilation_mode=dbg"
     elif [ $1 == "-f" ]; then
-	options="$options --jobs=$N_JOBS"
-	# options="$options --local_test_jobs=1"
-	options="$options --local_test_jobs=$TF_GPU_COUNT"
+	options="$options --jobs=$N_BUILD_JOBS"
+	options="$options --local_test_jobs=$N_TEST_JOBS"
+	options="$options --test_env=TF_GPU_COUNT=$TF_GPU_COUNT"
+	options="$options --test_env=TF_TESTS_PER_GPU=$TF_TESTS_PER_GPU"
 	options="$options --run_under=//tensorflow/tools/ci_build/gpu_build:parallel_gpu_execute"
 	testlist=$2
 	shift
     else
 	options="$options --test_env=HIP_VISIBLE_DEVICES=0"
+	options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1024"
 	all_tests=$1
     fi
 
