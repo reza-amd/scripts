@@ -57,6 +57,11 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=HCC_SERIALIZE_COPY=3"
 # options="$options --test_env=HCC_PROFILE=2"
 
+# options="$options --test_env=AMD_LOG_LEVEL=4"
+# options="$options --test_env=AMD_SERIALIZE_KERNEL=3"
+# options="$options --test_env=AMD_SERIALIZE_COPY=3"
+
+
 # options="$options --action_env=KMDUMPISA=1"
 # options="$options --action_env=KMDUMPLLVM=1"
 
@@ -70,6 +75,7 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=TF_ROCM_USE_IMMEDIATE_MODE=1"
 # options="$options --test_env=TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 # options="$options --test_env=TF_ROCM_BW_POOL_CACHE=1"
+# options="$options --test_env=TF_ROCM_XLA_TEMPFILES=1"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 
