@@ -92,7 +92,7 @@ def analyze_data(db_file, ignore_threshold, print_threshold):
             failure_counts[testname] = counts
 
     sorted_failure_counts = sorted(failure_counts.items(),
-                                   key = lambda x : x[1]["FAILED"] + x[1]["TIMEOUT"] + x[1]["FLAKY"], reverse=True)
+                                   key = lambda x : x[1]["FAILED"]*3 + x[1]["TIMEOUT"]*3 + x[1]["FLAKY"], reverse=True)
     
     print ("{:100s}, {:>10s}, {:>10s}, {:>10s}".format("testname", "FAILED", "TIMEOUT", "FLAKY"))
     for testname, counts in sorted_failure_counts:
@@ -129,21 +129,21 @@ def process_data_rocm_cpp():
 def analyze_data_rocm():
     db_file = "rocm_test_results.json"
     ignore_threshold = 20
-    print_threshold = 5
+    print_threshold = 3
     analyze_data(db_file, ignore_threshold, print_threshold)
 
 
 def analyze_data_rocm_xla():
     db_file = "rocm_xla_test_results.json"
     ignore_threshold = 20
-    print_threshold = 5
+    print_threshold = 3
     analyze_data(db_file, ignore_threshold, print_threshold)
 
 
 def analyze_data_rocm_cpp():
     db_file = "rocm_cpp_test_results.json"
     ignore_threshold = 20
-    print_threshold = 5
+    print_threshold = 3
     analyze_data(db_file, ignore_threshold, print_threshold)
 
 
@@ -153,7 +153,7 @@ if __name__ == '__main__' :
     # process_data_rocm_xla()
     # process_data_rocm_cpp()
     
-    # analyze_data_rocm()
-    # analyze_data_rocm_xla()
+    analyze_data_rocm()
+    analyze_data_rocm_xla()
     analyze_data_rocm_cpp()
 
