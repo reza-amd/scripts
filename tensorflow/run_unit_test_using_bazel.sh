@@ -4,7 +4,7 @@ set -e
 
 N_BUILD_JOBS=$(grep -c ^processor /proc/cpuinfo)
 TF_GPU_COUNT=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
-TF_TESTS_PER_GPU=6
+TF_TESTS_PER_GPU=4
 N_TEST_JOBS=$(expr ${TF_GPU_COUNT} \* ${TF_TESTS_PER_GPU})
 
 echo ""
@@ -29,7 +29,7 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
-# options="$options --runs_per_test=10"
+# options="$options --runs_per_test=$TF_TESTS_PER_GPU"
 # options="$options --test_output="
 
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
@@ -121,7 +121,9 @@ while (( $# )); do
 	shift
     else
 	options="$options --test_env=HIP_VISIBLE_DEVICES=0"
+	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=128"
 	options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1024"
+	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1536"
 	all_tests=$1
     fi
 

@@ -71,8 +71,8 @@ def get_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 3165
-    install_dir = "rocm-3.7.0-3165"
+    internal_build_number = 3289
+    install_dir = "rocm-3.7.0-{}".format(internal_build_number)
     docker_image_tag = "rocm37_{}-tf-rocmfork".format(internal_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
