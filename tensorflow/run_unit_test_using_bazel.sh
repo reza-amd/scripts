@@ -4,7 +4,7 @@ set -e
 
 N_BUILD_JOBS=$(grep -c ^processor /proc/cpuinfo)
 TF_GPU_COUNT=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
-TF_TESTS_PER_GPU=4
+TF_TESTS_PER_GPU=1
 N_TEST_JOBS=$(expr ${TF_GPU_COUNT} \* ${TF_TESTS_PER_GPU})
 
 echo ""
@@ -32,6 +32,7 @@ options="$options --flaky_test_attempts=1"
 # options="$options --runs_per_test=$TF_TESTS_PER_GPU"
 # options="$options --test_output="
 
+# options="$options --test_env=MIOPEN_LOG_LEVEL=6"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING_CMD=1"
 # options="$options --test_env=MIOPEN_DEBUG_CONV_FFT=0"
@@ -124,6 +125,9 @@ while (( $# )); do
 	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=128"
 	options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1024"
 	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1536"
+	# options="$options --run_under=ltrace"
+	# options="$options --run_under=strace"
+	# options="$options --run_under=pdb"
 	all_tests=$1
     fi
 
@@ -151,4 +155,4 @@ fi
 # llvm-objdump -disassemble -mcpu=gfx900 your.hsaco
 
 # bazel run --config=rocm --config=opt //tensorflow/compiler/xla/tools:hlo_proto_to_json -- --input_file=/common/LOGS/Types.4.pb --output_file=/common/LOGS/Types.4.pb.json
-# options="$options --run_under=/usr/bin/pdb"
+# sudo apt-get install -y strace ltrace
