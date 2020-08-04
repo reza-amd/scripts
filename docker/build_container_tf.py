@@ -88,11 +88,11 @@ if __name__ == '__main__':
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
-    # docker_image_tag, docker_build_args = get_release_build()
+    docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
-    docker_image_tag, docker_build_args = get_internal_build()
+    # docker_image_tag, docker_build_args = get_internal_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     
