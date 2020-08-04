@@ -86,8 +86,8 @@ if __name__ == '__main__':
     docker_file = os.path.join(pwd, './Dockerfile.rocm')
     docker_context = pwd
 
-    docker_image_tag, docker_build_args = get_release_build()
-    # docker_image_tag, docker_build_args = get_hidden_release_build()
+    # docker_image_tag, docker_build_args = get_release_build()
+    docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()

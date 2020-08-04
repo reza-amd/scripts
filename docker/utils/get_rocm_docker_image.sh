@@ -1,4 +1,5 @@
-# docker_repo=rocm/eigen-test
+docker_repo=rocm/eigen-test
+tag=rocm-3.6.0-200804
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
@@ -26,11 +27,13 @@
 # docker_repo=devenamd/tensorflow
 # tag=rocm36-tf-rocmfork-200713
 # tag=rocm35-tf-rocmfork-200803
-# tag=rocm3.3-200408
-# tag=rocm3.0_191220
+# tag=rocm36-tf-zero-size-symbol-bug
+# tag=rocm37_3165-tf-rocmfork-200716
+# tag=rocm37_3289-tf-rocmfork-200729
+# tag=rocm33-tf-upstream-18.04-200723
 
-docker_repo=devenamd/rocm
-tag=3.5.0-200804
+# docker_repo=devenamd/rocm
+# tag=3.5.0-200804
 
 # docker_repo=devenamd/mlir
 # tag=rocm-3.1-200309
@@ -46,7 +49,7 @@ tag=3.5.0-200804
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_900
+container_name=deven_10_rocm36_eigen
 
 options=""
 options="$options -it"
