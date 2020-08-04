@@ -25,11 +25,12 @@
 
 # docker_repo=devenamd/tensorflow
 # tag=rocm36-tf-rocmfork-200713
-
-docker_repo=devenamd/tensorflow
-tag=rocm35-tf-rocmfork-200803
+# tag=rocm35-tf-rocmfork-200803
 # tag=rocm3.3-200408
 # tag=rocm3.0_191220
+
+docker_repo=devenamd/rocm
+tag=3.5.0-200804
 
 # docker_repo=devenamd/mlir
 # tag=rocm-3.1-200309
@@ -45,7 +46,7 @@ tag=rocm35-tf-rocmfork-200803
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_07_rocm35_rocmfork
+container_name=deven_900
 
 options=""
 options="$options -it"

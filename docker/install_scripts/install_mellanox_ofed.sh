@@ -1,3 +1,5 @@
+set -e
+
 WORKDIR=$1
 
 cd $WORKDIR
