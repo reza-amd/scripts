@@ -8,6 +8,8 @@ ARG TEMP_DIR=/root/temp/
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN mkdir -p $TEMP_DIR
+
 COPY install_scripts/install_mellanox_ofed.sh /install/
 RUN /install/install_mellanox_ofed.sh ${TEMP_DIR} ${ROCM_PATH}
 
@@ -17,9 +19,7 @@ RUN /install/install_openmpi.sh ${TEMP_DIR} ${ROCM_PATH}
 COPY install_scripts/install_horovod.sh /install/
 RUN /install/install_horovod.sh ${TEMP_DIR} ${ROCM_PATH}
 
-ENV HOROVOD_GPU_ALLREDUCE=NCCL
-ENV HOROVOD_GPU_BROADCAST=NCCL
-
+ENV ROCM_PATH=$ROCM_PATH
 ENV OPENMPI_HOME=${ROCM_PATH}/openmpi
 
 ENV PATH="${OPENMPI_HOME}/bin:${PATH}"

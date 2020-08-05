@@ -1,16 +1,9 @@
-docker_repo=rocm/eigen-test
-tag=rocm-3.5.0-200804
+# docker_repo=rocm/eigen-test
+# tag=rocm-3.5.0-200804
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
-# tag=rocm3.3-tf1.15-ofed4.6-openmpi4.0.0-horovod
-# tag=rocm3.3-tf2.1-ofed4.6-openmpi4.0.0-horovod
-# tag=rocm3.1-tf1.15-ofed4.6-openmpi4.0.0-horovod
-# tag=rocm3.3-tf2.1-dev
-# tag=rocm3.3-tf1.15-dev
-# tag=rocm3.1-tf2.1-python3
-# tag=rocm2.9-tf1.15-dev
 
 # docker_repo=rocm/tensorflow-autobuilds
 # tag=rocm3.5-2398974 # 200723
@@ -19,12 +12,9 @@ tag=rocm-3.5.0-200804
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
-# tag=rocm3.6-rc3-tf2.1-swdev241977
-# tag=tf-develop-upstream-ofed4.6-openmpi4.0.0-horovod-debug
-# tag=rocm3.5-tf2.2-enhanced-amp-dev-horovod
-# tag=rocm3.3-tf2.2-enhanced-ofed4.6-openmpi4.0.0-horovod-amp
+docker_repo=devenamd/tensorflow
 
-# docker_repo=devenamd/tensorflow
+tag=rocm35-rocmfork-horovod-200805
 # tag=rocm36-tf-rocmfork-200713
 # tag=rocm35-tf-rocmfork-200803
 # tag=rocm36-tf-zero-size-symbol-bug
@@ -49,7 +39,7 @@ tag=rocm-3.5.0-200804
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_08_rocm35_eigen
+container_name=deven_09_rocm35_rocmfork_horovod
 
 options=""
 options="$options -it"
