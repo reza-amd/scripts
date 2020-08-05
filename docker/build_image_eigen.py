@@ -17,17 +17,33 @@ def run_shell_command(cmd, workdir):
     return result.returncode
 
 
+def get_rocm_build():
+    docker_image_tag = "rocm-3.5.0"
+    docker_build_args = [
+        "--build-arg", "ROCM_OR_CUDA_IMAGE=devenamd/rocm:3.5.0-200804",
+        "--build-arg", "ROCM_OR_CUDA=rocm",
+    ]
+    return docker_image_tag, docker_build_args
+
+
+def get_cuda_build():
+    docker_image_tag = "cuda-9.0"
+    docker_build_args = [
+        "--build-arg", "ROCM_OR_CUDA_IMAGE=nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04",
+        "--build-arg", "ROCM_OR_CUDA=cuda",
+    ]
+    return docker_image_tag, docker_build_args
+
+
 if __name__ == '__main__':
 
     pwd = os.getcwd()
-    docker_file = os.path.join(pwd, './Dockerfile.eigen_rocm')
+    docker_file = os.path.join(pwd, './Dockerfile.eigen')
     docker_context = pwd
 
-    docker_image_tag = "rocm-3.6.0"
-    docker_build_args = [
-        "--build-arg", "ROCM_IMAGE=devenamd/rocm:3.6.0-200804",
-    ]
-
+    docker_image_tag, docker_build_args = get_rocm_build()
+    # docker_image_tag, docker_build_args = get_cuda_build()
+    
     docker_image_name = "rocm/eigen-test:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
 
     docker_build_command = ["docker", "build", "-t", docker_image_name, "-f", docker_file]

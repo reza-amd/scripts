@@ -1,8 +1,9 @@
-ARG ROCM_IMAGE=devenamd/rocm:3.6.0-200804
+ARG ROCM_OR_CUDA_IMAGE=devenamd/rocm:3.6.0-200804
 
-FROM $ROCM_IMAGE
+FROM $ROCM_OR_CUDA_IMAGE
 MAINTAINER Deven Desai <deven.desai.amd@gmail.com>
 
+ARG ROCM_OR_CUDA=rocm
 ARG USER=rocm-user
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,5 +14,5 @@ RUN cd $HOME && git clone https://gitlab.com/libeigen/eigen eigen-official
 RUN cd $HOME && ln -s eigen-official eigen
 
 # copy the scripts to run the tests
-COPY eigen/run_tests_nightly.rocm.sh $HOME/
-COPY eigen/run_tests_gpu.rocm.sh $HOME/
+COPY eigen/run_tests_nightly.$ROCM_OR_CUDA.sh $HOME/
+COPY eigen/run_tests_gpu.$ROCM_OR_CUDA.sh $HOME/

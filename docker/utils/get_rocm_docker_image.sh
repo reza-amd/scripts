@@ -1,5 +1,5 @@
 docker_repo=rocm/eigen-test
-tag=rocm-3.6.0-200804
+tag=rocm-3.5.0-200804
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
@@ -49,7 +49,7 @@ tag=rocm-3.6.0-200804
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_10_rocm36_eigen
+container_name=deven_08_rocm35_eigen
 
 options=""
 options="$options -it"
