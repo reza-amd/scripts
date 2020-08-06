@@ -18,9 +18,9 @@ def run_shell_command(cmd, workdir):
 
 
 def get_rocm_build():
-    docker_image_tag = "rocm-3.5.0"
+    docker_image_tag = "rocm-3.7.0"
     docker_build_args = [
-        "--build-arg", "ROCM_OR_CUDA_IMAGE=devenamd/rocm:3.5.0-200804",
+        "--build-arg", "ROCM_OR_CUDA_IMAGE=devenamd/rocm:3.7.0-200806",
         "--build-arg", "ROCM_OR_CUDA=rocm",
     ]
     return docker_image_tag, docker_build_args

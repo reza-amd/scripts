@@ -19,6 +19,7 @@ apt-get install -y --allow-unauthenticated \
 apt-get install -y --allow-unauthenticated \
 	cmake \
 	kmod \
+	libnuma-dev \
 	pciutils
 
 apt-get clean
