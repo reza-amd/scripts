@@ -12,9 +12,10 @@
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
-docker_repo=devenamd/tensorflow
 
-tag=rocm35-rocmfork-horovod-200805
+docker_repo=devenamd/tensorflow
+tag=rocm37-rocmfork-horovod-200805
+# tag=rocm35-rocmfork-horovod-200805
 # tag=rocm36-tf-rocmfork-200713
 # tag=rocm35-tf-rocmfork-200803
 # tag=rocm36-tf-zero-size-symbol-bug
@@ -39,7 +40,7 @@ tag=rocm35-rocmfork-horovod-200805
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_09_rocm35_rocmfork_horovod
+container_name=deven_12_rocm37_rocmfork_horovod
 
 options=""
 options="$options -it"
