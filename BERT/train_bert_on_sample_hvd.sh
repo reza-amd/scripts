@@ -13,9 +13,9 @@ MODEL_CONFIG_DIR=${CODE_DIR}/configs/bert_large
 # prep train dir
 TRAIN_DIR=/root/bert/bert_full_train_ba10_seq128
 
-# rm -rf $TRAIN_DIR && mkdir -p $TRAIN_DIR
-# cp $MODEL_CONFIG_DIR/vocab.txt $TRAIN_DIR/vocab.txt
-# cp $MODEL_CONFIG_DIR/bert_config.json $TRAIN_DIR/bert_config.json
+rm -rf $TRAIN_DIR && mkdir -p $TRAIN_DIR
+cp $MODEL_CONFIG_DIR/vocab.txt $TRAIN_DIR/vocab.txt
+cp $MODEL_CONFIG_DIR/bert_config.json $TRAIN_DIR/bert_config.json
 
 # Generate the training data
 DATA_SOURCE_FILE_PATH=sample_text.txt
@@ -45,10 +45,6 @@ mpirun -np $NUM_GPUS \
   -H localhost:$NUM_GPUS \
   -bind-to none \
   -map-by slot \
-  -x NCCL_DEBUG=INFO \
-  -x HSA_FORCE_FINE_GRAIN_PCIE=1 \
-  -x LD_LIBRARY_PATH \
-  -x PATH \
   -mca pml ob1 \
   -mca btl ^openib \
 python3 $CODE_DIR/run_pretraining.py \

@@ -44,10 +44,10 @@ def get_release_build():
 
 
 def get_hidden_release_build():
-    install_dir = "rocm-3.6.0"
-    docker_image_tag = "rocm36-tf-rocmfork"
+    install_dir = "rocm-3.7.0"
+    docker_image_tag = "rocm37-tf-rocmfork"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/.apt_3.6/",
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/.apt_3.7/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
         "--build-arg", "ROCM_BUILD_NUM=main",
         "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
@@ -101,10 +101,10 @@ if __name__ == '__main__':
 
     # docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
-    # docker_image_tag, docker_build_args = get_hidden_release_build()
+    docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
-    docker_image_tag, docker_build_args = get_internal_build()
+    # docker_image_tag, docker_build_args = get_internal_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     

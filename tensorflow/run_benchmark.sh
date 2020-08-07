@@ -34,6 +34,10 @@ env_vars=""
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
 
+# env_vars="$env_vars AMD_LOG_LEVEL=4"
+# env_vars="$env_vars AMD_SERIALIZE_KERNEL=3"
+# env_vars="$env_vars AMD_SERIALIZE_COPY=3"
+
 # env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM_XDLOPS=1"
 # env_vars="$env_vars MIOPEN_DEBUG_IMPLICIT_GEMM_XDLOPS_INLINE_ASM=1"
