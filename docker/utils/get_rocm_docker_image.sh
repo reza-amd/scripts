@@ -1,5 +1,5 @@
-docker_repo=rocm/eigen-test
-tag=rocm-3.7.0-200806
+# docker_repo=rocm/eigen-test
+# tag=rocm-3.7.0-200806
 # tag=rocm-3.5.0-200804
 # tag=rocm-3.3
 
@@ -14,7 +14,10 @@ tag=rocm-3.7.0-200806
 # docker_repo=rocm/tensorflow-private
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
-# docker_repo=devenamd/tensorflow
+docker_repo=devenamd/tensorflow
+tag=rocm37rc3-tf-rocmfork-200818
+#tag=rocm37rc2-ub1804-tf-upstream-r21-200813
+# tag=rocm37rc2-tf-rocmfork-200811
 # tag=rocm37_3289-tf-rocmfork-200729
 # tag=rocm37_3165-tf-rocmfork-200716
 # tag=rocm37-tf-rocmfork-200806
@@ -42,7 +45,7 @@ tag=rocm-3.7.0-200806
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_15_rocm37_eigen
+container_name=deven_19_rocm37rc3_rocmfork
 
 options=""
 options="$options -it"

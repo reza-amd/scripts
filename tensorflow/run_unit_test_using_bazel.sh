@@ -3,7 +3,7 @@ set -e
 # set -x
 
 N_BUILD_JOBS=$(grep -c ^processor /proc/cpuinfo)
-TF_GPU_COUNT=$(lspci|grep 'VGA'|grep 'AMD/ATI'|wc -l)
+TF_GPU_COUNT=$(lspci|grep 'controller'|grep 'AMD/ATI'|wc -l)
 TF_TESTS_PER_GPU=1
 N_TEST_JOBS=$(expr ${TF_GPU_COUNT} \* ${TF_TESTS_PER_GPU})
 
