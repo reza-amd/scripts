@@ -8,6 +8,7 @@ apt-get install -y --no-install-recommends \
 	software-properties-common 
 
 apt-get install -y \
+	build-essential \
 	curl \
 	emacs \
 	git \

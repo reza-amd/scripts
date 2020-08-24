@@ -7,7 +7,7 @@ ARG ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.5/
 ARG ROCM_BUILD_NAME=xenial
 ARG ROCM_BUILD_NUM=main
 ARG ROCM_PATH=/opt/rocm-3.5.0
-ARG user=rocm-user
+ARG USER=rocm-user
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -31,21 +31,22 @@ RUN rm -rf ${ROCM_PATH}/bin/target.lst
 RUN bash -c 'echo -e "gfx900\ngfx906\ngfx908" >> ${ROCM_PATH}/bin/target.lst'
 
 ENV ROCM_PATH=$ROCM_PATH
-
-ENV HIP_PATH=$ROCM_PATH/hip
-# ENV OPENCL_ROOT=$ROCM_PATH/opencl
-
-ENV PATH="$HIP_PATH/bin:${PATH}"
-# ENV PATH="$OPENCL_ROOT/bin:${PATH}"
 ENV PATH="$ROCM_PATH/bin:${PATH}"
 
+# ENV HIP_PATH=$ROCM_PATH/hip
+# ENV PATH="$HIP_PATH/bin:${PATH}"
 
-RUN useradd --create-home $user
-RUN usermod --append --groups sudo $user
-RUN passwd -d $user
+# ENV OPENCL_ROOT=$ROCM_PATH/opencl
+# ENV PATH="$OPENCL_ROOT/bin:${PATH}"
 
-USER $user
-WORKDIR /home/$user
+
+# RUN useradd --create-home $USER
+# RUN usermod --append --groups sudo $USER
+RUN /bin/bash -c 'useradd --create-home -G sudo --shell /bin/bash $USER'
+RUN passwd -d $USER
+
+USER $USER
+WORKDIR /home/$USER
 #
 # Run an dummy sudo command to suppress the following message
 # (which will otherwise appear evertyime you start the container)

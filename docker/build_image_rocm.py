@@ -18,10 +18,10 @@ def run_shell_command(cmd, workdir):
 
 
 def get_release_build():
-    install_dir = "rocm-3.5.0"
-    docker_image_tag = "3.5.0"
+    install_dir = "rocm-3.7.0"
+    docker_image_tag = "3.7.0"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.5/",
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.7/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
         "--build-arg", "ROCM_BUILD_NUM=main",
         "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
@@ -86,8 +86,8 @@ if __name__ == '__main__':
     docker_file = os.path.join(pwd, './Dockerfile.rocm')
     docker_context = pwd
 
-    # docker_image_tag, docker_build_args = get_release_build()
-    docker_image_tag, docker_build_args = get_hidden_release_build()
+    docker_image_tag, docker_build_args = get_release_build()
+    # docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()
