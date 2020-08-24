@@ -7,17 +7,19 @@
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
 # docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm3.5-2398974 # 200723
+# tag=rocm3.5-3757f40 # 200807
 # tag=rocm3.3-9ca344d # 200618
 # tag=rocm3.3-csb-9d468d0 # 200723
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
-docker_repo=devenamd/tensorflow
-tag=rocm37rc3-tf-rocmfork-200818
-#tag=rocm37rc2-ub1804-tf-upstream-r21-200813
+# docker_repo=devenamd/tensorflow
+# tag=rocm37rc3-tf-rocmfork-200818
+# tag=rocm37rc2-ub1804-tf-upstream-r21-200813
 # tag=rocm37rc2-tf-rocmfork-200811
+# tag=rocm37-tf-rocmfork-r2.3-200817
+# tag=rocm38_3493-tf-rocmfork-200813
 # tag=rocm37_3289-tf-rocmfork-200729
 # tag=rocm37_3165-tf-rocmfork-200716
 # tag=rocm37-tf-rocmfork-200806
@@ -45,7 +47,7 @@ tag=rocm37rc3-tf-rocmfork-200818
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_19_rocm37rc3_rocmfork
+container_name=deven_13_rocm37_rocmfork_r2.3
 
 options=""
 options="$options -it"

@@ -45,12 +45,12 @@ def get_release_build():
 
 def get_hidden_release_build():
     install_dir = "rocm-3.7.0"
-    docker_image_tag = "rocm37-tf-rocmfork"
+    docker_image_tag = "rocm37-tf-rocmfork-r2.3"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/.apt_3.7/",
-        "--build-arg", "ROCM_BUILD_NAME=xenial",
-        "--build-arg", "ROCM_BUILD_NUM=main",
-        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/.apt_3.7/",
+        # "--build-arg", "ROCM_BUILD_NAME=xenial",
+        # "--build-arg", "ROCM_BUILD_NUM=main",
+        # "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
         ]
     return docker_image_tag, docker_build_args
 
@@ -82,9 +82,9 @@ def get_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 3289
-    install_dir = "rocm-3.7.0-{}".format(internal_build_number)
-    docker_image_tag = "rocm37_{}-tf-rocmfork".format(internal_build_number)
+    internal_build_number = 3493
+    install_dir = "rocm-3.8.0-{}".format(internal_build_number)
+    docker_image_tag = "rocm38_{}-tf-rocmfork".format(internal_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
         "--build-arg", "ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang",
