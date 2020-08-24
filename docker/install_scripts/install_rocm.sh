@@ -12,6 +12,7 @@ apt-get install -y --allow-unauthenticated \
 	rocfft \
 	rocm-cmake \
 	rocm-dev \
+	rocm-gdb \
 	rocm-libs \
 	rocm-utils \
 	rocrand

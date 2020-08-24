@@ -1,5 +1,5 @@
 # docker_repo=rocm/eigen-test
-# tag=rocm-3.7.0-200806
+# tag=rocm-3.7.0-200824
 # tag=rocm-3.5.0-200804
 # tag=rocm-3.3
 
@@ -11,11 +11,13 @@
 # tag=rocm3.3-9ca344d # 200618
 # tag=rocm3.3-csb-9d468d0 # 200723
 
-# docker_repo=rocm/tensorflow-private
+docker_repo=rocm/tensorflow-private
+tag=rocm37rc3_rocmfork
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 # docker_repo=devenamd/tensorflow
 # tag=rocm37rc3-tf-rocmfork-200818
+# tag=rocm37rc2-ub1804-tf-upstream-r21-200813
 # tag=rocm37rc2-ub1804-tf-upstream-r21-200813
 # tag=rocm37rc2-tf-rocmfork-200811
 # tag=rocm37-tf-rocmfork-r2.3-200817
@@ -47,7 +49,7 @@
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_13_rocm37_rocmfork_r2.3
+container_name=deven_05_rocm37_eigen
 
 options=""
 options="$options -it"
@@ -66,4 +68,4 @@ options="$options -v $HOME/deven/common:/common"
 # options="$options -v /data/imagenet-inception:/imagenet"
 # options="$options -v /data/imagenet-inception:/data/imagenet-inception:"
 
-docker run $options --name $container_name $docker_image
+echo docker run $options --name $container_name $docker_image
