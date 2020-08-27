@@ -13,6 +13,7 @@ apt-get install -y \
 	emacs \
 	git \
 	sudo \
+	unzip \
 	vim \
 	wget
 

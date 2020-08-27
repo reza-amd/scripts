@@ -21,13 +21,13 @@ def run_shell_command(cmd, workdir):
 
 
 def get_release_build_upstream():
-    install_dir = "rocm-3.3.0"
-    docker_image_tag = "rocm33-tf-upstream-18.04"
+    install_dir = "rocm-3.7.0"
+    docker_image_tag = "rocm37-tf-upstream"
     docker_build_args = [
-        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.5/",
-        # "--build-arg", "ROCM_BUILD_NAME=xenial",
-        # "--build-arg", "ROCM_BUILD_NUM=main",
-        # "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.7/",
+        "--build-arg", "ROCM_BUILD_NAME=xenial",
+        "--build-arg", "ROCM_BUILD_NUM=main",
+        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
         ]
     return docker_image_tag, docker_build_args
 
@@ -99,10 +99,10 @@ if __name__ == '__main__':
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
-    # docker_image_tag, docker_build_args = get_release_build_upstream()
+    docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    docker_image_tag, docker_build_args = get_rc_build()
+    # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()
 
