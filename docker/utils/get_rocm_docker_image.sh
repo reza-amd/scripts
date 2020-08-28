@@ -6,7 +6,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-# docker_repo=rocm/tensorflow-autobuilds
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.7-1ee7a40 # 200826
 # tag=rocm3.5-3757f40 # 200807
 # tag=rocm3.3-9ca344d # 200618
 # tag=rocm3.3-csb-9d468d0 # 200723
@@ -39,8 +40,8 @@
 # docker_repo=devenamd/mlir
 # tag=rocm-3.1-200309
 
-docker_repo=devenamd/tfrt
-tag=rocm-3.7.0-200826
+# docker_repo=devenamd/tfrt
+# tag=rocm-3.7.0-200826
 
 # docker_repo=sunway513/hiptensorflow
 # tag=
@@ -53,7 +54,7 @@ tag=rocm-3.7.0-200826
 # tag=2226_ubuntu_py3_tensorflow_master-hipclang
 
 docker_image=$docker_repo:$tag
-container_name=deven_20_rocm37_tfrt
+container_name=deven_14_rocm37_rocmfork
 
 options=""
 options="$options -it"
