@@ -17,6 +17,7 @@ tag=rocm3.7-1ee7a40 # 200826
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 # docker_repo=devenamd/tensorflow
+# tag=rocm37-tf-upstream-r21-200828
 # tag=rocm37-tf-upstream-200826
 # tag=rocm37rc3-tf-rocmfork-200818
 # tag=rocm37rc2-ub1804-tf-upstream-r21-200813

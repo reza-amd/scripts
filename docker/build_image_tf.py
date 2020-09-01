@@ -22,7 +22,7 @@ def run_shell_command(cmd, workdir):
 
 def get_release_build_upstream():
     install_dir = "rocm-3.7.0"
-    docker_image_tag = "rocm37-tf-upstream"
+    docker_image_tag = "rocm37-tf-upstream-r21"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.7/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",

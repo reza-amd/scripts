@@ -71,7 +71,7 @@ options="$options --model=resnet50_v1.5"
 # options="$options --model=vgg16"
 # options="$options --model=vgg19"
 
-# options="$options --xla"
+options="$options --xla"
 # options="$options --noxla"
 
 options="$options --use_fp16"
