@@ -56,10 +56,10 @@ def get_hidden_release_build():
 
 
 def get_rc_build():
-    version = "3.7"
-    release = "rel-20"
-    install_dir = "rocm-3.7.0"
-    docker_image_tag = "rocm37rc3-tf-rocmfork"
+    version = "3.8"
+    release = "rel-16"
+    install_dir = "rocm-3.8.0"
+    docker_image_tag = "rocm38rc1-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -99,10 +99,10 @@ if __name__ == '__main__':
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
-    docker_image_tag, docker_build_args = get_release_build_upstream()
+    # docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    # docker_image_tag, docker_build_args = get_rc_build()
+    docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()
 
