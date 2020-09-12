@@ -29,8 +29,8 @@ env_vars="$env_vars MIOPEN_FIND_MODE=1"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
  
-# env_vars="$env_vars TF_ROCM_FUSION_ENABLE=1"
-env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
+env_vars="$env_vars TF_ROCM_FUSION_ENABLE=1"
+# env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 # env_vars="$env_vars TF_ROCM_USE_IMMEDIATE_MODE=1"
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
@@ -71,7 +71,7 @@ options="$options --model=resnet50_v1.5"
 # options="$options --model=vgg16"
 # options="$options --model=vgg19"
 
-options="$options --xla"
+# options="$options --xla"
 # options="$options --noxla"
 
 options="$options --use_fp16"
