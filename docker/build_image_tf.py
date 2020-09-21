@@ -57,9 +57,9 @@ def get_hidden_release_build():
 
 def get_rc_build():
     version = "3.8"
-    release = "rel-16"
+    release = "rel-30"
     install_dir = "rocm-3.8.0"
-    docker_image_tag = "rocm38rc1-tf-rocmfork"
+    docker_image_tag = "rocm38rc3-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
