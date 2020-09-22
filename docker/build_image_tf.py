@@ -82,9 +82,9 @@ def get_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 3493
-    install_dir = "rocm-3.8.0-{}".format(internal_build_number)
-    docker_image_tag = "rocm38_{}-tf-rocmfork".format(internal_build_number)
+    internal_build_number = 3805
+    install_dir = "rocm-3.9.0-{}".format(internal_build_number)
+    docker_image_tag = "rocm39_{}-tf-rocmfork".format(internal_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
         "--build-arg", "ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang",
@@ -102,9 +102,9 @@ if __name__ == '__main__':
     # docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    docker_image_tag, docker_build_args = get_rc_build()
+    # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
-    # docker_image_tag, docker_build_args = get_internal_build()
+    docker_image_tag, docker_build_args = get_internal_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     
