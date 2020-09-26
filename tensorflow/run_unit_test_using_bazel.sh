@@ -68,7 +68,12 @@ options="$options --flaky_test_attempts=1"
 
 # options="$options --test_env=TF_CPP_MIN_LOG_LEVEL=1"
 # options="$options --test_env=TF_CPP_MIN_VLOG_LEVEL=3"
-# options="$options --test_env=TF_CPP_VMODULE=gpu_fusion_pass=3"
+
+# vmodules="dummy=1"
+# # vmodules="$vmodules,rocm_tracer=3"
+# vmodules="$vmodules,device_tracer_rocm=3"
+# options="$options --test_env=TF_CPP_VMODULE=$vmodules"
+
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"

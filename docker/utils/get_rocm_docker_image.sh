@@ -1,12 +1,13 @@
-docker_repo=rocm/eigen-test
-tag=rocm-3.7.0-200824
+# docker_repo=rocm/eigen-test
+# tag=rocm-3.7.0-200824
 # tag=rocm-3.5.0-200804
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-# docker_repo=rocm/tensorflow-autobuilds
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.8-44e82ea
 # tag=rocm3.7-1ee7a40 # 200826
 # tag=rocm3.5-3757f40 # 200807
 # tag=rocm3.3-9ca344d # 200618
@@ -18,6 +19,7 @@ tag=rocm-3.7.0-200824
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 # docker_repo=devenamd/tensorflow
+# tag=rocm39_3805-tf-rocmfork-200923
 # tag=rocm39_3805-tf-rocmfork-200921
 # tag=rocm38rc3-tf-rocmfork-200921
 # tag=rocm38rc3-tf-upstream-200918
@@ -67,7 +69,7 @@ tag=rocm-3.7.0-200824
 # tag=3.8-py3-ub18.04-3.8.20366-cc4fd405-hipvdi-stg-build-job567
 
 docker_image=$docker_repo:$tag
-container_name=deven_27_rocm37_eigen
+container_name=deven_03_rocm38_rocmfork
 
 options=""
 options="$options -it"
