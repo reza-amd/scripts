@@ -7,8 +7,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.8-44e82ea
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.8-44e82ea
 
 # docker_repo=rocm/tensorflow-autobuilds
 # tag=rocm3.7-csb-652291e
@@ -60,7 +60,8 @@ tag=rocm3.8-44e82ea
 # docker_repo=tensorflow/tensorflow
 # tag=nightly-py3
 
-# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+tag=3873_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
 # tag=3873_ubuntu_py3_tensorflow_r2.1
 # docker_repo=rocmqa/staging-tf2.1
 # tag=2890_ubuntu_py3_tensorflow_r2.1-hipclang
@@ -68,8 +69,9 @@ tag=rocm3.8-44e82ea
 # tag=3.8-py3-ub18.04-3.8.20366-cc4fd405-hipvdi-stg-build-job567
 
 
+
 docker_image=$docker_repo:$tag
-container_name=deven_27_rocm38_rocmfork
+container_name=deven_12_rocm39-3873_rocmfork
 
 options=""
 options="$options -it"
