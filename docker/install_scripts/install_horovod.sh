@@ -36,7 +36,8 @@ export HOROVOD_GPU_OPERATIONS=NCCL
 
 OPENMPI_HOME="${ROCM_PATH}/openmpi"
 export PATH="${OPENMPI_HOME}/bin:${PATH}"
-export LD_LIBRARY_PATH="$OPENMPI_HOME/lib:${LD_LIBRARY_PATH}"
+# export LD_LIBRARY_PATH="$OPENMPI_HOME/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="$OPENMPI_HOME/lib"
 
 export HOROVOD_BUILD_ARCH_FLAGS="-Wall"
 python3 setup.py build && python3 setup.py install

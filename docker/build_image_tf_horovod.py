@@ -23,14 +23,14 @@ if __name__ == '__main__':
     docker_file = os.path.join(pwd, './Dockerfile.tf.horovod')
     docker_context = pwd
 
-    docker_image_tag = "rocm37-rocmfork-horovod"
+    docker_image_tag = "rocm33-rocmfork-horovod"
     docker_build_args = [
-        "--build-arg", "TF_IMAGE_BASE=devenamd/tensorflow:rocm37_3289-tf-rocmfork-200805-build",
-        "--build-arg", "ROCM_PATH=/opt/rocm-3.7.0-3289/",
+        "--build-arg", "TF_IMAGE_BASE=rocm/tensorflow-autobuilds:rocm3.3-latest",
+        "--build-arg", "ROCM_PATH=/opt/rocm-3.3.0/",
         # "--build-arg", "TEMP_DIR=/root/temp",
     ]
 
-    docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
+    docker_image_name = "rocm/tensorflow-private:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
 
     docker_build_command = ["docker", "build", "-t", docker_image_name, "-f", docker_file]
     if docker_build_args is not None:

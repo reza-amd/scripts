@@ -1,9 +1,9 @@
-ARG TF_IMAGE_BASE=rocm/tensorflow-autobuilds:rocm3.5-latest
+ARG TF_IMAGE_BASE=rocm/tensorflow-autobuilds:rocm3.3-latest
 
 FROM $TF_IMAGE_BASE
 MAINTAINER Deven Desai <deven.desai.amd@gmail.com>
 
-ARG ROCM_PATH=/opt/rocm-3.5.0
+ARG ROCM_PATH=/opt/rocm-3.3.0
 ARG TEMP_DIR=/root/temp/
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,6 +18,9 @@ RUN /install/install_openmpi.sh ${TEMP_DIR} ${ROCM_PATH}
 
 COPY install_scripts/install_horovod.sh /install/
 RUN /install/install_horovod.sh ${TEMP_DIR} ${ROCM_PATH}
+
+COPY install_scripts/install_rocm35_thunk.sh /install/
+RUN /install/install_rocm35_thunk.sh ${TEMP_DIR} ${ROCM_PATH}
 
 ENV ROCM_PATH=$ROCM_PATH
 ENV OPENMPI_HOME=${ROCM_PATH}/openmpi
