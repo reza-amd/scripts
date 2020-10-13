@@ -73,7 +73,7 @@ def get_internal_rc_build():
     internal_rc_build_name = "compute-rocm-rel-3.9"
     internal_rc_build_number = 7
     install_dir = "rocm-3.9.0"
-    docker_image_tag = "rocm39rc_b{}-tf-rocmfork".format(internal_rc_build_number)
+    docker_image_tag = "rocm39rc_b{}-tf-upstream_r21".format(internal_rc_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(internal_rc_build_name),

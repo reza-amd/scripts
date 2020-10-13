@@ -19,7 +19,8 @@
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 docker_repo=devenamd/tensorflow
-tag=rocm39rc_b7-tf-rocmfork-201008
+tag=rocm39rc_b7-tf-upstream_r21-201012
+# tag=rocm39rc_b7-tf-rocmfork-201008
 # tag=rocm39rc1-tf-rocmfork-201004
 # tag=rocm37-tf-upstream-200928
 # tag=rocm39_3805-tf-rocmfork-200923
@@ -79,7 +80,7 @@ tag=rocm39rc_b7-tf-rocmfork-201008
 
 
 docker_image=$docker_repo:$tag
-container_name=deven_32_rocm39rc-b7_rocmfork
+container_name=deven_13_rocm39rc-b7_upstream_r21
 
 options=""
 options="$options -it"
