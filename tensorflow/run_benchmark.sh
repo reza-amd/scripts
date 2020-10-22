@@ -35,6 +35,20 @@ env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
 
+
+# env_vars="$env_vars TF_XLA_FLAGS=--tf_xla_auto_jit=2"
+# env_vars="$env_vars TF_ROCM_XLA_TEMPFILES=1"
+
+# tf_debug_output_dir="/common/tf_debug_output"
+# tf_debug_output_graph="$tf_debug_output_dir/graph"
+# tf_debug_output_xla="$tf_debug_output_dir/xla"
+
+# env_vars="$env_vars TF_DUMP_GRAPH_PREFIX=$tf_debug_output_graph"
+
+# env_vars="$env_vars TF_XLA_FLAGS=--tf_xla_clustering_debug"
+# env_vars="$env_vars XLA_FLAGS=--xla_dump_to=$tf_debug_output_xla"
+# # env_vars="$env_vars XLA_FLAGS=--xla_dump_hlo_as_text"
+
 # env_vars="$env_vars AMD_LOG_LEVEL=4"
 # env_vars="$env_vars AMD_SERIALIZE_KERNEL=3"
 # env_vars="$env_vars AMD_SERIALIZE_COPY=3"
@@ -72,7 +86,8 @@ options="$options --model=resnet50_v1.5"
 # options="$options --model=vgg19"
 
 # options="$options --xla"
-# options="$options --noxla"
+# options="$options --xla_compile"
+# options="$options --compute_lr_on_cpu"
 
 options="$options --use_fp16"
 # options="$options --auto_mixed_precision"

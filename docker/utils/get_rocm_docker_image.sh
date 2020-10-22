@@ -14,6 +14,7 @@
 # tag=rocm3.7-csb-652291e
 
 # docker_repo=rocm/tensorflow-private
+# tag=rocm3.7-tf2.3-mi100-perf-develop
 # tag=rocm3.7-tf2.3-miopen-rn50-0910
 # tag=rocm37rc3_rocmfork
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
