@@ -41,9 +41,10 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=MIOPEN_GEMM_ENFORCE_BACKEND=2"
 # options="$options --test_env=AMD_OCL_BUILD_OPTIONS_APPEND=\"-save-temps-all\""
 
-# options="$options --test_env=ROCBLAS_LAYER=1"
-# options="$options --test_env=ROCBLAS_LAYER=2"
-# options="$options --test_env=ROCBLAS_LAYER=3"
+# options="$options --test_env=ROCBLAS_LAYER=1"  # enable trace logging
+# options="$options --test_env=ROCBLAS_LAYER=2"  # enable bench logging
+# options="$options --test_env=ROCBLAS_LAYER=4"  # enable profile logging
+# options="$options --test_env=ROCBLAS_LAYER=7"
 
 # options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
 # options="$options --test_env=HIP_TRACE_API=1"
@@ -75,6 +76,18 @@ options="$options --flaky_test_attempts=1"
 # options="$options --test_env=TF_CPP_VMODULE=$vmodules"
 
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
+
+
+# tf_debug_output_dir="/common/tf_debug_output/"
+# tf_debug_output_graph="$tf_debug_output_dir/graph"
+# tf_debug_output_xla="$tf_debug_output_dir/xla"
+
+# options="$options --test_env=TF_DUMP_GRAPH_PREFIX=$tf_debug_output_graph"
+
+# options="$options --test_env=TF_XLA_FLAGS=--tf_xla_clustering_debug"
+# options="$options --test_env=XLA_FLAGS=--xla_dump_to=$tf_debug_output_xla"
+
+# options="$options --test_env=XLA_FLAGS=--xla_dump_hlo_as_text"
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
 # options="$options --test_env=TF_ROCM_FUSION_DUMP_GRAPH_BEFORE=1"

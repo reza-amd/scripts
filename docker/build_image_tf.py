@@ -57,9 +57,9 @@ def get_hidden_release_build():
 
 def get_rc_build():
     version = "3.9"
-    release = "rel-3"
+    release = "rel-17"
     install_dir = "rocm-3.9.0"
-    docker_image_tag = "rocm39rc1-tf-rocmfork"
+    docker_image_tag = "rocm39rc3-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -116,8 +116,8 @@ if __name__ == '__main__':
     # docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    # docker_image_tag, docker_build_args = get_rc_build()
-    docker_image_tag, docker_build_args = get_internal_rc_build()
+    docker_image_tag, docker_build_args = get_rc_build()
+    # docker_image_tag, docker_build_args = get_internal_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()
 
