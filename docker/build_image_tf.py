@@ -20,6 +20,13 @@ def run_shell_command(cmd, workdir):
     return result.returncode
 
 
+def get_legacy_build():
+    install_dir = "rocm-3.9.0"
+    docker_image_tag = "rocm39-tf-rocmfork-r23-rocm-enhanced-pre-rocm"
+    docker_build_args = []
+    return docker_image_tag, docker_build_args
+
+
 def get_release_build_upstream():
     install_dir = "rocm-3.7.0"
     docker_image_tag = "rocm37-tf-upstream-r21"
@@ -56,10 +63,10 @@ def get_hidden_release_build():
 
 
 def get_rc_build():
-    version = "3.9"
-    release = "rel-17"
-    install_dir = "rocm-3.9.0"
-    docker_image_tag = "rocm39rc3-tf-rocmfork"
+    version = "3.10"
+    release = "rel-11"
+    install_dir = "rocm-3.10.0"
+    docker_image_tag = "rocm310rc1-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -113,6 +120,7 @@ if __name__ == '__main__':
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
+    # docker_image_tag, docker_build_args = get_legacy_build()
     # docker_image_tag, docker_build_args = get_release_build_upstream()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()

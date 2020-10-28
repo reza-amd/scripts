@@ -15,12 +15,17 @@
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm3.7-tf2.3-mi100-perf-develop
+# tag=rocm3.9-rc3-tf2.3-dev
 # tag=rocm3.7-tf2.3-miopen-rn50-0910
 # tag=rocm37rc3_rocmfork
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 docker_repo=devenamd/tensorflow
-tag=rocm39rc3-tf-rocmfork-201022
+tag=rocm310rc1-tf-rocmfork-201027
+# tag=rocm39-tf-rocmfork-r23-rocm-enhanced-pre-rocm-201023
+# tag=rocm39-tf-rocmfork-r23-rocm-enhanced-201023
+# tag=rocm39rc3-tf-upstream_r21-201023
+#tag=rocm39rc3-tf-rocmfork-201022
 # tag=rocm39rc2-tf-rocmfork-201014
 # tag=rocm39rc_b7-tf-upstream_r21-201012
 # tag=rocm39rc_b7-tf-rocmfork-201008
@@ -85,7 +90,7 @@ tag=rocm39rc3-tf-rocmfork-201022
 # tag=16_centos8_tf_1.15
 
 docker_image=$docker_repo:$tag
-container_name=deven_36_rocm39rc3_rocmfork
+container_name=deven_38_rocm310rc1_rocmfork
 
 options=""
 options="$options -it"
