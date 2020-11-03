@@ -22,7 +22,7 @@ def run_shell_command(cmd, workdir):
 
 def get_legacy_build():
     install_dir = "rocm-3.9.0"
-    docker_image_tag = "rocm39-tf-upstream-r21"
+    docker_image_tag = "rocm39-tf-upstream"
     docker_build_args = []
     return docker_image_tag, docker_build_args
 

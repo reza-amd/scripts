@@ -44,7 +44,7 @@ def apply_post_tags(suffix):
 
 if __name__ == '__main__':
 
-  suffix = "201026"
+  suffix = "201102"
 
   # add_remote_google_upstream()
 

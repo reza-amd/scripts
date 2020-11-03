@@ -29,6 +29,7 @@ options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
 options="$options --cache_test_results=no"
 options="$options --flaky_test_attempts=1"
+options="$options --test_size_filters=small,medium,large"
 # options="$options --runs_per_test=$TF_TESTS_PER_GPU"
 # options="$options --test_output="
 
