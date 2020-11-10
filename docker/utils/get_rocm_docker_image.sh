@@ -8,10 +8,10 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-# docker_repo=rocm/tensorflow-autobuilds
+docker_repo=rocm/tensorflow-autobuilds
 # tag=rocm3.9.0-6882026
 # tag=rocm3.8-44e82ea
-# tag=rocm3.7-csb-652291e
+tag=rocm3.7-csb-8520302
 
 # docker_repo=rocm/tensorflow-private
 # tag=rocm4.0-nv21-69-tf1.15-dev
@@ -92,11 +92,11 @@
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-rel-3.8-tf-manylinux-env
 # tag=16_centos8_tf_1.15
 
-docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-rel-3.10
-tag=11_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-rel-3.10
+# tag=11_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
 
 docker_image=$docker_repo:$tag
-container_name=deven_43_rocm310_QA_VGG16_OOM
+container_name=deven_43_rocm37_upstream
 
 options=""
 options="$options -it"

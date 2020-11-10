@@ -28,6 +28,12 @@ env_vars=""
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
 # env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
+# vmodules="dummy=1"
+# vmodules="$vmodules,rocm_tracer=3"
+# vmodules="$vmodules,device_tracer_rocm=3"
+# vmodules="$vmodules,conv_ops=3"
+# vmodules="$vmodules,meta_optimizer=4"
+# env_vars="$env_vars TF_CPP_VMODULE=$vmodules"
  
 # env_vars="$env_vars TF_ROCM_FUSION_ENABLE=1"
 env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
@@ -45,9 +51,17 @@ env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 
 # env_vars="$env_vars TF_DUMP_GRAPH_PREFIX=$tf_debug_output_graph"
 
-# env_vars="$env_vars TF_XLA_FLAGS=--tf_xla_clustering_debug"
-# env_vars="$env_vars XLA_FLAGS=--xla_dump_to=$tf_debug_output_xla"
-# # env_vars="$env_vars XLA_FLAGS=--xla_dump_hlo_as_text"
+# tf_xla_flags=""
+# tf_xla_flags="$tf_xla_flags --tf_xla_clustering_debug"
+# export TF_XLA_FLAGS="$tf_xla_flags"
+
+# xla_flags=""
+# xla_flags="$xla_flags --xla_dump_to=$tf_debug_output_xla"
+# xla_flags="$xla_flags --xla_dump_hlo_as_text"
+# xla_flags="$xla_flags --xla_hlo_profile"
+# xla_flags="$xla_flags --xla_gpu_use_cudnn_batchnorm"
+# export XLA_FLAGS="$xla_flags"
+
 
 # env_vars="$env_vars AMD_LOG_LEVEL=4"
 # env_vars="$env_vars AMD_SERIALIZE_KERNEL=3"
@@ -111,6 +125,10 @@ options="$options --batch_size=256"
 # options="$options --batch_size=1024"
      
 # options="$options --num_warmup_batches=0"
+
+# graph_file_suffix="xla_on"
+# options="$options --graph_file=model_$graph_file_suffix.txt"
+# options="$options --partitioned_graph_file_prefix=model_$graph_file_suffix.txt"
 
 # DOES NOT WORK
 # env_vars="$env_vars PYTHONPATH=/root/models"

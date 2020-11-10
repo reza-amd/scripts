@@ -72,7 +72,7 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=TF_CPP_MIN_VLOG_LEVEL=3"
 
 # vmodules="dummy=1"
-# # vmodules="$vmodules,rocm_tracer=3"
+# vmodules="$vmodules,rocm_tracer=3"
 # vmodules="$vmodules,device_tracer_rocm=3"
 # options="$options --test_env=TF_CPP_VMODULE=$vmodules"
 
