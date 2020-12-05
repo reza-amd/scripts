@@ -126,6 +126,8 @@ options="$options --batch_size=256"
      
 # options="$options --num_warmup_batches=0"
 
+# options="$options --num_gpus=4"
+
 # graph_file_suffix="xla_on"
 # options="$options --graph_file=model_$graph_file_suffix.txt"
 # options="$options --partitioned_graph_file_prefix=model_$graph_file_suffix.txt"
@@ -148,4 +150,4 @@ cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $o
 # options="$options --variable_update=horovod"
 # export $env_vars
 # NUM_GPUS=4
-# cd /root/benchmarks && mpirun -n $NUM_GPUS python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
+# cd /root/benchmarks && horovodrun -n $NUM_GPUS python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options

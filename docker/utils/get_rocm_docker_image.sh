@@ -9,7 +9,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-# docker_repo=rocm/tensorflow-autobuilds
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm3.10.0-1e2d964
 # tag=rocm3.9.0-csb-a0ef744
 # tag=rocm3.9.0-6a3c668
 # tag=rocm3.9.0-6882026
@@ -17,6 +18,7 @@
 # tag=rocm3.7-csb-8520302
 
 # docker_repo=rocm/tensorflow-private
+# tag=rocm3.9-tf2.3-dev-miopen-develop-ofed4.7-openmpi4.0.0-horovod
 # tag=rocm4.0-nv21-69-tf1.15-dev
 # tag=rocm3.7-tf2.3-mi100-perf-develop
 # tag=rocm3.9-rc3-tf2.3-dev
@@ -25,6 +27,7 @@
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
 # docker_repo=devenamd/tensorflow
+# tag=rocm40_6066-tf-rocmfork-201115
 # tag=rocm310rc1-tf-rocmfork-201110
 # tag=rocm39-tf-upstream-201029
 # tag=rocm39-tf-upstream-r21-201028
@@ -78,8 +81,8 @@
 # docker_repo=tensorflow/tensorflow
 # tag=nightly-py3
 
-docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-tag=6132_ubuntu_py3_tensorflow_develop-upstream-QA-rocm40
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
+# tag=6132_ubuntu_py3_tensorflow_develop-upstream-QA-rocm40
 # tag=3873_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
 # tag=3873_ubuntu_py3_tensorflow_r2.1
 
@@ -103,9 +106,11 @@ tag=6132_ubuntu_py3_tensorflow_develop-upstream-QA-rocm40
 # tag=11_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
 
 
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-amd-feature-targetid
+# tag=108_ubuntu_py3_tensorflow_google_upstream_r21_rocm_updates_200923
 
 docker_image=$docker_repo:$tag
-container_name=deven_48_rocm40_b6132_rocmfork_QA
+container_name=deven_27_rocm310_rocmfork
 
 options=""
 options="$options -it"
