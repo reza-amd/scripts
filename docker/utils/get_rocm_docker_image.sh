@@ -9,8 +9,8 @@
 # docker_repo=rocm/tensorflow
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm3.10.0-1e2d964
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm3.10.0-1e2d964
 # tag=rocm3.9.0-csb-a0ef744
 # tag=rocm3.9.0-6a3c668
 # tag=rocm3.9.0-6882026
@@ -75,6 +75,9 @@ tag=rocm3.10.0-1e2d964
 # docker_repo=devenamd/tfrt
 # tag=rocm-3.7.0-200826
 
+docker_repo=devenamd/jax
+tag=rocm-3.10.0-201205
+
 # docker_repo=sunway513/hiptensorflow
 # tag=
 
@@ -110,7 +113,7 @@ tag=rocm3.10.0-1e2d964
 # tag=108_ubuntu_py3_tensorflow_google_upstream_r21_rocm_updates_200923
 
 docker_image=$docker_repo:$tag
-container_name=deven_27_rocm310_rocmfork
+container_name=deven_TEMP_JAX
 
 options=""
 options="$options -it"
