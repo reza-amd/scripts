@@ -9,12 +9,11 @@ set -ex
 # --bazel_options=--override_repository=org_tensorflow=<TF_repo_root_dir>
 
 
-# # build jaxlib without GPU support
-# python3 build/build.py
+options=""
+# options="--enable_cuda"
+options="--enable_rocm"
+# options="$options --bazel_options=--subcommands"
+options="$options --bazel_options=--override_repository=org_tensorflow=/home/rocm-user/rocm-tf"
+# options="$options --bazel_options=--override_repository=org_tensorflow=/home/rocm-user/inailuig-tf"
 
-# # build jaxlib with CUDA GPU support
-# python3 build/build.py --enable_cuda
-
-# build jaxlib with ROCm GPU support
-# python3 build/build.py --enable_rocm
-python3 build/build.py --enable_rocm --bazel_options=--override_repository=org_tensorflow=/home/rocm-user/inailuig-tf
+python3 build/build.py $options
