@@ -13,7 +13,7 @@ options=""
 # options="--enable_cuda"
 options="--enable_rocm"
 # options="$options --bazel_options=--subcommands"
-options="$options --bazel_options=--override_repository=org_tensorflow=/home/rocm-user/rocm-tf"
-# options="$options --bazel_options=--override_repository=org_tensorflow=/home/rocm-user/inailuig-tf"
+options="$options --bazel_options=--override_repository=org_tensorflow=$HOME/rocm-tf"
+# options="$options --bazel_options=--override_repository=org_tensorflow=$HOME/inailuig-tf"
 
 python3 build/build.py $options

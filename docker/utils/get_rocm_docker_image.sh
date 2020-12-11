@@ -76,7 +76,7 @@
 # tag=rocm-3.7.0-200826
 
 docker_repo=devenamd/jax
-tag=rocm-3.10.0-201205
+tag=rocm-3.10.0-201211
 
 # docker_repo=sunway513/hiptensorflow
 # tag=

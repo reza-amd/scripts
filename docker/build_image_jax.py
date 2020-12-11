@@ -23,10 +23,14 @@ if __name__ == '__main__':
     docker_file = os.path.join(pwd, './Dockerfile.jax')
     docker_context = pwd
 
+    install_dir = "rocm-3.10.0"
     docker_image_tag = "rocm-3.10.0"
     docker_build_args = [
-        "--build-arg", "ROCM_BASE_IMAGE=devenamd/rocm:3.10.0-201201",
-    ]
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.10/",
+        "--build-arg", "ROCM_BUILD_NAME=xenial",
+        "--build-arg", "ROCM_BUILD_NUM=main",
+        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        ]
     
     docker_image_name = "devenamd/jax:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
 
