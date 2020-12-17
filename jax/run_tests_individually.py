@@ -105,27 +105,39 @@ def get_testcases():
   return all_testcases
 
 
-def run_individually(all_testcases):
+def run_test(testcase):
   env_vars = {
+    "HIP_VISIBLE_DEVICES" : "0",
     "XLA_PYTHON_CLIENT_ALLOCATOR" : "platform",
   }
+  cmd = ["python3", "-m", "pytest", "-n", "1", testcase]
+  print ("#" *100, "\n")
+  print (testcase, "\n")
+  set_env_str = " ".join(["{}={}".format(var,value) for var,value in env_vars.items()])
+  print (" ".join([set_env_str, " ".join(cmd)]))
+  output = run_shell_command(cmd, env_vars=env_vars)
+  print (output)
+  
+
+def run_individually(all_testcases):
   for testcase, status  in all_testcases.items():
-    if status == "PASS":
-      continue
-    cmd = ["python3", "-m", "pytest", "-n", "1", testcase]
-    print ("#" *100, "\n")
-    print (testcase, "\n")
-    set_env_str = " ".join(["{}={}".format(var,value) for var,value in env_vars.items()])
-    print (" ".join([set_env_str, " ".join(cmd)]))
-    output = run_shell_command(cmd, env_vars=env_vars)
-    print (output)
+    # if status == "PASS":
+    #   continue
+    run_test(testcase)
+
 
 def main():
-  jax_repo_root = "/home/rocm-user/jax"
+  jax_repo_root = "/root/jax"
   os.chdir(jax_repo_root)
+
   # all_testcases = collect_testcases()
+  
   all_testcases = get_testcases()
   run_individually(all_testcases)
+
+  # run_test("tests/lax_control_flow_test.py")
+  # run_test("tests/fft_test.py")
+
   
 if __name__ == '__main__':
   main()
