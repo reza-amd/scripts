@@ -7,6 +7,7 @@
 # tag=rocm-3.3
 
 # docker_repo=rocm/tensorflow
+# tag=rocm3.10-tf2.4-rc3-dev
 # tag=rocm3.5-tf2.2-ofed4.6-openmpi4.0.0-horovod
 
 # docker_repo=rocm/tensorflow-autobuilds
@@ -18,6 +19,7 @@
 # tag=rocm3.7-csb-8520302
 
 # docker_repo=rocm/tensorflow-private
+# tag=rocm4.0-tf2.4-rocm-enhanced-pre-work
 # tag=rocm3.9-tf2.3-dev-miopen-develop-ofed4.7-openmpi4.0.0-horovod
 # tag=rocm4.0-nv21-69-tf1.15-dev
 # tag=rocm3.7-tf2.3-mi100-perf-develop
@@ -26,8 +28,12 @@
 # tag=rocm37rc3_rocmfork
 # tag=rocm3.6-rc3-tf2.1-swdev241977-vdi-from-src
 
-# docker_repo=devenamd/tensorflow
+docker_repo=devenamd/tensorflow
+tag=rocm40-tf-rocmfork-201219
+# tag=rocm40rc2-tf-rocmfork-201215
+# tag=rocm40rc1-tf-rocmfork-201210
 # tag=rocm40_6066-tf-rocmfork-201115
+# tag=rocm39-tf-upstream-r24-201203
 # tag=rocm310rc1-tf-rocmfork-201110
 # tag=rocm39-tf-upstream-201029
 # tag=rocm39-tf-upstream-r21-201028
@@ -75,8 +81,8 @@
 # docker_repo=devenamd/tfrt
 # tag=rocm-3.7.0-200826
 
-docker_repo=devenamd/jax
-tag=rocm-3.10.0-201211
+# docker_repo=devenamd/jax
+# tag=rocm-3.10.0-201211
 
 # docker_repo=sunway513/hiptensorflow
 # tag=
@@ -112,8 +118,12 @@ tag=rocm-3.10.0-201211
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-amd-feature-targetid
 # tag=108_ubuntu_py3_tensorflow_google_upstream_r21_rocm_updates_200923
 
+# docker_repo=rocmqa/staging-tf-develop-upstream
+# tag=6132-py3-ub18.04-4.0.20501-942419f2-hipvdi-stg-build-job3064
+
+
 docker_image=$docker_repo:$tag
-container_name=deven_TEMP_JAX
+container_name=deven_56_rocm40_rocmfork
 
 options=""
 options="$options -it"

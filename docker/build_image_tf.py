@@ -28,10 +28,10 @@ def get_legacy_build():
 
 
 def get_release_build_upstream():
-    install_dir = "rocm-3.7.0"
-    docker_image_tag = "rocm37-tf-upstream-r21"
+    install_dir = "rocm-3.9.0"
+    docker_image_tag = "rocm39-tf-upstream-r24"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.7/",
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.9/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
         "--build-arg", "ROCM_BUILD_NUM=main",
         "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
@@ -39,10 +39,10 @@ def get_release_build_upstream():
     return docker_image_tag, docker_build_args
 
 def get_release_build():
-    install_dir = "rocm-3.7.0"
-    docker_image_tag = "rocm37-tf-upstream"
+    install_dir = "rocm-4.0.0"
+    docker_image_tag = "rocm40-tf-rocmfork"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.7/",
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
         "--build-arg", "ROCM_BUILD_NUM=main",
         "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
@@ -63,10 +63,10 @@ def get_hidden_release_build():
 
 
 def get_rc_build():
-    version = "3.10"
-    release = "rel-11"
-    install_dir = "rocm-3.10.0"
-    docker_image_tag = "rocm310rc1-tf-rocmfork"
+    version = "4.0"
+    release = "rel-23"
+    install_dir = "rocm-4.0.0"
+    docker_image_tag = "rocm40rc2-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -122,12 +122,12 @@ if __name__ == '__main__':
 
     # docker_image_tag, docker_build_args = get_legacy_build()
     # docker_image_tag, docker_build_args = get_release_build_upstream()
-    # docker_image_tag, docker_build_args = get_release_build()
+    docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_internal_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
-    docker_image_tag, docker_build_args = get_internal_build()
+    # docker_image_tag, docker_build_args = get_internal_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     
