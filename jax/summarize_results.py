@@ -64,7 +64,7 @@ def print_summaries(summaries):
 
 
 def main():
-  testing_output = "test_6.log"
+  testing_output = "test_9.log"
   summaries = extract_summaries(testing_output)
   print_summaries(summaries)
 

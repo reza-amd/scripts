@@ -18,10 +18,10 @@ def run_shell_command(cmd, workdir):
 
 
 def get_release_build():
-    install_dir = "rocm-3.10.0"
-    docker_image_tag = "3.10.0"
+    install_dir = "rocm-4.0.0"
+    docker_image_tag = "4.0.0"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.10/",
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
         "--build-arg", "ROCM_BUILD_NUM=main",
         "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),

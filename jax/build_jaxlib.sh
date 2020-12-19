@@ -10,9 +10,15 @@ set -ex
 
 
 options=""
-# options="--enable_cuda"
-options="--enable_rocm"
+
+# options="$options --enable_cuda"
+
+options="$options --enable_rocm"
+options="$options --rocm_path=/opt/rocm-3.10.0/"
+# options="$options --rocm_amdgpu_targets=gfx900"
+
 # options="$options --bazel_options=--subcommands"
+
 options="$options --bazel_options=--override_repository=org_tensorflow=$HOME/rocm-tf"
 # options="$options --bazel_options=--override_repository=org_tensorflow=$HOME/inailuig-tf"
 
