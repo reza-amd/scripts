@@ -27,20 +27,9 @@ def get_legacy_build():
     return docker_image_tag, docker_build_args
 
 
-def get_release_build_upstream():
-    install_dir = "rocm-3.9.0"
-    docker_image_tag = "rocm39-tf-upstream-r24"
-    docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/3.9/",
-        "--build-arg", "ROCM_BUILD_NAME=xenial",
-        "--build-arg", "ROCM_BUILD_NUM=main",
-        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
-        ]
-    return docker_image_tag, docker_build_args
-
 def get_release_build():
     install_dir = "rocm-4.0.0"
-    docker_image_tag = "rocm40-tf-rocmfork"
+    docker_image_tag = "rocm40-tf-upstream"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0/",
         "--build-arg", "ROCM_BUILD_NAME=xenial",
@@ -121,7 +110,6 @@ if __name__ == '__main__':
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
     # docker_image_tag, docker_build_args = get_legacy_build()
-    # docker_image_tag, docker_build_args = get_release_build_upstream()
     docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()

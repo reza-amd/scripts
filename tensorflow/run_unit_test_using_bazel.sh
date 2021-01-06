@@ -63,13 +63,14 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=AMD_LOG_LEVEL=4"
 # options="$options --test_env=AMD_SERIALIZE_KERNEL=3"
 # options="$options --test_env=AMD_SERIALIZE_COPY=3"
-
+# options="$options --test_env=LOADER_ENABLE_LOGGING=1" 
 
 # options="$options --action_env=KMDUMPISA=1"
 # options="$options --action_env=KMDUMPLLVM=1"
 
 # options="$options --test_env=TF_CPP_MIN_LOG_LEVEL=1"
 # options="$options --test_env=TF_CPP_MIN_VLOG_LEVEL=3"
+# options="$options --test_env=TF_CPP_MAX_VLOG_LEVEL=3"
 
 # vmodules="dummy=1"
 # vmodules="$vmodules,rocm_tracer=3"
@@ -146,8 +147,8 @@ while (( $# )); do
     else
 	options="$options --test_env=HIP_VISIBLE_DEVICES=0"
 	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=128"
-	options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1024"
-	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1536"
+	# options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=1024"
+	options="$options --test_env=TF_PER_DEVICE_MEMORY_LIMIT_MB=2048"
 	# options="$options --run_under=ltrace"
 	# options="$options --run_under=strace"
 	# options="$options --run_under=pdb"

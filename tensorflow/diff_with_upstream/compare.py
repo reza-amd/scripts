@@ -106,10 +106,10 @@ def is_ROCM_BATCHGEMM_file(filename):
 
 
 def is_ROCM_ROCTRACER_file(filename):
-  match = re.search(r"^tensorflow/core/profiler/internal/gpu/device/device_tracer*", filename)
+  match = re.search(r"^tensorflow/core/profiler/internal/gpu/device_tracer*", filename)
   if match:
       return True
-  match = re.search(r"^tensorflow/core/profiler/internal/gpu/device/rocm_tracer*", filename)
+  match = re.search(r"^tensorflow/core/profiler/internal/gpu/rocm_tracer*", filename)
   if match:
       return True
   return False
@@ -187,12 +187,12 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
     if is_PROTOBUF_file(filename):
       return False
     
-    if is_POOL3D_file(filename):
-      return False
+    # if is_POOL3D_file(filename):
+    #   return False
     
-    prev_response = prev_triage_data.get(filename, "k").split()[0]
-    if  prev_response != "k":
-      return False
+    # prev_response = prev_triage_data.get(filename, "k").split()[0]
+    # if  prev_response != "k":
+    #   return False
     
     return True
     
@@ -200,6 +200,10 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
   for filename in get_diff_files_list():
     if keep_file(filename):
       files_of_interest.append(filename)
+
+  # for f in files_of_interest:
+  #   print (f)
+    
   return files_of_interest
 
 
@@ -226,10 +230,11 @@ def main():
   weekly_sync_commit_201116 = "a52c2d085d0ed2fa3f70daf99482fa018cbc0660"
   weekly_sync_commit_201123 = "15f4bda049539dd41c6dd9d0737d33da86cc32cf"
   weekly_sync_commit_201130 = "966694417e2e66c938b3f851fdce661e6aa07f37"
+  weekly_sync_commit_201228 = "5688e7ef42c63a0cefbd5ca14c4ebe53e633cd1e"
   
   # ignore_files_db = os.path.join(os.getcwd(), "ignore.json")
   
-  base_commit = weekly_sync_commit_201130
+  base_commit = weekly_sync_commit_201228
   # base_commit = "origin/develop-upstream"
 
   change_commit = None
