@@ -19,9 +19,12 @@ logfiles = {
   # "tf_gpu"   : "set_2/upstream_ubuntu_gpu",
 
 
-  "rocm_gpu_single" : "set_3/consoleText_ubuntu_gpu_single_93",
-  "rocm_gpu_multi" : "set_3/consoleText_ubuntu_gpu_multi_95",
-  "tf_gpu"   : "set_3/upstream_ubuntu_gpu_210108",
+  # "rocm_gpu_single" : "set_3/consoleText_ubuntu_gpu_single_93",
+  # "rocm_gpu_multi" : "set_3/consoleText_ubuntu_gpu_multi_95",
+  # "tf_gpu"   : "set_3/upstream_ubuntu_gpu_210108",
+
+  "rocm_gpu_single_rocmfork" : "set_3/consoleText_ubuntu_gpu_single_93",
+  "rocm_gpu_single_upstream" : "set_3/consoleText_csb_575",
 }
 
 
@@ -81,7 +84,7 @@ def compare_test_lists():
   print ("\n".join(tests_exclusive_to_new))
 
 
-def compare_gpu_lists():
+def compare_gpu_lists_1():
   tf_gpu_list = get_combined_test_list(["tf_gpu"])
   print ("Number of tests in TF GPU job     : ", len(tf_gpu_list))
          
@@ -104,14 +107,40 @@ def compare_gpu_lists():
 
 
 
+def compare_gpu_lists_2():
+  upstream_gpu_list = get_combined_test_list(["rocm_gpu_single_upstream"])
+  print ("Number of GPU unit tests in UPSTREAM  : ", len(upstream_gpu_list))
+         
+  rocmfork_gpu_list = get_combined_test_list(["rocm_gpu_single_rocmfork"])
+  print ("Number of GPU unit tests in ROCMFORK  : ", len(rocmfork_gpu_list))
+
+  tests_exclusive_to_upstream = upstream_gpu_list.difference(rocmfork_gpu_list)
+  tests_exclusive_to_rocmfork = rocmfork_gpu_list.difference(upstream_gpu_list)
+  tests_common = rocmfork_gpu_list.intersection(upstream_gpu_list)
+
+  print ("Number of common tests                : ", len(tests_common))
+  print ("Number of tests exclusive to UPSTREAM : ", len(tests_exclusive_to_upstream))
+  print ("Number of tests exclusive to ROCMFORK : ", len(tests_exclusive_to_rocmfork))
+
+  print ("\n\nTests exclusive to UPSTREAM\n")
+  print ("\n".join(sorted(tests_exclusive_to_upstream)))
+
+  print ("\n\nTests exclusive to ROCMFORK\n")
+  print ("\n".join(sorted(tests_exclusive_to_rocmfork)))
+
+
+
 def main():
   
   # print_summary(["rocm_py", "rocm_cpp", "rocm_xla"])
   # print_summary(["rocm_cpu", "rocm_gpu_single", "rocm_gpu_multi"])
   # compare_test_lists()
 
-  print_summary(["tf_gpu", "rocm_gpu_single", "rocm_gpu_multi"])
-  compare_gpu_lists()
+  # print_summary(["tf_gpu", "rocm_gpu_single", "rocm_gpu_multi"])
+  # compare_gpu_lists_1()
+
+  print_summary(["rocm_gpu_single_upstream", "rocm_gpu_single_rocmfork"])
+  compare_gpu_lists_2()
 
 if __name__ == '__main__':
   main()
