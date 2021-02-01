@@ -12,7 +12,7 @@ logfiles = {
 
 def get_test_list(logfile):
   passed, flaky, failed = [], [], []
-  with open(logfile) as f:
+  with open(logfile, encoding="utf-8") as f:
     for line in f.readlines():
       if re.search("PASSED in", line):
         passed.append(line.split()[0])

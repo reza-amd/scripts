@@ -1,15 +1,19 @@
 # docker_repo=rocm/eigen-test
 
 # docker_repo=rocm/tensorflow
+# tag=rocm4.0-tf2.3-dev
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm4.0.0-05d7b55
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm4.0.0-05d7b55
 # tag=rocm4.0.0-csb-287ab90
 
 # docker_repo=rocm/tensorflow-private
 # tag=
 
-# docker_repo=devenamd/tensorflow
+docker_repo=devenamd/tensorflow
+tag=rocm41_6440-tf-rocmfork-r23rocm-210128
+# tag=rocm40-tf-upstream-r21-210126
+# tag=rocm41_6368-tf-rocmfork-210123
 # tag=
 
 # docker_repo=devenamd/rocm
@@ -59,7 +63,7 @@ tag=rocm4.0.0-05d7b55
 # tag=
 
 docker_image=$docker_repo:$tag
-container_name=deven_01_rocm40_rocmfork
+container_name=deven_06_rocm41_SWDEV_269378
 
 options=""
 options="$options -it"
@@ -75,7 +79,7 @@ options="$options --device=/dev/dri"
 
 options="$options -v $HOME/deven/common:/common"
 # options="$options -v /data-bert:/data-bert"
-# options="$options -v /data/imagenet-inception:/imagenet"
+options="$options -v /data/imagenet:/imagenet"
 # options="$options -v /data/imagenet-inception:/data/imagenet-inception:"
 
 docker run $options --name $container_name $docker_image

@@ -160,32 +160,32 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
 
   def keep_file(filename):
 
-    if is_XLA_file(filename):
-      return False
+    # if is_XLA_file(filename):
+    #   return False
 
-    if is_ROCM_FUSION_file(filename):
-      return False
+    # if is_ROCM_FUSION_file(filename):
+    #   return False
     
-    if is_ROCM_DROPOUT_file(filename):
-      return False
+    # if is_ROCM_DROPOUT_file(filename):
+    #   return False
     
-    if is_ROCM_BATCHGEMM_file(filename):
-      return False
+    # if is_ROCM_BATCHGEMM_file(filename):
+    #   return False
     
-    if is_ROCM_ROCTRACER_file(filename):
-      return False
+    # if is_ROCM_ROCTRACER_file(filename):
+    #   return False
     
-    if is_BAZEL_file(filename):
-      return False
+    # if is_BAZEL_file(filename):
+    #   return False
     
-    if is_ROCM_DOCS_file(filename):
-      return False
+    # if is_ROCM_DOCS_file(filename):
+    #   return False
     
-    if is_MARKDOWN_file(filename):
-      return False
+    # if is_MARKDOWN_file(filename):
+    #   return False
     
-    if is_PROTOBUF_file(filename):
-      return False
+    # if is_PROTOBUF_file(filename):
+    #   return False
     
     # if is_POOL3D_file(filename):
     #   return False
@@ -194,6 +194,7 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
     # if  prev_response != "k":
     #   return False
     
+    # return False
     return True
     
   files_of_interest = []
@@ -231,10 +232,12 @@ def main():
   weekly_sync_commit_201123 = "15f4bda049539dd41c6dd9d0737d33da86cc32cf"
   weekly_sync_commit_201130 = "966694417e2e66c938b3f851fdce661e6aa07f37"
   weekly_sync_commit_201228 = "5688e7ef42c63a0cefbd5ca14c4ebe53e633cd1e"
-  
+  weekly_sync_commit_210112 = "c5f8604fedb0f82c6966a1d692b76eb5d7ce6d0e"
+  weekly_sync_commit_210113 = "61bf442edca7e1def9d338289f0207a50090140c"
   # ignore_files_db = os.path.join(os.getcwd(), "ignore.json")
   
-  base_commit = weekly_sync_commit_201228
+  base_commit = weekly_sync_commit_210113
+  # base_commit = "google_upstream/r2.1"
   # base_commit = "origin/develop-upstream"
 
   change_commit = None
@@ -244,6 +247,7 @@ def main():
   triage_db = os.path.join(os.getcwd(), "build_files.json")
   
   os.chdir("/root/tensorflow")
+  # os.chdir("/home/deven/deven/repos/tensorflow-upstream")
   prev_triage_data = load_triage_data([triage_db])
   files_of_interest = get_files_of_interest(base_commit, change_commit, prev_triage_data)
   triage_data = triage_diffs(base_commit, change_commit, files_of_interest, default_response)
