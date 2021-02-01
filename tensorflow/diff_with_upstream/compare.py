@@ -234,10 +234,11 @@ def main():
   weekly_sync_commit_201228 = "5688e7ef42c63a0cefbd5ca14c4ebe53e633cd1e"
   weekly_sync_commit_210112 = "c5f8604fedb0f82c6966a1d692b76eb5d7ce6d0e"
   weekly_sync_commit_210113 = "61bf442edca7e1def9d338289f0207a50090140c"
+  weekly_sync_commit_210118 = "da0884c7d4e7322f9c8dd9affa816dfce8759488"
+  weekly_sync_commit_210129 = "cb4c7d28f0f1bb2103b6de6c6000909a78417370"
   # ignore_files_db = os.path.join(os.getcwd(), "ignore.json")
   
-  base_commit = weekly_sync_commit_210113
-  # base_commit = "google_upstream/r2.1"
+  base_commit = weekly_sync_commit_210129
   # base_commit = "origin/develop-upstream"
 
   change_commit = None

@@ -14,6 +14,10 @@ docker_repo=devenamd/tensorflow
 tag=rocm41_6440-tf-rocmfork-r23rocm-210128
 # tag=rocm40-tf-upstream-r21-210126
 # tag=rocm41_6368-tf-rocmfork-210123
+# tag=rocm40-tf-upstream-210126
+# tag=rocm401rc_b26-tf-rocmfork-210125
+# tag=rocm40-tf-rocmfork-get_pip-test-210125
+# tag=rocm41_6368-tf-rocmfork-210118
 # tag=
 
 # docker_repo=devenamd/rocm
@@ -28,15 +32,15 @@ tag=rocm41_6440-tf-rocmfork-r23rocm-210128
 # docker_repo=devenamd/jax
 # tag=
 
+docker_repo=devenamd/nhwc
+tag=rocm40-210128
+
 # docker_repo=sunway513/hiptensorflow
 # tag=
 
 # docker_repo=tensorflow/tensorflow
 # tag=
 # tag=nightly-py3
-
-# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-# tag=
 
 # docker_repo=rocmqa/staging-tf2.1
 # tag=
@@ -51,7 +55,7 @@ tag=rocm41_6440-tf-rocmfork-r23rocm-210128
 # tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-rel-3.10
-# tag=
+# tag=11_ubuntu_py3_tensorflow_develop-upstream-QA-rocm39
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-amd-feature-targetid
 # tag=
@@ -60,10 +64,10 @@ tag=rocm41_6440-tf-rocmfork-r23rocm-210128
 # tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-# tag=
+# tag=6326_ubuntu_py3_tensorflow_develop-upstream-QA-rocm41
 
 docker_image=$docker_repo:$tag
-container_name=deven_06_rocm41_SWDEV_269378
+container_name=deven_09_rocm40_NHWC
 
 options=""
 options="$options -it"
