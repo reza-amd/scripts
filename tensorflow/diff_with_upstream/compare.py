@@ -7,6 +7,68 @@ import re
 import os
 import json
 
+# list of files that are either present (or absent) in the ROCm TF repo,
+# and can be ignored in their entirety when looking for
+# changes in the ROCm repo that need to be upstreamed
+rocm_repo_files_to_ignore = {
+  # trivial diff
+  "tensorflow/compiler/mlir/tools/kernel_gen/transforms/gpu_kernel_to_blob_pass.cc",
+  "tensorflow/compiler/xla/service/gpu/ir_emitter.cc",
+  "tensorflow/compiler/xla/service/gpu/launch_dimensions.cc",
+  "tensorflow/python/BUILD",
+
+  # ignore all files in the .github dir...those are not source files
+  ".github/ISSUE_TEMPLATE/10-build-installation-issue.md",
+  ".github/workflows/update-nightly.yml",
+
+  # rocm and rocm enhancements specific files
+  "README.ROCm.md",
+  
+  "build_rocm_python3",
+  
+  "rocm_docs/SYNC_UPSTREAM.md",
+  "rocm_docs/core_kernels.md",
+  "rocm_docs/rocm-community-build-plan.md",
+  "rocm_docs/rocm-port-overview.md",
+  "rocm_docs/tensorflow-build-from-source.md",
+  "rocm_docs/tensorflow-grpc-verbs.md",
+  "rocm_docs/tensorflow-install-basic.md",
+  "rocm_docs/tensorflow-quickstart.md",
+  "rocm_docs/tensorflow-rocm-release.md",
+
+  "tensorflow/core/common_runtime/gpu_fusion_pass.cc",
+  "tensorflow/core/common_runtime/gpu_fusion_pass.h",
+  "tensorflow/core/kernels/gpu_fusion_ops.cc",
+  "tensorflow/core/kernels/gpu_fusion_ops.h",
+  "tensorflow/core/kernels/gpu_fusion_ops_batchnormactv.cc",
+  "tensorflow/core/kernels/gpu_fusion_ops_convbiasactv.cc",
+  "tensorflow/core/kernels/gpu_fusion_ops_custom.cc",
+  "tensorflow/core/kernels/gpu_fusion_ops_custom.cu.cc",
+  "tensorflow/python/kernel_tests/gpu_fusion_ops_test.py",
+
+  "tensorflow/core/kernels/cwise_op_fma.cc",
+  "tensorflow/core/kernels/cwise_op_fma.h",
+  "tensorflow/core/kernels/cwise_op_gpu_fma.cu.cc",
+
+  "tensorflow/core/kernels/batch_gemm_op.cc",
+  "tensorflow/python/kernel_tests/batch_gemm_op_test.py",
+
+  "tensorflow/core/kernels/dropout_op.cc",
+  "tensorflow/core/kernels/dropout_op.h",
+  "tensorflow/core/kernels/dropout_op_gpu.cu.cc",
+
+  "tensorflow/core/profiler/internal/gpu/device_tracer_cuda.cc",
+  "tensorflow/core/profiler/internal/gpu/device_tracer_rocm.cc",
+  "tensorflow/core/profiler/internal/gpu/rocm_tracer.cc",
+  "tensorflow/core/profiler/internal/gpu/rocm_tracer.h",
+  "tensorflow/stream_executor/rocm/roctracer_wrapper.h",
+
+  "tensorflow/tools/ci_build/hooks/post_push",
+  "tensorflow/tools/ci_build/hooks/pre_build",
+  
+  "tensorflow/tools/ci_build/linux/rocm/pylintrc",
+  "tensorflow/tools/ci_build/linux/rocm/rocm_ci_sanity.sh",
+}
 
 
 def run_shell_command(cmd, quiet=True):
@@ -17,139 +79,24 @@ def run_shell_command(cmd, quiet=True):
   return result
 
 
-def load_triage_data(triage_dbs):
-  triage_data = {}
-  for json_db in triage_dbs:
-    if os.path.exists(json_db):
-      with open(json_db) as f:
-        db_data = json.load(f)
-        triage_data = {**triage_data, **db_data}
-  return triage_data
-
-
-def save_triage_data(triage_data, prev_triage_data, view_only, json_db):
-  if not view_only:
-    triaged_data = {**prev_triage_data, **triage_data}
-    with open(json_db, "w") as f:
-      json.dump(triage_data, f)
-
-
-def display_diff(base_commit, change_commit, filename, i, num_files, default_response):
+def display_diff(base_commit, change_commit, filename, i, num_files):
   os.system("clear")
   print(i + 1, " / ", num_files, "\n")
   if change_commit :
-    diff_cmd = ["git", "--no-pager", "diff", base_commit, change_commit, "--", filename]
+    diff_cmd = ["git", "--no-pager", "diff", "--color=always", base_commit, change_commit, "--", filename]
   else :
-    diff_cmd = ["git", "--no-pager", "diff", base_commit, "--", filename]
-  diff = run_shell_command(diff_cmd, quiet=False)
+    diff_cmd = ["git", "--no-pager", "diff", "--color=always", base_commit, "--", filename]
+  diff = run_shell_command(diff_cmd, quiet=True)
+  print (diff.stdout.decode())
   print ("\n"*2)
-  response = input("[(i)gnore | (k)eep | (r)efresh | (q)uit ]  :  ").split()
+  response = input("[(p)rev | (n)ext | (r)efresh | (q)uit ]  :  ").split()
   if len(response) == 0:
-    response = default_response
+    response = "next"
   return response
 
 
-def is_BAZEL_file(filename):
-  match = re.search(r"BUILD$", filename)
-  if match:
-      return True
-  match = re.search(r"WORKSPACE$", filename)
-  if match:
-      return True
-  match = re.search(r"\.bzl$", filename)
-  if match:
-      return True
-  match = re.search(r"\.bazelrc$", filename)
-  if match:
-      return True
-  return False
 
-
-def is_XLA_file(filename):
-  match = re.search(r"^tensorflow/compiler", filename)
-  if match:
-      return True
-  return False
-
-
-def is_ROCM_FUSION_file(filename):
-  match = re.search(r"^tensorflow/core/common_runtime/gpu_fusion*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/core/kernels/gpu_fusion*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/core/kernels/cwise_op_fma*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/core/kernels/cwise_op_gpu_fma*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/python/kernel_tests/gpu_fusion_ops_test*", filename)
-  if match:
-      return True
-  return False
-
-
-def is_ROCM_DROPOUT_file(filename):
-  match = re.search(r"^tensorflow/core/kernels/dropout_op*", filename)
-  if match:
-      return True
-  return False
-
-
-def is_ROCM_BATCHGEMM_file(filename):
-  match = re.search(r"^tensorflow/core/kernels/batch_gemm_op*", filename)
-  if match:
-      return True
-  return False
-
-
-def is_ROCM_ROCTRACER_file(filename):
-  match = re.search(r"^tensorflow/core/profiler/internal/gpu/device_tracer*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/core/profiler/internal/gpu/rocm_tracer*", filename)
-  if match:
-      return True
-  return False
-
-
-def is_ROCM_DOCS_file(filename):
-  match = re.search(r"^rocm_docs/", filename)
-  if match:
-      return True
-  return False
-
-
-def is_MARKDOWN_file(filename):
-  match = re.search(r"\.md$", filename)
-  if match:
-      return True
-  return False
-
-
-def is_PROTOBUF_file(filename):
-  match = re.search(r"\.pbtxt$", filename)
-  if match:
-      return True
-  return False
-
-
-def is_POOL3D_file(filename):
-  match = re.search(r"^tensorflow/python/keras/backend_test*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/python/keras/layers/pooling_test*", filename)
-  if match:
-      return True
-  match = re.search(r"^tensorflow/python/kernel_tests/pool_test*", filename)
-  if match:
-      return True
-  return False
-
-
-def get_files_of_interest(base_commit, change_commit, prev_triage_data):
+def get_files_of_interest(base_commit, change_commit):
 
   def get_diff_files_list():
     if change_commit :
@@ -159,42 +106,8 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
     return run_shell_command(diff_cmd).stdout.decode().split()
 
   def keep_file(filename):
-
-    # if is_XLA_file(filename):
-    #   return False
-
-    # if is_ROCM_FUSION_file(filename):
-    #   return False
-    
-    # if is_ROCM_DROPOUT_file(filename):
-    #   return False
-    
-    # if is_ROCM_BATCHGEMM_file(filename):
-    #   return False
-    
-    # if is_ROCM_ROCTRACER_file(filename):
-    #   return False
-    
-    # if is_BAZEL_file(filename):
-    #   return False
-    
-    # if is_ROCM_DOCS_file(filename):
-    #   return False
-    
-    # if is_MARKDOWN_file(filename):
-    #   return False
-    
-    # if is_PROTOBUF_file(filename):
-    #   return False
-    
-    # if is_POOL3D_file(filename):
-    #   return False
-    
-    # prev_response = prev_triage_data.get(filename, "k").split()[0]
-    # if  prev_response != "k":
-    #   return False
-    
-    # return False
+    if filename in rocm_repo_files_to_ignore:
+      return False
     return True
     
   files_of_interest = []
@@ -203,31 +116,29 @@ def get_files_of_interest(base_commit, change_commit, prev_triage_data):
       files_of_interest.append(filename)
 
   # for f in files_of_interest:
-  #   print (f)
+  #   print ('"{}",'.format(f))
     
   return files_of_interest
 
 
-def triage_diffs(base_commit, change_commit, files_of_interest, default_response):
+def review_diffs(base_commit, change_commit, files_of_interest):
   num_files = len(files_of_interest)
-  triage_data = {}
-  for i, filename in enumerate(files_of_interest):
-    
-    refresh = True
-    while refresh:
-      response = display_diff(base_commit, change_commit, filename, i, num_files, default_response)
-      refresh = response[0] == "r"
-
-    triage_data[filename] = " ".join(response)
-    
-    if response[0] == "q":
+  i = 0
+  while i < num_files:
+    filename = files_of_interest[i]
+    response = display_diff(base_commit, change_commit, filename, i, num_files)
+    if response[0] == "p":
+      i = i - 1 if i > 0 else 0
+    elif response[0] == "n":
+      i = i + 1
+    elif response[0] == "r":
+      i = i
+    elif response[0] == "q":
       break
-
-  return triage_data
-
 
 def main():
 
+<<<<<<< Updated upstream
   weekly_sync_commit_201116 = "a52c2d085d0ed2fa3f70daf99482fa018cbc0660"
   weekly_sync_commit_201123 = "15f4bda049539dd41c6dd9d0737d33da86cc32cf"
   weekly_sync_commit_201130 = "966694417e2e66c938b3f851fdce661e6aa07f37"
@@ -241,18 +152,16 @@ def main():
   base_commit = weekly_sync_commit_210129
   # base_commit = "origin/develop-upstream"
 
+=======
+  last_weekly_sync_commit = "14fd18f11b836845175f85b9319e2362f6a0a039"
+  
+  base_commit = last_weekly_sync_commit
+>>>>>>> Stashed changes
   change_commit = None
 
-  view_only=True
-  default_response = ["i"]
-  triage_db = os.path.join(os.getcwd(), "build_files.json")
-  
   os.chdir("/root/tensorflow")
-  # os.chdir("/home/deven/deven/repos/tensorflow-upstream")
-  prev_triage_data = load_triage_data([triage_db])
-  files_of_interest = get_files_of_interest(base_commit, change_commit, prev_triage_data)
-  triage_data = triage_diffs(base_commit, change_commit, files_of_interest, default_response)
-  save_triage_data(triage_data, prev_triage_data, view_only, triage_db)
+  files_of_interest = get_files_of_interest(base_commit, change_commit)
+  review_diffs(base_commit, change_commit, files_of_interest)
 
 
 if __name__ == '__main__':
