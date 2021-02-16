@@ -92,9 +92,9 @@ def get_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 6440
-    install_dir = "rocm-4.1.0-{}".format(internal_build_number)
-    docker_image_tag = "rocm41_{}-tf-rocmfork-r23rocm".format(internal_build_number)
+    internal_build_number = 6531
+    install_dir = "rocm-4.2.0-{}".format(internal_build_number)
+    docker_image_tag = "rocm42_{}-tf-rocmfork".format(internal_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
         "--build-arg", "ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang",
