@@ -4,9 +4,9 @@ import re
 
 
 logfiles = {
-  "upstream_cuda" : "upstream_cuda/pr_46509_210121",
-  "upstream_rocm" : "upstream_rocm/consoleText_csb_584",
-  "rocmfork_rocm" : "rocmfork_rocm/consoleText_ubuntu_gpu_single_121",
+  "upstream_cuda" : "upstream_cuda/pr_47154_210215",
+  "upstream_rocm" : "upstream_rocm/consoleText_csb_613",
+  "rocmfork_rocm" : "rocmfork_rocm/consoleText_ubuntu_gpu_single_167",
 }
 
 
@@ -66,61 +66,88 @@ def compare_test_lists():
   print ("\n".join(tests_exclusive_to_new))
 
 
-def compare_gpu_lists_rocm_cuda():
+def compare_gpu_lists_upstream_cuda_upstream_rocm():
+
+  print_summary(["upstream_cuda", "upstream_rocm"])
+
+  upstream_cuda_list = get_combined_test_list(["upstream_cuda"])
+  print ("Number of GPU unit tests in UPSTREAM CUDA  : ", len(upstream_cuda_list))
+
+  upstream_rocm_list = get_combined_test_list(["upstream_rocm"])
+  print ("Number of GPU unit tests in UPSTREAM ROCm  : ", len(upstream_rocm_list))
+
+  tests_exclusive_to_upstream_cuda = upstream_cuda_list.difference(upstream_rocm_list)
+  tests_exclusive_to_upstream_rocm = upstream_rocm_list.difference(upstream_cuda_list)
+  tests_common = upstream_cuda_list.intersection(upstream_rocm_list)
+
+  print ("Number of common tests                     : ", len(tests_common))
+  print ("Number of tests exclusive to UPSTREAM CUDA : ", len(tests_exclusive_to_upstream_cuda))
+  print ("Number of tests exclusive to UPSTREAM ROCm : ", len(tests_exclusive_to_upstream_rocm))
+
+  print ("\n\nTests exclusive to UPSTREAM CUDA\n")
+  print ("\n".join(sorted(tests_exclusive_to_upstream_cuda)))
+
+  print ("\n\nTests exclusive to UPSTREAM ROCm\n")
+  print ("\n".join(sorted(tests_exclusive_to_upstream_rocm)))
+
+
+
+def compare_gpu_lists_upstream_cuda_rocmfork_rocm():
   
   print_summary(["upstream_cuda", "rocmfork_rocm"])
   
-  cuda_gpu_list = get_combined_test_list(["upstream_cuda"])
-  print ("Number of tests in CUDA GPU job   : ", len(cuda_gpu_list))
+  upstream_cuda_list = get_combined_test_list(["upstream_cuda"])
+  print ("Number of GPU unit tests in UPSTREAM CUDA  : ", len(upstream_cuda_list))
          
-  rocm_gpu_list = get_combined_test_list(["rocmfork_rocm"])
-  print ("Number of tests in ROCm GPU job   : ", len(rocm_gpu_list))
+  rocmfork_rocm_list = get_combined_test_list(["rocmfork_rocm"])
+  print ("Number of GPU unit tests in ROCMFORK ROCm  : ", len(rocmfork_rocm_list))
 
-  tests_exclusive_to_cuda = cuda_gpu_list.difference(rocm_gpu_list)
-  tests_exclusive_to_rocm = rocm_gpu_list.difference(cuda_gpu_list)
-  tests_common = cuda_gpu_list.intersection(rocm_gpu_list)
+  tests_exclusive_to_upstream_cuda = upstream_cuda_list.difference(rocmfork_rocm_list)
+  tests_exclusive_to_rocmfork_rocm = rocmfork_rocm_list.difference(upstream_cuda_list)
+  tests_common = upstream_cuda_list.intersection(rocmfork_rocm_list)
 
-  print ("Number of common tests            : ", len(tests_common))
-  print ("Number of tests exclusive to CUDA : ", len(tests_exclusive_to_cuda))
-  print ("Number of tests exclusive to ROCm : ", len(tests_exclusive_to_rocm))
+  print ("Number of common tests                     : ", len(tests_common))
+  print ("Number of tests exclusive to UPSTREAM CUDA : ", len(tests_exclusive_to_upstream_cuda))
+  print ("Number of tests exclusive to ROCMFORK ROCm : ", len(tests_exclusive_to_rocmfork_rocm))
 
-  print ("\n\nTests exclusive to CUDA\n")
-  print ("\n".join(sorted(tests_exclusive_to_cuda)))
+  print ("\n\nTests exclusive to UPSTREAM CUDA\n")
+  print ("\n".join(sorted(tests_exclusive_to_upstream_cuda)))
 
-  print ("\n\nTests exclusive to ROCm\n")
-  print ("\n".join(sorted(tests_exclusive_to_rocm)))
+  print ("\n\nTests exclusive to ROCMFORK ROCm\n")
+  print ("\n".join(sorted(tests_exclusive_to_rocmfork_rocm)))
 
 
 
-def compare_gpu_lists_upstream_rocmfork():
+def compare_gpu_lists_upstream_rocm_rocmfork_rocm():
 
   print_summary(["upstream_rocm", "rocmfork_rocm"])
   
-  upstream_gpu_list = get_combined_test_list(["upstream_rocm"])
-  print ("Number of GPU unit tests in UPSTREAM  : ", len(upstream_gpu_list))
+  upstream_rocm_list = get_combined_test_list(["upstream_rocm"])
+  print ("Number of GPU unit tests in UPSTREAM ROCm  : ", len(upstream_rocm_list))
          
-  rocmfork_gpu_list = get_combined_test_list(["rocmfork_rocm"])
-  print ("Number of GPU unit tests in ROCMFORK  : ", len(rocmfork_gpu_list))
+  rocmfork_rocm_list = get_combined_test_list(["rocmfork_rocm"])
+  print ("Number of GPU unit tests in ROCMFORK ROCm  : ", len(rocmfork_rocm_list))
 
-  tests_exclusive_to_upstream = upstream_gpu_list.difference(rocmfork_gpu_list)
-  tests_exclusive_to_rocmfork = rocmfork_gpu_list.difference(upstream_gpu_list)
-  tests_common = rocmfork_gpu_list.intersection(upstream_gpu_list)
+  tests_exclusive_to_upstream_rocm = upstream_rocm_list.difference(rocmfork_rocm_list)
+  tests_exclusive_to_rocmfork_rocm = rocmfork_rocm_list.difference(upstream_rocm_list)
+  tests_common = rocmfork_rocm_list.intersection(upstream_rocm_list)
 
-  print ("Number of common tests                : ", len(tests_common))
-  print ("Number of tests exclusive to UPSTREAM : ", len(tests_exclusive_to_upstream))
-  print ("Number of tests exclusive to ROCMFORK : ", len(tests_exclusive_to_rocmfork))
+  print ("Number of common tests                     : ", len(tests_common))
+  print ("Number of tests exclusive to UPSTREAM ROCm : ", len(tests_exclusive_to_upstream_rocm))
+  print ("Number of tests exclusive to ROCMFORK ROCm : ", len(tests_exclusive_to_rocmfork_rocm))
 
   print ("\n\nTests exclusive to UPSTREAM\n")
-  print ("\n".join(sorted(tests_exclusive_to_upstream)))
+  print ("\n".join(sorted(tests_exclusive_to_upstream_rocm)))
 
   print ("\n\nTests exclusive to ROCMFORK\n")
-  print ("\n".join(sorted(tests_exclusive_to_rocmfork)))
+  print ("\n".join(sorted(tests_exclusive_to_rocmfork_rocm)))
 
 
 
 def main():
-  compare_gpu_lists_rocm_cuda()
-  # compare_gpu_lists_upstream_rocmfork()
+  # compare_gpu_lists_upstream_cuda_upstream_rocm()
+  # compare_gpu_lists_upstream_cuda_rocmfork_rocm()
+  compare_gpu_lists_upstream_rocm_rocmfork_rocm()
 
   
 if __name__ == '__main__':

@@ -52,10 +52,17 @@ rocm_repo_files_to_ignore = {
 
   "tensorflow/core/kernels/batch_gemm_op.cc",
   "tensorflow/python/kernel_tests/batch_gemm_op_test.py",
+  "tensorflow/core/api_def/base_api/api_def_BatchGemm.pbtxt",
+  "tensorflow/core/api_def/python_api/api_def_BatchGemm.pbtxt",
 
   "tensorflow/core/kernels/dropout_op.cc",
   "tensorflow/core/kernels/dropout_op.h",
   "tensorflow/core/kernels/dropout_op_gpu.cu.cc",
+  "tensorflow/core/api_def/base_api/api_def_Dropout.pbtxt",
+  "tensorflow/core/api_def/base_api/api_def_DropoutGrad.pbtxt",
+
+  "tensorflow/core/api_def/base_api/api_def_Gelu.pbtxt",
+  "tensorflow/core/api_def/base_api/api_def_GeluGrad.pbtxt",
 
   "tensorflow/core/profiler/internal/gpu/device_tracer_cuda.cc",
   "tensorflow/core/profiler/internal/gpu/device_tracer_rocm.cc",
@@ -86,8 +93,7 @@ def display_diff(base_commit, change_commit, filename, i, num_files):
     diff_cmd = ["git", "--no-pager", "diff", "--color=always", base_commit, change_commit, "--", filename]
   else :
     diff_cmd = ["git", "--no-pager", "diff", "--color=always", base_commit, "--", filename]
-  diff = run_shell_command(diff_cmd, quiet=True)
-  print (diff.stdout.decode())
+  run_shell_command(diff_cmd, quiet=False)
   print ("\n"*2)
   response = input("[(p)rev | (n)ext | (r)efresh | (q)uit ]  :  ").split()
   if len(response) == 0:
@@ -137,26 +143,10 @@ def review_diffs(base_commit, change_commit, files_of_interest):
       break
 
 def main():
-
-<<<<<<< Updated upstream
-  weekly_sync_commit_201116 = "a52c2d085d0ed2fa3f70daf99482fa018cbc0660"
-  weekly_sync_commit_201123 = "15f4bda049539dd41c6dd9d0737d33da86cc32cf"
-  weekly_sync_commit_201130 = "966694417e2e66c938b3f851fdce661e6aa07f37"
-  weekly_sync_commit_201228 = "5688e7ef42c63a0cefbd5ca14c4ebe53e633cd1e"
-  weekly_sync_commit_210112 = "c5f8604fedb0f82c6966a1d692b76eb5d7ce6d0e"
-  weekly_sync_commit_210113 = "61bf442edca7e1def9d338289f0207a50090140c"
-  weekly_sync_commit_210118 = "da0884c7d4e7322f9c8dd9affa816dfce8759488"
-  weekly_sync_commit_210129 = "cb4c7d28f0f1bb2103b6de6c6000909a78417370"
-  # ignore_files_db = os.path.join(os.getcwd(), "ignore.json")
   
-  base_commit = weekly_sync_commit_210129
-  # base_commit = "origin/develop-upstream"
-
-=======
-  last_weekly_sync_commit = "14fd18f11b836845175f85b9319e2362f6a0a039"
+  last_weekly_sync_commit = "88e102695de5e4d17e198e2eb3c6282d820e9a01"
   
   base_commit = last_weekly_sync_commit
->>>>>>> Stashed changes
   change_commit = None
 
   os.chdir("/root/tensorflow")
