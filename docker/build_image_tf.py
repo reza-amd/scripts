@@ -28,13 +28,13 @@ def get_legacy_build():
 
 
 def get_release_build():
-    install_dir = "rocm-4.0.0"
-    docker_image_tag = "rocm40-tf-upstream-r21"
+    install_dir = "rocm-4.0.1"
+    docker_image_tag = "rocm401-tf-upstream"
     docker_build_args = [
-        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0/",
-        "--build-arg", "ROCM_BUILD_NAME=xenial",
-        "--build-arg", "ROCM_BUILD_NUM=main",
-        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0.1/",
+        # "--build-arg", "ROCM_BUILD_NAME=xenial",
+        # "--build-arg", "ROCM_BUILD_NUM=main",
+        # "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
         ]
     return docker_image_tag, docker_build_args
 
@@ -52,10 +52,10 @@ def get_hidden_release_build():
 
 
 def get_rc_build():
-    version = "4.0"
-    release = "rel-23"
-    install_dir = "rocm-4.0.0"
-    docker_image_tag = "rocm40rc2-tf-rocmfork"
+    version = "4.1"
+    release = "rel-5"
+    install_dir = "rocm-4.1.0"
+    docker_image_tag = "rocm41rc1-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -112,10 +112,10 @@ if __name__ == '__main__':
     # docker_image_tag, docker_build_args = get_legacy_build()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    # docker_image_tag, docker_build_args = get_rc_build()
+    docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_internal_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
-    docker_image_tag, docker_build_args = get_internal_build()
+    # docker_image_tag, docker_build_args = get_internal_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     
