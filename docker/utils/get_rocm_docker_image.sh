@@ -39,7 +39,7 @@ tag=rocm4.0.1-latest
 # tag=
 
 docker_image=$docker_repo:$tag
-container_name=deven_12_rocm401_upstream
+container_name=deven_21_rocm41rc3_rocmfork_QArocm41
 
 options=""
 options="$options -it"
