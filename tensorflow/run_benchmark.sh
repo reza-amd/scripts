@@ -24,6 +24,7 @@ env_vars=""
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
+env_vars="$env_vars HIP_FORCE_QUEUE_PROFILING=1"
 
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
