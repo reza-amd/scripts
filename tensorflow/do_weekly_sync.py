@@ -44,7 +44,7 @@ def apply_post_tags(suffix):
 
 if __name__ == '__main__':
 
-  suffix = "210301"
+  suffix = "210315"
 
   # add_remote_google_upstream()
 
@@ -58,9 +58,14 @@ if __name__ == '__main__':
   # fix all CI failures
 
   # apply_pre_tags(suffix)
-  # # don't forget to enter user-id/password
+  # don't forget to enter user-id/password
 
   # # merge PR
 
   # apply_post_tags(suffix)
   # # don't forget to enter user-id/password
+
+  # update the "base_commit" in
+  # <frameworks-internal-repo>/tensorflow/scritps/show_upstream_rocmfork_source_delta.py
+
+  # rebase "develop-upstream-minus-rocmfork-only-content" on develop-upstream
