@@ -7,7 +7,7 @@ import os
 import shutil
 from datetime import date
 
-TF_REPO_LOC = "/home/deven/deven/repos/tensorflow-upstream"
+TF_REPO_LOC = "/home/deven/deven/common/repos/tensorflow-upstream"
 
 
 def run_shell_command(cmd, workdir):
@@ -28,13 +28,13 @@ def get_legacy_build():
 
 
 def get_release_build():
-    install_dir = "rocm-4.0.1"
-    docker_image_tag = "rocm401-tf-upstream"
+    install_dir = "rocm-4.1.0"
+    docker_image_tag = "rocm41-upstream-r25"
     docker_build_args = [
-        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.0.1/",
-        # "--build-arg", "ROCM_BUILD_NAME=xenial",
-        # "--build-arg", "ROCM_BUILD_NUM=main",
-        # "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.1/",
+        "--build-arg", "ROCM_BUILD_NAME=xenial",
+        "--build-arg", "ROCM_BUILD_NUM=main",
+        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
         ]
     return docker_image_tag, docker_build_args
 
@@ -52,10 +52,10 @@ def get_hidden_release_build():
 
 
 def get_rc_build():
-    version = "4.1"
-    release = "rel-21"
-    install_dir = "rocm-4.1.0"
-    docker_image_tag = "rocm41rc3-tf-rocmfork"
+    version = "4.2"
+    release = "rel-10"
+    install_dir = "rocm-4.2.0"
+    docker_image_tag = "rocm42rc1-tf-rocmfork"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -92,7 +92,7 @@ def get_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 6531
+    internal_build_number = 6738
     install_dir = "rocm-4.2.0-{}".format(internal_build_number)
     docker_image_tag = "rocm42_{}-tf-rocmfork".format(internal_build_number)
     docker_build_args = [
@@ -110,9 +110,9 @@ if __name__ == '__main__':
     docker_context = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build")
 
     # docker_image_tag, docker_build_args = get_legacy_build()
-    # docker_image_tag, docker_build_args = get_release_build()
+    docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    docker_image_tag, docker_build_args = get_rc_build()
+    # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_internal_rc_build()
     # docker_image_tag, docker_build_args = get_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()

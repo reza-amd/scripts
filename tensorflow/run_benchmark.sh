@@ -74,6 +74,8 @@ env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 
 # env_vars="$env_vars TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 
+# env_vars="$env_vars NCCL_DEBUG=INFO NCCL_DEBUG_SUBSYS=COLL,INIT"
+
 # env_vars="$env_vars HCC_DB=0x48a"
 # env_vars="$env_vars HCC_DB=0x68a"
 

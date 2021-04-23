@@ -25,7 +25,8 @@ def create_sync_branch(suffix):
   run_shell_command(["git", "checkout", "develop-upstream"])
   run_shell_command(["git", "pull", "--ff-only"])
   run_shell_command(["git", "checkout", "-b", "develop-upstream-sync-{}".format(suffix)])
-  run_shell_command(["git", "merge", "--no-edit", "google_upstream/master"])
+  # run_shell_command(["git", "merge", "--no-edit", "google_upstream/master"])
+  run_shell_command(["git", "merge", "--no-edit", "6af429790a6cf791d53a91d9fbf8a5a4b97da94b"])
 
 
 def apply_pre_tags(suffix):
@@ -44,7 +45,7 @@ def apply_post_tags(suffix):
 
 if __name__ == '__main__':
 
-  suffix = "210315"
+  suffix = "r25_branching_point"
 
   # add_remote_google_upstream()
 

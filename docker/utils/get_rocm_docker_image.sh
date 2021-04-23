@@ -1,18 +1,28 @@
 # docker_repo=rocm/eigen-test
-# tag=rocm-4.0.1-210217
+# tag=rocm-4.1.0-210325
 
 # docker_repo=rocm/tensorflow
 # tag=
 
-docker_repo=rocm/tensorflow-autobuilds
-tag=rocm4.0.1-csb-latest
-tag=rocm4.0.1-latest
+# docker_repo=rocm/tensorflow-autobuilds
+# tag=rocm4.1.0-latest
+# tag=rocm4.0.1-csb-latest
+# tag=rocm4.0.1-latest
 
 # docker_repo=rocm/tensorflow-private
 # tag=
 
-# docker_repo=devenamd/tensorflow
-# tag=
+# docker_repo=rocm/tensorflow-testing
+# tag=rocm4.0.1-tensorflow2.5-ubuntu18.04-manylinux2010
+
+docker_repo=devenamd/tensorflow
+tag=rocm41-upstream-r25-210422
+# tag=rocm41-upstream-r25-210409
+# tag=rocm42rc1-tf-rocmfork-210408
+# tag=rocm41-rocmfork-r24enhanced-210408
+# tag=rocm41-upstream-210329
+# tag=rocm42_6738-tf-rocmfork-210324
+# tag=rocm41rc4-tf-rocmfork-210322
 
 # docker_repo=devenamd/rocm
 # tag=
@@ -39,7 +49,9 @@ tag=rocm4.0.1-latest
 # tag=
 
 docker_image=$docker_repo:$tag
-container_name=deven_21_rocm41rc3_rocmfork_QArocm41
+container_name=deven_32_rocm41_upstream_r25
+
+docker pull $docker_image
 
 options=""
 options="$options -it"
