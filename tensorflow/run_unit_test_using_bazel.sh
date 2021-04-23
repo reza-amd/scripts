@@ -60,10 +60,13 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=HCC_SERIALIZE_COPY=3"
 # options="$options --test_env=HCC_PROFILE=2"
 
-options="$options --test_env=AMD_LOG_LEVEL=7"
+# options="$options --test_env=AMD_LOG_LEVEL=7"
 # options="$options --test_env=AMD_SERIALIZE_KERNEL=3"
 # options="$options --test_env=AMD_SERIALIZE_COPY=3"
 # options="$options --test_env=LOADER_ENABLE_LOGGING=1" 
+
+# options="$options --test_env=HSAKMT_DEBUG_LEVEL=7"
+# options="$options --test_env=HSAKMT_LOG_LEVEL=7"
 
 # options="$options --action_env=KMDUMPISA=1"
 # options="$options --action_env=KMDUMPLLVM=1"
@@ -107,8 +110,6 @@ options="$options --test_env=AMD_LOG_LEVEL=7"
 # options="$options --test_env=HSA_TOOLS_LIB=\"librocr_debug_agent64.so\""
 # options="$options --test_env=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/rocm/lib"
 # options="$options --test_env=PATH=$PATH:/opt/rocm/hcc/bin"
-
-# options="$options --test_env=HSAKMT_DEBUG_LEVEL=7"
 
 # options="$options --test_env=LD_DEBUG=all"
 

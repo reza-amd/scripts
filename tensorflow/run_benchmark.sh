@@ -24,11 +24,11 @@ env_vars=""
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
-env_vars="$env_vars HIP_FORCE_QUEUE_PROFILING=1"
+# env_vars="$env_vars HIP_FORCE_QUEUE_PROFILING=1"
 
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
-# env_vars="$env_vars TF_CPP_MIN_VLOG_LEVEL=3"
+# env_vars="$env_vars TF_CPP_MAX_VLOG_LEVEL=3"
 # vmodules="dummy=1"
 # vmodules="$vmodules,rocm_tracer=3"
 # vmodules="$vmodules,device_tracer_rocm=3"
@@ -37,7 +37,7 @@ env_vars="$env_vars HIP_FORCE_QUEUE_PROFILING=1"
 # env_vars="$env_vars TF_CPP_VMODULE=$vmodules"
  
 # env_vars="$env_vars TF_ROCM_FUSION_ENABLE=1"
-env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
+# env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 # env_vars="$env_vars TF_ROCM_USE_IMMEDIATE_MODE=1"
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
@@ -64,7 +64,7 @@ env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 # export XLA_FLAGS="$xla_flags"
 
 
-# env_vars="$env_vars AMD_LOG_LEVEL=4"
+# env_vars="$env_vars AMD_LOG_LEVEL=7"
 # env_vars="$env_vars AMD_SERIALIZE_KERNEL=3"
 # env_vars="$env_vars AMD_SERIALIZE_COPY=3"
 
@@ -89,12 +89,12 @@ env_vars="$env_vars TF_ROCM_FMA_DISABLE=1"
 options=""
 
 # options="$options --model=alexnet"
-# options="$options --model=googlenet"
+options="$options --model=googlenet"
 # options="$options --model=inception3"
 # options="$options --model=inception4"
 # options="$options --model=lenet"
 # options="$options --model=resnet50"
-options="$options --model=resnet50_v1.5"
+# options="$options --model=resnet50_v1.5"
 # options="$options --model=resnet101"
 # options="$options --model=resnet152_v2"
 # options="$options --model=trivial"
@@ -122,14 +122,17 @@ options="$options --use_fp16"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
-# options="$options --batch_size=128"
-options="$options --batch_size=256"
+options="$options --batch_size=128"
+# options="$options --batch_size=256"
 # options="$options --batch_size=512"
 # options="$options --batch_size=1024"
      
 # options="$options --num_warmup_batches=0"
 
 # options="$options --num_gpus=4"
+
+# options="$options --variable_update=parameter_server"
+# options="$options --local_parameter_device=cpu"
 
 # graph_file_suffix="xla_on"
 # options="$options --graph_file=model_$graph_file_suffix.txt"
@@ -139,8 +142,8 @@ options="$options --batch_size=256"
 # env_vars="$env_vars PYTHONPATH=/root/models"
 # options="$options --benchmark_log_dir=/common/tf_cnn_benchmarks_log_dir"
 
-# options="$options --trace_file=/common/resnet50_trace.json"
-# options="$options --use_chrome_trace_format"
+options="$options --trace_file=/common/googlenet_trace.json"
+options="$options --use_chrome_trace_format"
 
 env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 export $env_vars

@@ -23,6 +23,11 @@
 # tag=rocm41-upstream-210329
 # tag=rocm42_6738-tf-rocmfork-210324
 # tag=rocm41rc4-tf-rocmfork-210322
+# tag=rocm42rc2-tf-rocmfork-210420
+# tag=rocm41-rocmfork-r24_rocm_enhanced-manylinux-210331
+# tag=rocm41-upstream-210329
+# tag=rocm41-rocmfork-r24_rocm_enhanced-210326
+# tag=rocm41-rocmfork-r23_rocm_enhanced-210327
 
 # docker_repo=devenamd/rocm
 # tag=
@@ -40,7 +45,9 @@
 # tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-# tag=
+# tag=6776_ubuntu_py3_tensorflow_develop-upstream-QA-rocm42
+# tag=6776_ubuntu_py3_tensorflow_develop-upstream-QA-rocm43
+# tag=6833_ubuntu_py3_tensorflow_develop-upstream-QA-rocm43
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang-tf-manylinux-env
 # tag=
@@ -51,8 +58,12 @@
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-navi21
 # tag=3940_ubuntu_py3_tensorflow_develop-upstream-QA-rocm42
 
+# docker_repo=rocmqa/staging-tf2.1
+# tag=6562-py3-ub18.04-b24ee29-compiler-stg-build-job3091-perf
+
+
 docker_image=$docker_repo:$tag
-container_name=deven_02_rocmNV_rocmfork
+container_name=deven_14_SWDEV_280210_BASELINE
 
 docker pull $docker_image
 
