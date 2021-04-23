@@ -79,7 +79,7 @@ def get_internal_rc_build():
     return docker_image_tag, docker_build_args
 
 
-def get_bkc_build():
+def get_internal_bkc_build():
     bkc_major = 0
     bkc_minor = 0
     docker_image_tag = "rocm35_{}-tf-rocmfork".format(internal_build_number)
@@ -104,6 +104,19 @@ def get_internal_build():
     return docker_image_tag, docker_build_args
 
 
+def get_internal_navi_build():
+    internal_build_number = 3989
+    install_dir = "rocm-4.1.0-{}".format(internal_build_number)
+    docker_image_tag = "rocmNV_{}-tf-rocmfork".format(internal_build_number)
+    docker_build_args = [
+        "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
+        "--build-arg", "ROCM_BUILD_NAME=compute-rocm-dkms-navi21",
+        "--build-arg", "ROCM_BUILD_NUM={}".format(internal_build_number),
+        "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
+        ]
+    return docker_image_tag, docker_build_args
+
+
 if __name__ == '__main__':
     
     docker_file = os.path.join(TF_REPO_LOC, "tensorflow/tools/ci_build/Dockerfile.rocm")
@@ -114,8 +127,9 @@ if __name__ == '__main__':
     # docker_image_tag, docker_build_args = get_hidden_release_build()
     # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_internal_rc_build()
-    # docker_image_tag, docker_build_args = get_bkc_build()
+    # docker_image_tag, docker_build_args = get_internal_bkc_build()
     # docker_image_tag, docker_build_args = get_internal_build()
+    docker_image_tag, docker_build_args = get_internal_navi_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))
     
