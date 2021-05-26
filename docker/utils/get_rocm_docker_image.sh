@@ -4,30 +4,18 @@
 # docker_repo=rocm/tensorflow
 # tag=
 
-# docker_repo=rocm/tensorflow-autobuilds
-# tag=rocm4.1.0-latest
-# tag=rocm4.1.0-csb-latest
+docker_repo=rocm/tensorflow-autobuilds
+tag=rocm4.2.0-latest
+# tag=rocm4.2.0-csb-latest
 
 # docker_repo=rocm/tensorflow-private
 # tag=
 
 # docker_repo=rocm/tensorflow-testing
-# tag=rocm4.0.1-tensorflow2.5-ubuntu18.04-manylinux2010
+# tag=
 
 # docker_repo=devenamd/tensorflow
-# tag=rocmNV_3989-tf-rocmfork-210421
-# tag=rocm41-upstream-r25-210422
-# tag=rocm41-upstream-r25-210409
-# tag=rocm42rc1-tf-rocmfork-210408
-# tag=rocm41-rocmfork-r24enhanced-210408
-# tag=rocm41-upstream-210329
-# tag=rocm42_6738-tf-rocmfork-210324
-# tag=rocm41rc4-tf-rocmfork-210322
-# tag=rocm42rc2-tf-rocmfork-210420
-# tag=rocm41-rocmfork-r24_rocm_enhanced-manylinux-210331
-# tag=rocm41-upstream-210329
-# tag=rocm41-rocmfork-r24_rocm_enhanced-210326
-# tag=rocm41-rocmfork-r23_rocm_enhanced-210327
+# tag=
 
 # docker_repo=devenamd/rocm
 # tag=
@@ -45,9 +33,7 @@
 # tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang
-# tag=6776_ubuntu_py3_tensorflow_develop-upstream-QA-rocm42
-# tag=6776_ubuntu_py3_tensorflow_develop-upstream-QA-rocm43
-# tag=6833_ubuntu_py3_tensorflow_develop-upstream-QA-rocm43
+# tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang-tf-manylinux-env
 # tag=
@@ -55,15 +41,16 @@
 # docker_repo=manylinux2014-rocm-centos7-tf-test
 # tag=
 
-# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-navi21
-# tag=3940_ubuntu_py3_tensorflow_develop-upstream-QA-rocm42
+# docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang-tf-manylinux-2014-env
+# tag=7161_centos8_tf_r1.15-rocm-enhanced
 
-# docker_repo=rocmqa/staging-tf2.1
-# tag=6562-py3-ub18.04-b24ee29-compiler-stg-build-job3091-perf
+
+# docker_repo=amddcgpuce/tensorflow-rocm410-ubuntu18
+# tag=version1
 
 
 docker_image=$docker_repo:$tag
-container_name=deven_14_SWDEV_280210_BASELINE
+container_name=deven_42_rocm42_rocm_enhanced_r115whl
 
 docker pull $docker_image
 
