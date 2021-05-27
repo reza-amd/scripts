@@ -11,9 +11,6 @@ tag=rocm4.2.0-latest
 # docker_repo=rocm/tensorflow-private
 # tag=
 
-# docker_repo=rocm/tensorflow-testing
-# tag=
-
 # docker_repo=devenamd/tensorflow
 # tag=
 
@@ -42,15 +39,17 @@ tag=rocm4.2.0-latest
 # tag=
 
 # docker_repo=compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-dkms-no-npi-hipclang-tf-manylinux-2014-env
-# tag=7161_centos8_tf_r1.15-rocm-enhanced
-
+# tag=
 
 # docker_repo=amddcgpuce/tensorflow-rocm410-ubuntu18
-# tag=version1
+# tag=
+
+# docker_repo=rocmqa/staging-tf-develop-upstream
+# tag=
 
 
 docker_image=$docker_repo:$tag
-container_name=deven_42_rocm42_rocm_enhanced_r115whl
+container_name=deven_36_rocm42_rocmfork_r25enhanced
 
 docker pull $docker_image
 

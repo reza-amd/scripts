@@ -29,9 +29,9 @@ def get_legacy_build():
 
 def get_release_build():
     install_dir = "rocm-4.2.0"
-    docker_image_tag = "rocm42-tf-rocmfork-r115enhanced"
+    docker_image_tag = "rocm42-rocmfork-r25enhanced"
     docker_build_args = [
-        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.1.1/",
+        # "--build-arg", "ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/4.1/",
         # "--build-arg", "ROCM_BUILD_NAME=xenial",
         # "--build-arg", "ROCM_BUILD_NUM=main",
         # "--build-arg", "ROCM_PATH=/opt/{}".format(install_dir),
