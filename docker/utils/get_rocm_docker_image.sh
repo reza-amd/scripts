@@ -49,7 +49,7 @@ tag=rocm4.2.0-latest
 
 
 docker_image=$docker_repo:$tag
-container_name=deven_36_rocm42_rocmfork_r25enhanced
+container_name=deven_22_rocm42_jax
 
 docker pull $docker_image
 

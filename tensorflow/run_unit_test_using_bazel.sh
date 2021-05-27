@@ -86,6 +86,7 @@ options="$options --test_size_filters=small,medium,large"
 # vmodules="$vmodules,meta_optimizer=4"
 # vmodules="$vmodules,conv_ops_3d=3"
 # vmodules="$vmodules,conv_grad_ops_3d=3"
+# vmodules="$vmodules,gpu_kernel_helper=3"
 # options="$options --test_env=TF_CPP_VMODULE=$vmodules"
 
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
