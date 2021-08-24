@@ -44,7 +44,7 @@ def apply_post_tags(suffix):
 
 if __name__ == '__main__':
 
-  suffix = "210426"
+  suffix = "210809"
 
   # add_remote_google_upstream()
 
@@ -69,5 +69,5 @@ if __name__ == '__main__':
   # <frameworks-internal-repo>/tensorflow/scritps/show_upstream_rocmfork_source_delta.py
 
   # rebase "develop-upstream-minus-rocmfork-only-content" on develop-upstream
-
+  # rebase "develop-upstream-changes-for-mi200-nightly-ci" on develop-upstream
   # rebase "develop-upstream-disable-tests-fixed-by-rocm41" on develop-upstream

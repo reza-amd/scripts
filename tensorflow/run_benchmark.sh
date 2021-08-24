@@ -89,12 +89,12 @@ env_vars=""
 options=""
 
 # options="$options --model=alexnet"
-options="$options --model=googlenet"
+# options="$options --model=googlenet"
 # options="$options --model=inception3"
 # options="$options --model=inception4"
 # options="$options --model=lenet"
 # options="$options --model=resnet50"
-# options="$options --model=resnet50_v1.5"
+options="$options --model=resnet50_v1.5"
 # options="$options --model=resnet101"
 # options="$options --model=resnet152_v2"
 # options="$options --model=trivial"
@@ -106,7 +106,7 @@ options="$options --model=googlenet"
 # options="$options --xla_compile"
 # options="$options --compute_lr_on_cpu"
 
-options="$options --use_fp16"
+# options="$options --use_fp16"
 # options="$options --auto_mixed_precision"
 
 # options="$options --allow_growth=true"
@@ -118,7 +118,7 @@ options="$options --use_fp16"
 
 # options="$options --num_batches=1"
 # options="$options --num_batches=10"
-# options="$options --num_batches=100"
+options="$options --num_batches=1000"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
@@ -133,6 +133,12 @@ options="$options --batch_size=128"
 
 # options="$options --variable_update=parameter_server"
 # options="$options --local_parameter_device=cpu"
+
+options="$options --print_training_accuracy"                                                                                         
+# options="$options --eval_during_training_every_n_steps=100"                                                                        
+                                                                                                                                     
+# options="$options --data_dir=/data/imagenet"
+
 
 # graph_file_suffix="xla_on"
 # options="$options --graph_file=model_$graph_file_suffix.txt"

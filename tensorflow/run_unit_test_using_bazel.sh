@@ -23,7 +23,7 @@ options="$options --config=rocm"
 # options="$options --config=monolithic"
 
 
-# options="$options --subcommands"
+options="$options --subcommands"
 
 options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
