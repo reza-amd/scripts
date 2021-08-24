@@ -11,16 +11,18 @@
 # docker_repo=devenamd/tfrt
 # docker_repo=manylinux2014-rocm-centos7-tf-test
 # docker_repo=rocm/eigen-test
+# docker_repo=rocm/jax
 # docker_repo=rocm/tensorflow
 # docker_repo=rocm/tensorflow-autobuilds
 # docker_repo=rocm/tensorflow-private
+# docker_repo=rocm/tensorflow-testing
 # docker_repo=rocmqa/staging-tf-develop-upstream
 # docker_repo=rocmqa/staging-tf-upstream
 
 # tag=
 
 docker_image=$docker_repo:$tag
-container_name=deven_43_SWDEV_297752
+container_name=deven_07_rocm42_jax
 
 docker pull $docker_image
 

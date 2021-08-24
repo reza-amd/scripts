@@ -29,7 +29,7 @@ def create_sync_branch(suffix):
 
 if __name__ == '__main__':
 
-  suffix = "r26_branching_point"
+  suffix = "210811"
 
   # add_remote_google_upstream()
 
