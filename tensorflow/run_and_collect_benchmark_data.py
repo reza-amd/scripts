@@ -66,29 +66,29 @@ def collect_tf_cnn_benchmark_perf_data():
         # "trivial",
         # "vgg11",
         "vgg16",
-        # "vgg19",
+        "vgg19",
     ]
 
     configs = {
-        "TRADITIONAL BACKEND - FP32" : {
-            KEY_OPTIONS : [],
-            KEY_ENV_VARS : {"TF_ROCM_FUSION_ENABLE":"1",}
-            },
+        # "TRADITIONAL BACKEND - FP32" : {
+        #     KEY_OPTIONS : [],
+        #     KEY_ENV_VARS : {"TF_ROCM_FUSION_ENABLE":"1",}
+        #     },
 
         "TRADITIONAL BACKEND - FP16" : {
             KEY_OPTIONS : ["--use_fp16"],
-            KEY_ENV_VARS : {"TF_ROCM_FUSION_ENABLE":"1",}
+            KEY_ENV_VARS : {"TF_ROCM_FUSION_ENABLE":"1", "MIOPEN_FIND_MODE":"1"}
             },
 
-        "XLA BACKEND - FP32" : {
-            KEY_OPTIONS : ["--xla_compile"],
-            KEY_ENV_VARS : {"TF_ROCM_FMA_DISABLE":"1",}
-            },
+        # "XLA BACKEND - FP32" : {
+        #     KEY_OPTIONS : ["--xla_compile"],
+        #     KEY_ENV_VARS : {"TF_ROCM_FMA_DISABLE":"1",}
+        #     },
         
-        "XLA BACKEND - FP16" : {
-            KEY_OPTIONS : ["--use_fp16", "--xla_compile"],
-            KEY_ENV_VARS : {"TF_ROCM_FMA_DISABLE":"1",}
-            },
+        # "XLA BACKEND - FP16" : {
+        #     KEY_OPTIONS : ["--use_fp16", "--xla_compile"],
+        #     KEY_ENV_VARS : {"TF_ROCM_FMA_DISABLE":"1",}
+        #     },
         # "AMP" : {
         #     KEY_OPTIONS : ["--auto_mixed_precision"],
         #     KEY_ENV_VARS : {"TF_ROCM_FMA_DISABLE":"1",}
@@ -125,7 +125,7 @@ def collect_tf_cnn_benchmark_perf_data():
 
     display_configs()
                   
-    N = 3
+    N = 5
     
     data = {}
     data["models"] = models

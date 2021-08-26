@@ -2,7 +2,7 @@
 # sudo apt autoremove rock-dkms rocm-dev 
 
 # DEB_ROCM_REPO=http://repo.radeon.com/rocm/misc/.ea/apt/.apt_3.7.0.20_priv/
-DEB_ROCM_REPO=http://repo.radeon.com/rocm/apt/4.1/
+DEB_ROCM_REPO=http://repo.radeon.com/rocm/apt/4.2/
 wget -qO - $DEB_ROCM_REPO/rocm.gpg.key | sudo apt-key add -
 sudo rm -rf /etc/apt/sources.list.d/rocm.list
 sudo sh -c  "echo deb [arch=amd64] $DEB_ROCM_REPO xenial main > /etc/apt/sources.list.d/rocm.list"
