@@ -92,7 +92,7 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=XLA_FLAGS=\"--xla_dump_optimized_hlo_proto_to=/common/LOGS/\""
 
 
-# tf_debug_output_dir="/common/tf_debug_output/"
+# tf_debug_output_dir="/dockerx/tf_debug_output/"
 # tf_debug_output_graph="$tf_debug_output_dir/graph"
 # tf_debug_output_xla="$tf_debug_output_dir/xla"
 
