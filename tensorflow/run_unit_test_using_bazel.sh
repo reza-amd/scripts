@@ -99,9 +99,14 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=TF_DUMP_GRAPH_PREFIX=$tf_debug_output_graph"
 
 # options="$options --test_env=TF_XLA_FLAGS=--tf_xla_clustering_debug"
-# options="$options --test_env=XLA_FLAGS=--xla_dump_to=$tf_debug_output_xla"
 
-# options="$options --test_env=XLA_FLAGS=--xla_dump_hlo_as_text"
+# xla_flags=""
+# xla_flags="$xla_flags --xla_dump_to=$tf_debug_output_xla"
+# xla_flags="$xla_flags --xla_dump_hlo_pass_re=.*"
+# xla_flags="$xla_flags --xla_dump_hlo_as_text"
+# export XLA_FLAGS=$xla_flags
+
+# options="$options --test_env=XLA_FLAGS"
 
 # options="$options --test_env=TF_ROCM_FUSION_ENABLE=1"
 # options="$options --test_env=TF_ROCM_FUSION_DUMP_GRAPH_BEFORE=1"
