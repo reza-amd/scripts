@@ -104,6 +104,8 @@ options="$options --test_size_filters=small,medium,large"
 # xla_flags="$xla_flags --xla_dump_to=$tf_debug_output_xla"
 # xla_flags="$xla_flags --xla_dump_hlo_pass_re=.*"
 # xla_flags="$xla_flags --xla_dump_hlo_as_text"
+# xla_flags="$xla_flags --xla_dump_hlo_as_dot"
+# xla_flags="$xla_flags --xla_dump_hlo_as_html"
 # export XLA_FLAGS=$xla_flags
 
 # options="$options --test_env=XLA_FLAGS"
@@ -184,7 +186,7 @@ if [[ ! -z $testlist ]]; then
 fi
 
 if [[ ! -z $all_tests ]]; then
-    rm -rf /tmp/amdgpu_xla*
+    rm -rf /tmp/amdgpu_xla* || true
     bazel test $options $all_tests
 else
     echo "no testcase specified"
