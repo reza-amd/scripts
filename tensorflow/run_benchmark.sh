@@ -12,14 +12,22 @@ env_vars=""
 
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING=1"
 # env_vars="$env_vars MIOPEN_ENABLE_LOGGING_CMD=1"
+
 # env_vars="$env_vars MIOPEN_LOG_LEVEL=6"
-# env_vars="$env_vars MIOPEN_DEBUG_CONV_FFT=0"
-# env_vars="$env_vars MIOPEN_DEBUG_CONV_FIRECT=0"
-# env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
+
+env_vars="$env_vars MIOPEN_DEBUG_CONV_DIRECT=0"
+env_vars="$env_vars MIOPEN_DEBUG_CONV_FFT=0"
+env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
+env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=1"
+env_vars="$env_vars MIOPEN_DEBUG_CONV_SCGEMM=0"
+env_vars="$env_vars MIOPEN_DEBUG_CONV_WINOGRAD=0"
+
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
-# env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=0"
+
 # env_vars="$env_vars MIOPEN_CHECK_NUMERICS=1"
+
 env_vars="$env_vars MIOPEN_FIND_MODE=1"
+# env_vars="$env_vars MIOPEN_FIND_ENFORCE=4"
 
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
@@ -57,14 +65,14 @@ env_vars="$env_vars MIOPEN_FIND_MODE=1"
 # tf_xla_flags="$tf_xla_flags --tf_xla_clustering_debug"
 # export TF_XLA_FLAGS="$tf_xla_flags"
 
-# xla_flags=""
+xla_flags=""
 # xla_flags="$xla_flags --xla_dump_to=$tf_debug_output_xla"
 # xla_flags="$xla_flags --xla_dump_hlo_as_text"
 # xla_flags="$xla_flags --xla_dump_hlo_pass_re=.*"
 # xla_flags="$xla_flags --xla_hlo_profile"
 # xla_flags="$xla_flags --xla_gpu_use_cudnn_batchnorm"
-# xla_flags="$xla_flags --xla_gpu_force_conv_nhwc"
-# export XLA_FLAGS="$xla_flags"
+xla_flags="$xla_flags --xla_gpu_force_conv_nhwc"
+export XLA_FLAGS="$xla_flags"
 
 
 # env_vars="$env_vars AMD_LOG_LEVEL=7"
@@ -104,11 +112,11 @@ options="$options --model=resnet50_v1.5"
 # options="$options --model=vgg16"
 # options="$options --model=vgg19"
 
-# options="$options --xla"
+options="$options --xla"
 # options="$options --xla_compile"
 # options="$options --compute_lr_on_cpu"
 
-# options="$options --use_fp16"
+options="$options --use_fp16"
 # options="$options --auto_mixed_precision"
 
 # options="$options --allow_growth=true"
@@ -124,8 +132,8 @@ options="$options --model=resnet50_v1.5"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
-options="$options --batch_size=128"
-# options="$options --batch_size=256"
+# options="$options --batch_size=128"
+options="$options --batch_size=256"
 # options="$options --batch_size=512"
 # options="$options --batch_size=1024"
      
@@ -138,9 +146,9 @@ options="$options --num_gpus=1"
 # options="$options --variable_update=parameter_server"
 # options="$options --local_parameter_device=cpu"
 
-options="$options --print_training_accuracy"                                                                                         
-# options="$options --eval_during_training_every_n_steps=100"                                                                        
-                                                                                                                                     
+options="$options --print_training_accuracy"
+# options="$options --eval_during_training_every_n_steps=100"
+
 # options="$options --data_dir=/data/imagenet"
 
 
