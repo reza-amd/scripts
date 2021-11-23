@@ -1,0 +1,9 @@
+{
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "--rootdir",
+        "/dockerx/Workspace/jax_refactor/WS/jax/tests"
+    ],
+    "python.envFile": "/dockerx/Workspace/jax_refactor/WS/jax/.env",
+    "python.testing.cwd": "/dockerx/Workspace/jax_refactor/WS/jax/tests"
+}
