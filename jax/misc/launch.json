@@ -1,0 +1,24 @@
+"launch": {
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/usr/bin/python3",
+            "args": ["-m", "pytest", "./tests/linalg_test.py::NumpyLinalgTest::testSVD_n=complex64[2,2]_full_matrices=False_compute_uv=False_hermitian=True"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder:jax}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
