@@ -55,7 +55,7 @@ def get_rc_build():
     version = "4.5"
     release = "rel-56"
     install_dir = "rocm-4.5.0"
-    docker_image_tag = "rocm45rc4-rocmfork"
+    docker_image_tag = "rocm45rc4-rocmfork-r25"
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-release-archive-deb/",
         "--build-arg", "ROCM_BUILD_NAME={}".format(version),
@@ -92,9 +92,9 @@ def get_internal_bkc_build():
     
     
 def get_internal_build():
-    internal_build_number = 6738
-    install_dir = "rocm-4.2.0-{}".format(internal_build_number)
-    docker_image_tag = "rocm42_{}-tf-rocmfork".format(internal_build_number)
+    internal_build_number = 9146
+    install_dir = "rocm-5.0.0-{}".format(internal_build_number)
+    docker_image_tag = "rocm50_{}-tf-rocmfork-QArocm50".format(internal_build_number)
     docker_build_args = [
         "--build-arg", "ROCM_DEB_REPO=http://compute-artifactory.amd.com/artifactory/list/rocm-osdb-deb/",
         "--build-arg", "ROCM_BUILD_NAME=compute-rocm-dkms-no-npi-hipclang",
@@ -125,10 +125,10 @@ if __name__ == '__main__':
     # docker_image_tag, docker_build_args = get_legacy_build()
     # docker_image_tag, docker_build_args = get_release_build()
     # docker_image_tag, docker_build_args = get_hidden_release_build()
-    docker_image_tag, docker_build_args = get_rc_build()
+    # docker_image_tag, docker_build_args = get_rc_build()
     # docker_image_tag, docker_build_args = get_internal_rc_build()
     # docker_image_tag, docker_build_args = get_internal_bkc_build()
-    # docker_image_tag, docker_build_args = get_internal_build()
+    docker_image_tag, docker_build_args = get_internal_build()
     # docker_image_tag, docker_build_args = get_internal_navi_build()
 
     docker_image_name = "devenamd/tensorflow:{}-{}".format(docker_image_tag, date.today().strftime("%y%m%d"))

@@ -1,4 +1,5 @@
 ####################
+
 set -e
 # set -x
 
@@ -23,7 +24,7 @@ options="$options --config=rocm"
 # options="$options --config=monolithic"
 
 
-options="$options --subcommands"
+# options="$options --subcommands"
 
 options="$options --test_sharding_strategy=disabled"
 options="$options --test_timeout 600,900,2400,7200"
@@ -34,6 +35,9 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_output="
 
 # options="$options --define=no_tensorflow_py_deps=true"
+
+# options="$options --test_env=MIOPEN_DEBUG_CONVOLUTION_ATTRIB_FP16_ALT_IMPL=0"
+# options="$options --test_env=ROCBLAS_INTERNAL_FP16_ALT_IMPL=0"
 
 # options="$options --test_env=MIOPEN_LOG_LEVEL=7"
 # options="$options --test_env=MIOPEN_ENABLE_LOGGING=1"
@@ -113,6 +117,7 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=TF_CUDNN_WORKSPACE_LIMIT_IN_MB=8192"
 # options="$options --test_env=TF_ROCM_BW_POOL_CACHE=1"
 # options="$options --test_env=TF_ROCM_KEEP_XLA_TEMPFILES=1"
+# options="$options --test_env=TF_NUM_INTEROP_THREADS=16"
 
 # options="$options --test_env=TF_GPU_ALLOCATOR=memory_guard"
 

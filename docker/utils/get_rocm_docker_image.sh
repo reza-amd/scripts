@@ -1,19 +1,6 @@
+docker_image=rocm/tensorflow-autobuilds:rocm4.5.0-latest
 
-
-# docker_image=rocm/tensorflow-private:mi200_native_miopen_mitigation
-
-
-# docker_image=$docker_repo:$tag
-# docker_image=rocm/tensorflow-private:mi200_bf16_tensorflow_v1_with_bazel_cache
-# docker_image=rocm/tensorflow-private:mi200_denorm_v6
-# docker_image=sles_tf2.6:latest
-# docker_image=devenamd/tensorflow:rocm45rc4-rocmfork-211022
-# docker_image=rocm/tensorflow-autobuilds:ubuntu18.04-rocm4.5.0rc4
-docker_image=rocm/tensorflow-private:mi200_denorm_native_rocblas_native_miopen_nhwc_only
-
-container_name=deven_17_MI200_DENORM_NATIVE_MITIGATION_HF_GPT2
-
-docker pull $docker_image
+container_name=deven_21_rocm45_weekly_sync
 
 options=""
 options="$options -it"

@@ -15,18 +15,22 @@ env_vars=""
 
 # env_vars="$env_vars MIOPEN_LOG_LEVEL=6"
 
-env_vars="$env_vars MIOPEN_DEBUG_CONV_DIRECT=0"
-env_vars="$env_vars MIOPEN_DEBUG_CONV_FFT=0"
-env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=0"
-env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=1"
-env_vars="$env_vars MIOPEN_DEBUG_CONV_SCGEMM=0"
-env_vars="$env_vars MIOPEN_DEBUG_CONV_WINOGRAD=0"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_DIRECT=0"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_FFT=1"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_GEMM=1"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM=1"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_SCGEMM=1"
+# env_vars="$env_vars MIOPEN_DEBUG_CONV_WINOGRAD=1"
+# env_vars="$env_vars MIOPEN_DEBUG_HIP_KERNELS=1"
 
 # env_vars="$env_vars MIOPEN_GEMM_ENFORCE_BACKEND=2"
 
 # env_vars="$env_vars MIOPEN_CHECK_NUMERICS=1"
 
-env_vars="$env_vars MIOPEN_FIND_MODE=1"
+# env_vars="$env_vars MIOPEN_FIND_MODE=1"
+# env_vars="$env_vars MIOPEN_FIND_ENFORCE=4"
+
+
 # env_vars="$env_vars MIOPEN_FIND_ENFORCE=4"
 
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
@@ -36,6 +40,7 @@ env_vars="$env_vars MIOPEN_FIND_MODE=1"
 
 # env_vars="$env_vars ROCBLAS_LAYER=3"
 
+# env_vars="$env_vars TF_CPP_MIN_LOG_LEVEL=0"
 # env_vars="$env_vars TF_CPP_MAX_VLOG_LEVEL=3"
 # vmodules="dummy=1"
 # vmodules="$vmodules,rocm_tracer=3"
@@ -112,7 +117,7 @@ options="$options --model=resnet50_v1.5"
 # options="$options --model=vgg16"
 # options="$options --model=vgg19"
 
-options="$options --xla"
+# options="$options --xla"
 # options="$options --xla_compile"
 # options="$options --compute_lr_on_cpu"
 
@@ -127,8 +132,9 @@ options="$options --use_fp16"
 # options="$options --num_inter_threads=1"
 
 # options="$options --num_batches=1"
+# options="$options --num_batches=10"
 # options="$options --num_batches=50"
-# options="$options --num_batches=100"
+# options="$options --num_batches=2000"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
@@ -137,11 +143,11 @@ options="$options --batch_size=256"
 # options="$options --batch_size=512"
 # options="$options --batch_size=1024"
      
-# options="$options --num_warmup_batches=0"
+# options="$options --num_warmup_batches=10"
 
 # options="$options --data_format=NHWC"
 
-options="$options --num_gpus=1"
+options="$options --num_gpus=16"
 
 # options="$options --variable_update=parameter_server"
 # options="$options --local_parameter_device=cpu"
@@ -164,11 +170,25 @@ options="$options --print_training_accuracy"
 # options="$options --trace_file=/common/resnet50_trace_NCHW.json"
 # options="$options --use_chrome_trace_format"
 
-env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
+# env_vars="$env_vars HIP_VISIBLE_DEVICES=0"
 export $env_vars
 
+# export MIOPEN_DEBUG_CONVOLUTION_ATTRIB_FP16_ALT_IMPL=1
+# export ROCBLAS_INTERNAL_FP16_ALT_IMPL=1
+
+# export MIOPEN_DEBUG_CONV_IMPLICIT_GEMM_HIP_FWD_V4R4_PADDED_GEMM_XDLOPS=0
+# export MIOPEN_DEBUG_CONV_DIRECT_OCL_WRW53=0
+# export MIOPEN_DEBUG_CONV_DIRECT_OCL_WRW2=0
+# export MIOPEN_DEBUG_CONV_DIRECT_OCL_FWD=0
+# export MIOPEN_DEBUG_CONV_DIRECT_OCL_FWD11X11=0
+
+
+# rm -rf /root/.cache/miopen /root/.config/miopen
+# rm /tmp/*.ll /tmp/*.o /tmp/*.hsaco
+
 # export LD_LIBRARY_PATH=/common/saleel/:$LD_LIBRARY_PATH
-cd /root/benchmarks && python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
+# cd /root/benchmarks && rocprof --stats python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
+cd /root/benchmarks &&  python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
 
 # cd /root/benchmarks && ltrace -b -n 1 -x hip* -L python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options
 
