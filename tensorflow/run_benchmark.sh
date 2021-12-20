@@ -31,8 +31,6 @@ env_vars=""
 # env_vars="$env_vars MIOPEN_FIND_ENFORCE=4"
 
 
-# env_vars="$env_vars MIOPEN_FIND_ENFORCE=4"
-
 # env_vars="$env_vars HIP_HIDDEN_FREE_MEM=4096"
 # env_vars="$env_vars HIP_TRACE_API=2"
 # env_vars="$env_vars HIP_LAUNCH_BLOCKING=1"
@@ -55,7 +53,6 @@ env_vars=""
 # env_vars="$env_vars TF_ROCM_USE_IMMEDIATE_MODE=1"
 # env_vars="$env_vars TF_ROCM_RETURN_BEST_ALGO_ONLY=1"
 # env_vars="$env_vars TF_ROCM_BW_POOL_CACHE=1"
-
 
 # env_vars="$env_vars TF_XLA_FLAGS=--tf_xla_auto_jit=2"
 # env_vars="$env_vars TF_ROCM_KEEP_XLA_TEMPFILES=1"
@@ -196,4 +193,11 @@ cd /root/benchmarks &&  python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $
 # options="$options --variable_update=horovod"
 # export $env_vars
 # NUM_GPUS=4
+
+# OPENMPI_HOME=/opt/rocm-4.3.1/openmpi/
+# export PATH=$OPENMPI_HOME/bin:$PATH
+# export LD_LIBRARY_PATH=$OPENMPI_HOME/lib
+
+# export HOROVOD_ENABLE_XLA_OPS=1
+
 # cd /root/benchmarks && horovodrun -n $NUM_GPUS python3 scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py $options

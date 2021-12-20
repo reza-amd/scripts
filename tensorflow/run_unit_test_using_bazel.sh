@@ -53,6 +53,8 @@ options="$options --test_size_filters=small,medium,large"
 # options="$options --test_env=ROCBLAS_LAYER=4"  # enable profile logging
 # options="$options --test_env=ROCBLAS_LAYER=7"
 
+# options="$options --test_env=ROCFFT_LAYER=8"
+
 # options="$options --test_env=HIP_HIDDEN_FREE_MEM=500"
 # options="$options --test_env=HIP_TRACE_API=1"
 # options="$options --test_env=LOG_LEVEL=3"
