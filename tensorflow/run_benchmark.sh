@@ -67,19 +67,20 @@ env_vars=""
 # tf_xla_flags="$tf_xla_flags --tf_xla_clustering_debug"
 # export TF_XLA_FLAGS="$tf_xla_flags"
 
-xla_flags=""
+# xla_flags=""
 # xla_flags="$xla_flags --xla_dump_to=$tf_debug_output_xla"
 # xla_flags="$xla_flags --xla_dump_hlo_as_text"
 # xla_flags="$xla_flags --xla_dump_hlo_pass_re=.*"
 # xla_flags="$xla_flags --xla_hlo_profile"
 # xla_flags="$xla_flags --xla_gpu_use_cudnn_batchnorm"
-xla_flags="$xla_flags --xla_gpu_force_conv_nhwc"
-export XLA_FLAGS="$xla_flags"
+# xla_flags="$xla_flags --xla_gpu_force_conv_nhwc"
+# export XLA_FLAGS="$xla_flags"
 
 
 # env_vars="$env_vars AMD_LOG_LEVEL=7"
 # env_vars="$env_vars AMD_SERIALIZE_KERNEL=3"
 # env_vars="$env_vars AMD_SERIALIZE_COPY=3"
+# env_vars="$env_vars AMD_DIRECT_DISPATCH=0"
 
 # env_vars="$env_vars TF_ROCM_USE_BFLOAT16_FOR_CONV=1"
 # env_vars="$env_vars MIOPEN_DEBUG_CONV_IMPLICIT_GEMM_XDLOPS=1"
@@ -130,8 +131,8 @@ options="$options --use_fp16"
 
 # options="$options --num_batches=1"
 # options="$options --num_batches=10"
-# options="$options --num_batches=50"
-# options="$options --num_batches=2000"
+# options="$options --num_batches=100"
+# options="$options --num_batches=1000"
 
 # options="$options --batch_size=32"
 # options="$options --batch_size=64"
@@ -144,9 +145,16 @@ options="$options --batch_size=256"
 
 # options="$options --data_format=NHWC"
 
-options="$options --num_gpus=16"
+# options="$options --num_gpus=16"
+
 
 # options="$options --variable_update=parameter_server"
+
+# options="$options --variable_update=independent"
+
+# options="$options --variable_update=replicated"
+# options="$options --all_reduce_spec=nccl"
+
 # options="$options --local_parameter_device=cpu"
 
 options="$options --print_training_accuracy"
