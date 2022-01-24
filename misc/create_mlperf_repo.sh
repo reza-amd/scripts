@@ -7,4 +7,5 @@ cd /root/
 git clone https://github.com/ROCmSoftwarePlatform/MLPerf-mGPU/
 cd /root/MLPerf-mGPU/
 # git checkout fixes_for_tf_27
-git checkout mlperf-0.7-BU
+# git checkout mlperf-0.7-BU
+git checkout deven/mlperf-0.7-BU-eval-XLA
